@@ -1,0 +1,30 @@
+.partners {
+  max-width: 800px;
+  margin: auto;
+  padding-top: 100px;
+
+  padding-bottom: 100px;
+
+  text-align: center;
+  font-family: var(--font-poppins);
+}
+.title {
+  max-width: 400px;
+  margin: auto;
+  padding-bottom: 60px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.3) 3.3%,
+    #ffffff 50.64%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

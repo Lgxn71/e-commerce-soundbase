@@ -1,0 +1,80 @@
+.body {
+  color: white;
+  font-family: var(--font-poppins);
+}
+
+.gradientContainer {
+  min-height: 100vh;
+}
+.gradientContainer aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: block;
+  width: 240px;
+  min-height: 100%;
+
+  background-color: yellow;
+  background: radial-gradient(
+    387.67% 84.42% at -77.35% 16.6%,
+    #000000 0%,
+    #000000 28.13%,
+    #22155c 54.69%,
+    #3f259d 72.44%,
+    #704ae7 83.97%,
+    #c6b8f6 100%
+  );
+}
+
+.form {
+  width: 100%;
+  max-width: 460px;
+
+  position: fixed;
+  top: 23%;
+  left: 45%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-top: 95px;
+  padding-bottom: 50px;
+}
+.header h4 {
+  font-size: 22px;
+  line-height: 33px;
+  letter-spacing: -0.03em;
+}
+.header p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+}
+
+.changeForm {
+  color: #9978ff;
+  cursor: pointer;
+}
+
+.buttonSubmit {
+  width: 100%;
+  margin-top: 40px;
+  padding: 20px;
+
+  border-radius: 4px;
+  border: none;
+  color: #000000;
+
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  cursor: pointer;
+}

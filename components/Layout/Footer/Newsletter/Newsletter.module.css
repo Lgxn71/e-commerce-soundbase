@@ -1,0 +1,99 @@
+
+.col1 {
+  padding: 170px 0;
+}
+.logo {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -0.03em;
+}
+.copyright {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 23px;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+
+  padding-bottom: 90px;
+}
+
+.newsletter {
+  max-width: 480px;
+}
+.newsLetterTitle {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+
+  padding-bottom: 18px;
+}
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  border: 1px solid #1f2126;
+  padding: 6px;
+  max-width: 460px;
+  margin-bottom: 18px;
+}
+
+.form input {
+  font-family: var(--font-poppins);
+
+  color: white;
+  background-color: black;
+
+  padding-left: 15px;
+
+  border: none;
+  width: 350px;
+  height: 20px;
+}
+.form input::placeholder {
+  color: #7c8392;
+}
+.form input:focus {
+  outline: none;
+}
+.form button {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: #ffffff;
+  background-color: #9978ff;
+
+  border: none;
+  padding: 14px 16px;
+  border-radius: 4px;
+
+  cursor: pointer;
+}
+
+.privacyContent {
+  font-family: var(--font-poppins);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 23px;
+  letter-spacing: -0.03em;
+
+  color: #8e8e8e;
+}
+.privacyPolicy {
+  color: white;
+}

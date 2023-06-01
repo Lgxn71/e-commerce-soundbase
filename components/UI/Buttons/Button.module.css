@@ -1,0 +1,23 @@
+.button {
+  padding: 10px 20px;
+  font-family: var(--font-poppins);
+
+  border-radius: 100px;
+  border: 0;
+
+  cursor: pointer;
+}
+
+.buttonViolet {
+  background: #9978ff;
+  color: white;
+}
+
+.buttonViolet:hover {
+  background-color: white;
+  color: black;
+}
+.button:hover {
+  background: #9978ff;
+  color: white;
+}

@@ -1,0 +1,12 @@
+.container {
+  max-width: 1180px;
+  margin: auto;
+}
+.border {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+
+  background: transparent;
+  border-image: linear-gradient(45deg, #ffffff0f, #ffffff33, #ffffff0f) 1;
+  border-radius: 5px;
+}

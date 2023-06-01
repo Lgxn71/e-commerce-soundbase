@@ -1,0 +1,31 @@
+.col2 {
+  width: 310px;
+  padding: 170px 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+
+  padding-bottom: 15px;
+}
+.link {
+  padding-bottom: 15px;
+}
+
+.link a {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: -0.03em;
+
+  color: #4d5761;
+}

@@ -1,0 +1,19 @@
+.title {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: -0.03em;
+
+  padding-top: 110px;
+  padding-bottom: 50px;
+
+  color: white;
+}
+
+.albums {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding-bottom: 110px;
+}

@@ -1,0 +1,75 @@
+.card {
+  font-family: var(--font-poppins);
+  color: white;
+  max-width: 300px;
+}
+
+.image {
+  max-width: 280px;
+  max-height: 280px;
+
+  width: 100%;
+  height: auto;
+
+  border-radius: 4px;
+  padding-bottom: 15px;
+}
+.card h4 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+  color: white;
+
+  padding-bottom: 5px;
+}
+.artist {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+
+  color: #4d5761;
+
+  padding-bottom: 12px;
+}
+.artist span {
+  color: white;
+}
+
+.actions {
+  max-width: 280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: #4d5761;
+}
+.button {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+
+  color: white;
+
+  border-radius: 100px;
+  background: linear-gradient(0deg, black, black) padding-box,
+    linear-gradient(140deg, #9978ff, #9978ff00, #9978ff) border-box;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.buttonBackGroundColor {
+  padding: 4px 10px;
+  border-radius: 100px;
+
+  background: rgba(153, 120, 255, 0.2);
+}

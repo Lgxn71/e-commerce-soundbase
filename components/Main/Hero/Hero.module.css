@@ -1,0 +1,52 @@
+.heroSection {
+  background: radial-gradient(
+    80% 130.45% at 50.22% 10%,
+    #000000 0%,
+    #000000 28.13%,
+    #000000 28.13%,
+    #22155c 54.69%,
+    #3f259d 72.44%,
+    #704ae7 83.97%,
+    #c6b8f6 100%
+  );
+  padding: 360px 0;
+
+  font-family: var(--font-poppins);
+  color: white;
+  border-radius: 0px 0px 50px 50px;
+}
+
+.heroContent {
+  max-width: 540px;
+}
+.heroContent h2 {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 75px;
+  letter-spacing: -0.03em;
+  padding-bottom: 10px;
+}
+.heroContent p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 28px;
+
+  padding-bottom: 30px;
+
+  letter-spacing: -0.03em;
+}
+
+.actions button {
+  margin-right: 15px;
+  padding: 15px 30px;
+}
+.actions a {
+  padding: 15px 30px;
+
+  font-size: 14px;
+  line-height: 21px;
+  color: white;
+}
+.actions a:hover {
+  color: #9978ff;
+}

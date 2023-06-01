@@ -1,0 +1,205 @@
+.singleAlbumContent {
+  padding-top: 140px;
+}
+
+.albumBody {
+  margin-top: 70px;
+  display: flex;
+  gap: 60px;
+}
+
+.image {
+  padding-bottom: 40px;
+  height: 700px;
+  border-radius: 10px;
+}
+.col1 h4 {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+}
+.col1 p {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: var(--font-poppins);
+  line-height: 28px;
+  letter-spacing: -0.03em;
+
+  color: #4d5761;
+
+  max-width: 630px;
+}
+.imageContainer {
+  z-index: -1;
+  position: relative;
+}
+.imageContainer .overlay {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: white;
+
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.overlay span {
+  padding: 5px 10px;
+  border: 1px solid #ffffff;
+  margin-right: 10px;
+  border-radius: 100px;
+
+  background: rgba(0, 0, 0, 0.5);
+}
+.artistNumbers {
+  display: flex;
+  justify-content: space-between;
+  max-width: 465px;
+  padding-top: 40px;
+}
+.artistNumbers h5 {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -0.04em;
+
+  padding-bottom: 10px;
+
+  color: #cfdae3;
+}
+.artistNumbers p {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 36px;
+  letter-spacing: -0.04em;
+
+  color: #ffffff;
+}
+
+.col2 h3 {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  letter-spacing: -0.03em;
+
+  padding-bottom: 5px;
+
+  color: #ffffff;
+}
+.albumName {
+  margin-bottom: 30px;
+}
+.col2 p {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+}
+.artist {
+  font-family: var(--font-poppins);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: #4d5761;
+}
+.artist a {
+  color: white;
+}
+.card {
+  border: 1px solid #2a2b3a;
+  border-radius: 10px;
+  width: 490px;
+  margin-bottom: 30px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+
+  border-bottom: 1px solid #2a2b3a;
+}
+.header h5 {
+  font-family: var(--font-poppins);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  /* identical to box height */
+
+  letter-spacing: -0.03em;
+
+  color: white;
+}
+
+.songs {
+  padding: 10px 20px;
+  /* max-height: 165px; */
+  /* overflow-x: hidden; */
+}
+.song {
+  padding-bottom: 4px;
+  color: white;
+}
+
+.actions {
+  padding: 30px;
+}
+
+.actions button {
+  width: 100%;
+}
+.buy {
+  padding: 20px 0;
+  border: 1px solid transparent;
+  border-radius: 100px;
+
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.01em;
+
+  color: #000000;
+
+  cursor: pointer;
+}
+.buy:hover {
+  background: #000000;
+  color: white;
+  border: 1px solid #ffffff;
+}
+.addToCart {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.01em;
+
+  margin-top: 20px;
+  border-radius: 100px;
+  padding: 20px;
+
+  border: none;
+  background-color: #000000;
+
+  color: #ffffff;
+  cursor: pointer;
+}
+.addToCart:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
