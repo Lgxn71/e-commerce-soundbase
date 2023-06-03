@@ -7,7 +7,6 @@ import Container from "../../UI/Container/Container";
 import styles from "./SingleAlbum.module.css";
 import { inter } from "@/pages/_app";
 const SingleAlbum = ({ albumDetails, artistDetails }) => {
-  console.log(albumDetails);
   return (
     <Container>
       <div className={styles.singleAlbumContent}>

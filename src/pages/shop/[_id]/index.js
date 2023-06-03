@@ -1,4 +1,6 @@
-import { MongoClient, ObjectId } from "mongodb";
+import { ObjectId } from "mongodb";
+
+import connectToClient from "../../../../database/ConnectClient";
 
 import SingleAlbum from "../../../../components/Shop/SingleAlbum/SingleAlbum";
 import Layout from "../../../../components/Layout/Layout";
@@ -14,13 +16,9 @@ const SingeAlbumPage = ({ singleAlbum, artistData }) => {
 export default SingeAlbumPage;
 
 export const getStaticProps = async ({ params }) => {
-  const client = await MongoClient.connect(
-    "mongodb+srv://lgxn:kinglol1319@cluster0.y1jqypc.mongodb.net/?retryWrites=true&w=majority"
-  );
-
-  await client.connect();
-
+  const client = await connectToClient();
   const db = client.db("soundbase");
+
   const collectionRecords = db.collection("vinylRecords");
   const collectionArtist = db.collection("artists");
 
@@ -45,8 +43,7 @@ export const getStaticProps = async ({ params }) => {
     _id: convertArtistId,
   };
 
-  console.log(artist);
-  client.close();
+  await client.close();
 
   return {
     props: {
@@ -57,13 +54,9 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const client = await MongoClient.connect(
-    "mongodb+srv://lgxn:kinglol1319@cluster0.y1jqypc.mongodb.net/?retryWrites=true&w=majority"
-  );
-
-  await client.connect();
-
+  const client = await connectToClient();
   const db = client.db("soundbase");
+
   const collectionRecords = db.collection("vinylRecords");
   const allAlbums = await collectionRecords.find().toArray();
 
@@ -71,7 +64,7 @@ export const getStaticPaths = async () => {
     params: { _id: album._id.toString() },
   }));
 
-  client.close();
+  await client.close();
 
   return { paths, fallback: false };
 };

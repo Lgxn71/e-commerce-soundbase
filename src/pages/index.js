@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import connectToClient from "../../database/ConnectClient";
 
 import Layout from "../../components/Layout/Layout";
 
@@ -20,13 +20,9 @@ export default function Home({ featuredAlbums, newArrivalAlbums }) {
 }
 
 export const getStaticProps = async () => {
-  const client = await MongoClient.connect(
-    "mongodb+srv://lgxn:kinglol1319@cluster0.y1jqypc.mongodb.net/?retryWrites=true&w=majority"
-  );
-
-  await client.connect();
-
+  const client = await connectToClient();
   const db = client.db("soundbase");
+
   const collectionRecords = db.collection("vinylRecords");
 
   let featuredAlbums = await collectionRecords

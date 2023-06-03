@@ -1,0 +1,11 @@
+.title {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 75px;
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+
+  padding-top: 120px;
+}

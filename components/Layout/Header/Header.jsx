@@ -1,5 +1,7 @@
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
+import { signOut } from "next-auth/react";
 import Link from "next/link";
 
 import Container from "../../UI/Container/Container";
@@ -7,12 +9,17 @@ import Logo from "../../UI/Logo/Logo";
 import Button from "../../UI/Buttons/Button";
 
 import pageLinks from "../../../sharedContent/links/pageLinks";
-import { poppins } from "@/pages/_app";
 
+import { poppins } from "@/pages/_app";
 import styles from "./Header.module.css";
 
 const Header = ({}) => {
   const { pathname } = useRouter();
+
+  const session = useSession();
+  if (session.status === "authenticated") {
+    console.log();
+  }
 
   const isLinkActive = (href) => {
     return pathname === href;
@@ -31,11 +38,12 @@ const Header = ({}) => {
           <nav className={styles.links}>
             {pageLinks.map((link) => (
               <Link
-                className={`${styles.navLink} ${
-                  isLinkActive(link.href)
-                    ? styles.activeLink
-                    : styles.unActiveLink
-                }`}
+                className={`${styles.navLink} 
+                 ${
+                   isLinkActive(link.href)
+                     ? styles.activeLink
+                     : styles.unActiveLink
+                 }`}
                 key={link.title}
                 href={link.href}
               >
@@ -45,8 +53,25 @@ const Header = ({}) => {
           </nav>
 
           <div className={styles.actions}>
-            <Button isViolet={true}>Get Started</Button>
-            <Link href="/auth/signin">Sign Up</Link>
+            {session.status === "authenticated" || !session === undefined ? (
+              <div className={styles.navbarAuth}>
+                <Link href={`user/${session.data.session.user.id}`}>
+                  <div className={styles.profileContainer}>
+                    <div className={styles.profile}></div>
+                  </div>
+                </Link>
+
+                <div>
+                  <a onClick={() => signOut()}>Sign out</a>
+                </div>
+              </div>
+            ) : (
+              <>
+                {" "}
+                <Button isViolet={true}>Get Started</Button>
+                <Link href="/auth/signin">Sign Up</Link>
+              </>
+            )}
           </div>
         </div>
       </Container>

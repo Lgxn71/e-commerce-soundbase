@@ -1,31 +1,63 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
 import useFormInput from "../../../hooks/useFormInput";
 
 import { signIn } from "next-auth/react";
 
 import Form from "../../../components/UI/Form/Form";
-import Input from "../../../components/UI/Form/Input";
+
+import styles from "../../styles/sign/signin.module.css";
+
+const errorInitial = { isError: false, errorMessage: "" };
 
 const SignIn = () => {
+  const router = useRouter();
+
+  const [emailError, setEmailError] = useState(errorInitial);
+  const [passwordError, setPasswordError] = useState(errorInitial);
+
+
   const { user, onChangeInput } = useFormInput({
     email: "",
     password: "",
   });
+
   const { email, password } = user;
 
   const formSubmitHandler = async (event) => {
     event.preventDefault();
-    // if (error.isError) {
-    //   return;
-    // }
+
+    setEmailError(errorInitial);
+    setPasswordError(errorInitial);
+
     const res = await signIn("credentials", {
       email: email,
       password: password,
       redirect: false,
     });
-    console.log(res);
 
-    // place for validation
+    if (!res.ok) {
+      if (res.error === "User not found") {
+        setEmailError({ isError: true, errorMessage: res.error });
+        return;
+      }
+      if (res.error === "Invalid password") {
+        setPasswordError({ isError: true, errorMessage: res.error });
+        return;
+      }
+    }
+
+    const findUser = await fetch("/api/auth/getid", {
+      method: "POST",
+      body: JSON.stringify({ email: email }),
+      "Content-Type": "application/json",
+    });
+    const userId = await findUser.json();
+
+    router.push(`/user/${userId._id}`);
   };
+
+  // REFACTOR TO AUTH PAGE
 
   return (
     <Form
@@ -35,25 +67,35 @@ const SignIn = () => {
       title="Sign in"
       formSubmitHandler={formSubmitHandler}
     >
-      <Input
-        name="email"
+      <input
+        className={`${styles.input}
+        ${emailError.isError ? styles.isError : styles.noErrorInput} `}
         type="email"
+        name="email"
+        id="email"
         placeholder="Enter your email address"
+        required
         onChange={onChangeInput}
       />
-      <Input
-        name="password"
+      {emailError.isError ? (
+        <p className={styles.errorMessage}>{emailError.errorMessage}</p>
+      ) : undefined}
+      <input
+        className={`${styles.input} 
+        ${passwordError.isError ? styles.isError : styles.noErrorInput} 
+     `}
         type="password"
+        name="password"
+        id="password"
         placeholder="Enter your password"
+        required
         onChange={onChangeInput}
       />
+      {passwordError.isError ? (
+        <p className={styles.errorMessage}>{passwordError.errorMessage}</p>
+      ) : undefined}
     </Form>
   );
 };
 
 export default SignIn;
-
-// const [error, setError] = useState({ text: "dsds", isError: true });
-
-// errorText={error.text}
-// isError={error.isError}

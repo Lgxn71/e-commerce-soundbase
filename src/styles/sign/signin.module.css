@@ -32,6 +32,7 @@
 
 .isError {
   border: 1px solid #ff3a3a;
+  margin-bottom: 7px;
 }
 .errorMessage {
   font-style: normal;
@@ -42,6 +43,6 @@
 
   color: #ff3a3a;
 
-  padding-left: 20px;
-  padding-bottom: 20px;
+  padding-left: 25px;
+  padding-bottom: 7px;
 }

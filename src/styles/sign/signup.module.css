@@ -1,0 +1,48 @@
+.input {
+  display: block;
+
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 4px;
+
+  color: #ffffff;
+  background-color: transparent;
+
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+.noErrorInput {
+  border: 1px solid #1f2126;
+}
+.input:hover {
+  border-color: #45465c;
+}
+.input:focus {
+  border: 1px solid #ffffff;
+  outline: white;
+}
+.input::placeholder {
+  font-family: var(--font-poppins);
+
+  color: #7c8392;
+}
+
+.isError {
+  border: 1px solid #ff3a3a;
+  margin-bottom: 7px;
+}
+.errorMessage {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.01em;
+
+  color: #ff3a3a;
+
+  padding-left: 25px;
+  padding-bottom: 7px;
+}

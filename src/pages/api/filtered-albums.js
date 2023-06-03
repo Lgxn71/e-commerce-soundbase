@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import connectToClient from "../../../database/ConnectClient";
 
 const genres = [
   "Jazz",
@@ -16,11 +16,7 @@ const handler = async (req, res) => {
     const activeFilterObject = JSON.parse(activeFilterJSON);
     const { activeFilter } = activeFilterObject;
 
-    const client = await MongoClient.connect(
-      "mongodb+srv://lgxn:kinglol1319@cluster0.y1jqypc.mongodb.net/?retryWrites=true&w=majority"
-    );
-
-    await client.connect();
+    const client = await connectToClient();
     const db = client.db("soundbase");
 
     const collectionRecords = db.collection("vinylRecords");
@@ -29,9 +25,7 @@ const handler = async (req, res) => {
     let countRecords;
 
     if (activeFilter === "All") {
-      albums = await collectionRecords
-        .aggregate([{ $sample: { size: 12 } }])
-        .toArray();
+      albums = await collectionRecords.find().toArray();
 
       albums.map((album) => {
         album._id = album._id.toString();
@@ -41,8 +35,7 @@ const handler = async (req, res) => {
 
       res.status(200).json({ countRecords: countRecords, albums: albums });
 
-      client.close();
-
+      await client.close();
       return;
     }
     genres.map(async (genre) => {
@@ -61,7 +54,7 @@ const handler = async (req, res) => {
 
         res.status(200).json({ countRecords: countRecords, albums: albums });
 
-        client.close();
+        await client.close();
         return;
       }
     });
