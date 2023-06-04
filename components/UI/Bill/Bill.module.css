@@ -1,0 +1,102 @@
+.bill {
+  border: 1px solid #2a2b3a;
+  border-radius: 10px;
+  width: 420px;
+  margin: auto;
+
+  margin-top: 100px;
+  margin-bottom: 150px;
+  padding-top: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+
+  text-align: center;
+}
+.header h4 {
+  max-width: 330px;
+  margin: auto;
+  font-family: var(--font-poppins);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  text-align: center;
+
+  color: white;
+}
+.header p {
+  font-family: var(--font-poppins);
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: -0.03em;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #2a2b3a;
+
+  color: #4d5761;
+}
+
+.body {
+  padding-top: 20px;
+}
+.body ul {
+  padding-bottom: 40px;
+
+  border-bottom: 1px solid #2a2b3a;
+}
+.list {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: #4d5761;
+
+  display: flex;
+  padding-bottom: 10px;
+  justify-content: space-between;
+}
+.highlight {
+  color: #ffffff;
+}
+.actions {
+  padding-top: 35px;
+}
+.containerTotalPrice {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: #4d5761;
+
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.totalPrice {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+
+  text-align: right;
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+}
+.buttons button {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  letter-spacing: -0.01em;
+
+  width: 340px;
+  padding: 20px 0;
+  margin-bottom: 30px;
+}

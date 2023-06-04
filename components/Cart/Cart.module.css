@@ -45,6 +45,8 @@
 }
 
 .cartContainer {
+  display: flex;
+  justify-content: space-between;
   padding-top: 50px;
   padding-bottom: 150px;
 }
@@ -53,4 +55,78 @@
   display: flex;
   gap: 25px;
   flex-direction: column;
+}
+
+.payment {
+  border: 1px solid #2a2b3a;
+  border-radius: 10px;
+  width: 420px;
+  height: 380px;
+}
+
+.pricingContainer {
+  padding: 40px;
+  padding-bottom: 35px;
+}
+
+.list {
+  border-bottom: 1px solid #2a2b3a;
+}
+.list li {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: #4d5761;
+
+  padding-bottom: 10px;
+}
+
+.list li:last-child {
+  padding-bottom: 40px;
+}
+.price {
+  color: white;
+  font-weight: 500;
+}
+
+.actions {
+  padding: 0 40px;
+  font-family: var(--font-poppins);
+  color: #4d5761;
+}
+.totalPrice {
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalPriceHigh {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+
+  padding-bottom: 30px;
+}
+
+.actions button {
+  padding: 20px 140px;
+
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.authentificate {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  letter-spacing: -0.03em;
+
+  color: #4d5761;
 }

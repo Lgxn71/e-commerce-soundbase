@@ -2,7 +2,7 @@ import Layout from "../../../components/Layout/Layout";
 
 import Cart from "../../../components/Cart/Cart";
 
-const Link = () => {
+const CartPage = () => {
   return (
     <Layout>
       <Cart></Cart>
@@ -10,4 +10,4 @@ const Link = () => {
   );
 };
 
-export default Link;
+export default CartPage;

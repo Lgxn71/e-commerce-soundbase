@@ -10,7 +10,7 @@ import "@/styles/globals.css";
 
 export const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-poppins",
 });
 export const inter = Inter({
@@ -18,7 +18,6 @@ export const inter = Inter({
   weight: ["300", "400", "500", "700"],
   variable: "--font-inter",
 });
-
 
 export default function App({
   Component,

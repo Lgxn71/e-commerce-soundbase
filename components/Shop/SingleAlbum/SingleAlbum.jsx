@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { cartState } from "../../../atoms/cartAtom";
+import { cartState } from "../../Cart/atoms/cartAtom";
 
 import Image from "next/image";
 import Link from "next/link";

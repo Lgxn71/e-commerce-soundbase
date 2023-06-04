@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 
-import { cartState } from "../../../atoms/cartAtom";
+import { cartState } from "../../Cart/atoms/cartAtom";
 
 import Link from "next/link";
 

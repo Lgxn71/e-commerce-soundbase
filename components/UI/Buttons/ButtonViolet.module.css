@@ -1,0 +1,24 @@
+.button {
+  font-family: var(--font-poppins);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+
+  text-align: center;
+
+  background: #9978ff;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 18px 0;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #6331ff;
+}
+.button:active {
+  background: #4716df;
+}

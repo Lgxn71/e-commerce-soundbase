@@ -1,8 +1,10 @@
 import { inter } from "@/pages/_app";
 import styles from "./ButtonEmptyBlack.module.css";
-const ButtonEmptyBlack = ({ children }) => {
+const ButtonEmptyBlack = ({ children, onClick }) => {
   return (
-    <button className={`${inter.variable} ${styles.button}`}>{children}</button>
+    <button onClick={onClick} className={`${inter.variable} ${styles.button}`}>
+      {children}
+    </button>
   );
 };
 

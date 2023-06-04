@@ -1,13 +1,10 @@
+import { inter } from "@/pages/_app";
+
 import styles from "./Button.module.css";
 
-const Button = ({ children, isViolet }) => {
+const Button = ({ children, onClick }) => {
   return (
-    <button
-      className={` 
-      ${styles.button}
-      ${isViolet ? styles.buttonViolet : undefined}
-     `}
-    >
+    <button onClick={onClick} className={`${inter.variable} ${styles.button}`}>
       {children}
     </button>
   );

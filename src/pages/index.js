@@ -8,6 +8,9 @@ import AlbumList from "../../components/Main/AlbumList/AlbumList";
 import WhyTrustUs from "../../components/Main/WhyTrustUs/WhyTrustUs";
 
 export default function Home({ featuredAlbums, newArrivalAlbums }) {
+  console.log(featuredAlbums);
+  console.log(newArrivalAlbums);
+
   return (
     <Layout>
       <Hero />
@@ -30,16 +33,12 @@ export const getStaticProps = async () => {
     .limit(4)
     .toArray();
 
-  featuredAlbumsDB.map((album) => {
-    album._id = album._id.toString();
-  });
-
   let newArrivalAlbumsDB = await collectionRecords
     .find({ isNewArrival: true })
     .limit(4)
     .toArray();
 
-  const featuredAlbums = newArrivalAlbumsDB.map((album) => ({
+  const featuredAlbums = featuredAlbumsDB.map((album) => ({
     ...album,
     _id: album._id.toString(),
   }));

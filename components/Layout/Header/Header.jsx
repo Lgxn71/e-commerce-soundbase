@@ -6,8 +6,7 @@ import Link from "next/link";
 
 import Container from "../../UI/Container/Container";
 import Logo from "../../UI/Logo/Logo";
-import Button from "../../UI/Buttons/Button";
-
+import ButtonViolet from "../../UI/Buttons/ButtonViolet";
 import pageLinks from "../../../sharedContent/links/pageLinks";
 
 import { poppins } from "@/pages/_app";
@@ -64,9 +63,10 @@ const Header = ({}) => {
               </div>
             ) : (
               <>
-                {" "}
-                <Button isViolet={true}>Get Started</Button>
-                <Link href="/auth/signin">Sign Up</Link>
+                <div className={styles.unatentificated}>
+                  <ButtonViolet>Get Started</ButtonViolet>
+                  <Link href="/auth/signin">Sign Up</Link>
+                </div>
               </>
             )}
           </div>
