@@ -12,7 +12,7 @@ const UserPage = () => {
   const session = useSession();
   const router = useRouter();
 
-  console.log(session);
+  
   const getId = async () => {
     const findUser = await fetch("/api/auth/getid", {
       method: "POST",

@@ -87,6 +87,7 @@ const Shop = () => {
             albumsData.albums.map((album) => (
               <li key={album._id}>
                 <AlbumCard
+                  album={album}
                   artist={album.artist}
                   albumSrc={album.imagePath}
                   albumName={album.albumName}

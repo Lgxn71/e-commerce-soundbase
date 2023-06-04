@@ -1,0 +1,77 @@
+.albumContainer {
+  font-family: var(--font-poppins);
+  display: flex;
+  max-width: 700px;
+}
+.albumContainer img {
+  margin-right: 40px;
+  border-radius: 4px;
+}
+.albumData {
+  width: 575px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.header a {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+
+  cursor: pointer;
+}
+.header p {
+  height: 18px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.03em;
+
+  color: #ffffff;
+
+  padding-bottom: 5px;
+}
+
+.artist {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -0.03em;
+
+  color: #4d5761;
+
+  padding-bottom: 40px;
+}
+.artist span {
+  color: #ffffff;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+
+  color: #4d5761;
+}
+.bottom .remove {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: #9978ff;
+
+  cursor: pointer;
+}

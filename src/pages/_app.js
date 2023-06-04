@@ -1,5 +1,7 @@
 import { SessionProvider } from "next-auth/react";
 
+import { RecoilRoot } from "recoil";
+
 import { Poppins, Inter } from "next/font/google";
 
 import Layout from "../../components/Layout/Layout";
@@ -17,15 +19,18 @@ export const inter = Inter({
   variable: "--font-inter",
 });
 
+
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
   return (
     <>
-      <SessionProvider session={session}>
-        <Component {...pageProps} />
-      </SessionProvider>
+      <RecoilRoot>
+        <SessionProvider session={session}>
+          <Component {...pageProps} />
+        </SessionProvider>
+      </RecoilRoot>
     </>
   );
 }

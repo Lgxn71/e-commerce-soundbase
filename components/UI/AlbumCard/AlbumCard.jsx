@@ -1,9 +1,36 @@
+import { useRecoilState } from "recoil";
+
+import { cartState } from "../../../atoms/cartAtom";
+
 import Link from "next/link";
 
 import Image from "next/image";
 
 import styles from "./AlbumCard.module.css";
-const AlbumCard = ({ albumSrc, albumName, price, artist, id }) => {
+
+const AlbumCard = ({ albumSrc, albumName, price, artist, id, album }) => {
+  const [cartItems, setCartItems] = useRecoilState(cartState);
+
+  const addToCartHandler = () => {
+    const existingItem = cartItems.find(
+      (cartItem) => cartItem._id === album._id
+    );
+    console.log(existingItem);
+
+    if (existingItem) {
+      const updatedItems = cartItems.map((item) => {
+        if (item._id === album._id) {
+          return { ...item, quantity: item.quantity + 1 };
+        } else {
+          return item;
+        }
+      });
+      setCartItems([...updatedItems]);
+    } else {
+      setCartItems([...cartItems, { ...album, quantity: 1 }]);
+    }
+  };
+
   return (
     <div className={styles.card}>
       <Image
@@ -24,7 +51,7 @@ const AlbumCard = ({ albumSrc, albumName, price, artist, id }) => {
       </p>
       <div className={styles.actions}>
         <p className={styles.price}>PRICE</p>
-        <button className={styles.button}>
+        <button onClick={addToCartHandler} className={styles.button}>
           <div className={styles.buttonBackGroundColor}>$ {price}</div>
         </button>
       </div>

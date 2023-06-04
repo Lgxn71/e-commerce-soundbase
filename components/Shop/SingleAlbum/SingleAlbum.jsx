@@ -1,5 +1,7 @@
+import { useRecoilState } from "recoil";
+import { cartState } from "../../../atoms/cartAtom";
+
 import Image from "next/image";
-import Button from "../../UI/Buttons/Button";
 import Link from "next/link";
 import GradientButton from "../../UI/Buttons/GradientButton";
 import Container from "../../UI/Container/Container";
@@ -7,6 +9,28 @@ import Container from "../../UI/Container/Container";
 import styles from "./SingleAlbum.module.css";
 import { inter } from "@/pages/_app";
 const SingleAlbum = ({ albumDetails, artistDetails }) => {
+  const [cartItems, setCartItems] = useRecoilState(cartState);
+
+  const addToCartHandler = () => {
+    const existingItem = cartItems.find(
+      (cartItem) => cartItem._id === albumDetails._id
+    );
+    console.log(existingItem);
+
+    if (existingItem) {
+      const updatedItems = cartItems.map((item) => {
+        if (item._id === albumDetails._id) {
+          return { ...item, quantity: item.quantity + 1 };
+        } else {
+          return item;
+        }
+      });
+      setCartItems([...updatedItems]);
+    } else {
+      setCartItems([...cartItems, { ...albumDetails, quantity: 1 }]);
+    }
+  };
+
   return (
     <Container>
       <div className={styles.singleAlbumContent}>
@@ -101,8 +125,10 @@ const SingleAlbum = ({ albumDetails, artistDetails }) => {
                 </p>
               </div>
               <div className={`${inter.variable} ${styles.actions}`}>
-                <button className={styles.buy}>Buy</button>
-                <button className={styles.addToCart}>Add to Cart</button>
+                <button className={styles.buy}>Purchase</button>
+                <button onClick={addToCartHandler} className={styles.addToCart}>
+                  Add to Cart
+                </button>
               </div>
             </div>
           </div>

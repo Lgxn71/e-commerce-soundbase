@@ -17,9 +17,6 @@ const Header = ({}) => {
   const { pathname } = useRouter();
 
   const session = useSession();
-  if (session.status === "authenticated") {
-    console.log();
-  }
 
   const isLinkActive = (href) => {
     return pathname === href;
