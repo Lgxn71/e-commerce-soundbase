@@ -25,23 +25,29 @@ export const getStaticProps = async () => {
 
   const collectionRecords = db.collection("vinylRecords");
 
-  let featuredAlbums = await collectionRecords
+  let featuredAlbumsDB = await collectionRecords
     .find({ isFeatured: true })
     .limit(4)
     .toArray();
 
-  featuredAlbums.map((album) => {
+  featuredAlbumsDB.map((album) => {
     album._id = album._id.toString();
   });
 
-  let newArrivalAlbums = await collectionRecords
+  let newArrivalAlbumsDB = await collectionRecords
     .find({ isNewArrival: true })
     .limit(4)
     .toArray();
 
-  newArrivalAlbums.map((album) => {
-    album._id = album._id.toString();
-  });
+  const featuredAlbums = newArrivalAlbumsDB.map((album) => ({
+    ...album,
+    _id: album._id.toString(),
+  }));
+
+  const newArrivalAlbums = newArrivalAlbumsDB.map((album) => ({
+    ...album,
+    _id: album._id.toString(),
+  }));
 
   return {
     props: {

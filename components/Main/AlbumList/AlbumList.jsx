@@ -12,7 +12,8 @@ const AlbumList = ({ albums, title }) => {
       <div className={styles.albums}>
         {albums.map((album) => (
           <AlbumCard
-            id={album._id}
+            album={album}
+            _id={album._id}
             key={album._id}
             albumName={album.albumName}
             artist={album.artist}
