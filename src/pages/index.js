@@ -8,9 +8,6 @@ import AlbumList from "../../components/Main/AlbumList/AlbumList";
 import WhyTrustUs from "../../components/Main/WhyTrustUs/WhyTrustUs";
 
 export default function Home({ featuredAlbums, newArrivalAlbums }) {
-  console.log(featuredAlbums);
-  console.log(newArrivalAlbums);
-
   return (
     <Layout>
       <Hero />

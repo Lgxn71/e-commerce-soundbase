@@ -15,7 +15,6 @@ const SingleAlbum = ({ albumDetails, artistDetails }) => {
     const existingItem = cartItems.find(
       (cartItem) => cartItem._id === albumDetails._id
     );
-    console.log(existingItem);
 
     if (existingItem) {
       const updatedItems = cartItems.map((item) => {

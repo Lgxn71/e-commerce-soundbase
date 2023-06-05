@@ -8,7 +8,7 @@ import Image from "next/image";
 
 import styles from "./AlbumCard.module.css";
 
-const AlbumCard = ({ albumSrc, albumName, price, artist, id, album }) => {
+const AlbumCard = ({ albumSrc, albumName, price, artist, _id, album }) => {
   const [cartItems, setCartItems] = useRecoilState(cartState);
 
   const addToCartHandler = () => {
@@ -42,7 +42,7 @@ const AlbumCard = ({ albumSrc, albumName, price, artist, id, album }) => {
         quality={85}
       />
 
-      <Link href={`/shop/${id}`}>
+      <Link href={`/shop/${_id}`}>
         <h4>{albumName}</h4>
       </Link>
 
