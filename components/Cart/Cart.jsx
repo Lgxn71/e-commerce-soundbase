@@ -29,6 +29,8 @@ const Cart = () => {
   const [cartSum, setCartSum] = useRecoilState(cartSumState);
   const [isModalOpen, setModalOpen] = useState(false);
 
+  console.log(cartItems);
+
   const arrayOfPrices = cartItems.map((item) => item.price * item.quantity);
 
   useEffect(() => {

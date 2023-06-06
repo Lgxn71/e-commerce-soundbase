@@ -10,13 +10,14 @@ const CartAlbum = ({ album }) => {
 
   const removeFromCartHandler = () => {
     const existingItem = cartItems.find((item) => item._id === album._id);
+    console.log(existingItem);
 
     if (existingItem.quantity === 1) {
       const updatedItems = cartItems.filter((item) => item._id !== album._id);
       setCartItems([...updatedItems]);
     } else {
       const updatedItems = cartItems.map((item) =>
-        item.id === album.id ? { ...item, quantity: item.quantity - 1 } : item
+        item._id === album._id ? { ...item, quantity: item.quantity - 1 } : item
       );
       setCartItems([...updatedItems]);
     }

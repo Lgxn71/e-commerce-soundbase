@@ -62,6 +62,7 @@ const authOption = {
         email: session.session.user.email,
       });
 
+      await client.close();
       return {
         session: {
           user: {

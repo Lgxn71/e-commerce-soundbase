@@ -59,6 +59,10 @@ export const getStaticPaths = async () => {
 
   const collectionRecords = db.collection("vinylRecords");
   const allAlbums = await collectionRecords.find().toArray();
+  const convertedId = allAlbums.map((album) => ({
+    ...album,
+    _id: album._id.toString(),
+  }));
 
   const paths = allAlbums.map((album) => ({
     params: { _id: album._id.toString() },

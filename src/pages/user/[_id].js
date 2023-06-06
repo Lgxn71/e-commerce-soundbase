@@ -6,13 +6,13 @@ import { useSession } from "next-auth/react";
 import Layout from "../../../components/Layout/Layout";
 import Container from "../../../components/UI/Container/Container";
 import User from "../../../components/User/User";
+import { poppins } from "../_app";
 
 const UserPage = () => {
   const [id, setId] = useState("");
   const session = useSession();
   const router = useRouter();
 
-  
   const getId = async () => {
     const findUser = await fetch("/api/auth/getid", {
       method: "POST",
@@ -21,12 +21,14 @@ const UserPage = () => {
     });
 
     const userId = await findUser.json();
-  
+
     setId(userId._id);
   };
 
   if (session.status === "authenticated") {
-    getId();
+    getId().then((res) => {
+      console.log(res);
+    });
   }
 
   if (session.status === "loading") {
@@ -46,9 +48,25 @@ const UserPage = () => {
 
   return (
     <Layout>
-      <Container isBorderThere={true}>
-        <User session={session} />
+      <Container>
+        <h2
+          className={poppins.className}
+          style={{
+            fontWeight: 700,
+            fontSize: "50px",
+            lineHeight: "75px",
+            letterSpacing: "-0.03em",
+
+            color: "#ffffff",
+
+            paddingTop: "120px",
+            paddingBottom: "20px",
+          }}
+        >
+          My Profile
+        </h2>
       </Container>
+      <User session={session} />
     </Layout>
   );
 };

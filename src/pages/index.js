@@ -45,6 +45,7 @@ export const getStaticProps = async () => {
     _id: album._id.toString(),
   }));
 
+  await client.close();
   return {
     props: {
       featuredAlbums: featuredAlbums,

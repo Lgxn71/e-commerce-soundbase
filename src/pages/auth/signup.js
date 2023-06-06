@@ -87,6 +87,7 @@ const SignUp = () => {
           isError: true,
           errorMessage: data.message,
         });
+        return;
       }
 
       if (data.message === "Passwords doesnt match") {
@@ -94,11 +95,13 @@ const SignUp = () => {
           isError: true,
           errorMessage: data.message,
         });
+        return;
       }
 
       if (data.message === "User Exist already") {
         setEmailError({ isError: true, errorMessage: data.message });
       }
+      return;
     }
 
     router.push("/auth/signin");

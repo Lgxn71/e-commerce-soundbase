@@ -41,7 +41,7 @@ const AlbumCard = ({ albumSrc, albumName, price, artist, _id, album }) => {
         quality={85}
       />
 
-      <Link href={`/shop/${_id}`}>
+      <Link href={`/shop/${album._id}`}>
         <h4>{albumName}</h4>
       </Link>
 
