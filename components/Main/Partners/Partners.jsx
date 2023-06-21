@@ -11,10 +11,7 @@ const Partner = () => {
   return (
     <Container isBorderThere={false}>
       <div className={styles.partners}>
-        <h3 className={styles.title}>
-          Developers all over the world trust Evervault to keep their customer
-          data secure and compliant.
-        </h3>
+        <h3 className={styles.title}>Music enthusiasts all over the world trust SoundBase to purchase vinyl records.</h3>
         <div>
           <div>
             {mapLogos1.map((logo) => (

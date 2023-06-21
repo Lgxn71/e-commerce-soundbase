@@ -3,12 +3,11 @@ import { useRecoilState } from "recoil";
 import { cartState } from "../../Cart/atoms/cartAtom";
 
 import Link from "next/link";
-
 import Image from "next/image";
 
 import styles from "./AlbumCard.module.css";
 
-const AlbumCard = ({ albumSrc, albumName, price, artist, _id, album }) => {
+const AlbumCard = ({ album }) => {
   const [cartItems, setCartItems] = useRecoilState(cartState);
 
   const addToCartHandler = () => {
@@ -34,24 +33,24 @@ const AlbumCard = ({ albumSrc, albumName, price, artist, _id, album }) => {
     <div className={styles.card}>
       <Image
         className={styles.image}
-        src={albumSrc}
-        alt={`cover of ${albumName}`}
-        width={280}
-        height={280}
-        quality={85}
+        src={album.imagePath}
+        alt={`cover of ${album.albumName}`}
+        width={290}
+        height={290}
+        quality={100}
       />
 
       <Link href={`/shop/${album._id}`}>
-        <h4>{albumName}</h4>
+        <h4>{album.albumName}</h4>
       </Link>
 
       <p className={styles.artist}>
-        album by <span>{artist}</span>
+        album by <span>{album.artist}</span>
       </p>
       <div className={styles.actions}>
         <p className={styles.price}>PRICE</p>
         <button onClick={addToCartHandler} className={styles.button}>
-          <div className={styles.buttonBackGroundColor}>$ {price}</div>
+          <div className={styles.buttonBackGroundColor}>$ {album.price}</div>
         </button>
       </div>
     </div>

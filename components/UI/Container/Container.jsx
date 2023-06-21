@@ -5,11 +5,7 @@ import styles from "./Container.module.css";
 const Container = ({ isBorderThere, children }) => {
   return (
     <section className={isBorderThere ? styles.border : ""}>
-      <div
-        className={`
-        ${poppins.variable}
-        ${styles.container}`}
-      >
+      <div className={` ${poppins.variable} ${styles.container}`}>
         {children}
       </div>
     </section>

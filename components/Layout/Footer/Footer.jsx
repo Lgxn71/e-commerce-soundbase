@@ -8,7 +8,7 @@ import styles from "./Footer.module.css";
 const Footer = () => {
   return (
     <footer>
-      <Container>
+      <Container isBorderThere={true}>
         <div className={styles.footerContent}>
           <NewsLetter />
           <FooterLinks />

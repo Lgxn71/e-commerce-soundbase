@@ -1,5 +1,7 @@
 import { useState } from "react";
+
 import { useRouter } from "next/router";
+
 import useFormInput from "../../../hooks/useFormInput";
 
 import { signIn } from "next-auth/react";
@@ -8,14 +10,12 @@ import Form from "../../../components/UI/Form/Form";
 
 import styles from "../../styles/sign/signin.module.css";
 
-const errorInitial = { isError: false, errorMessage: "" };
-
 const SignIn = () => {
   const router = useRouter();
 
+  const errorInitial = { isError: false, errorMessage: "" };
   const [emailError, setEmailError] = useState(errorInitial);
   const [passwordError, setPasswordError] = useState(errorInitial);
-
 
   const { user, onChangeInput } = useFormInput({
     email: "",
@@ -60,41 +60,44 @@ const SignIn = () => {
   // REFACTOR TO AUTH PAGE
 
   return (
-    <Form
-      hrefLink={"/auth/signup"}
-      text="Don’t"
-      hrefText="Sign Up"
-      title="Sign in"
-      formSubmitHandler={formSubmitHandler}
-    >
-      <input
-        className={`${styles.input}
-        ${emailError.isError ? styles.isError : styles.noErrorInput} `}
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Enter your email address"
-        required
-        onChange={onChangeInput}
-      />
-      {emailError.isError ? (
-        <p className={styles.errorMessage}>{emailError.errorMessage}</p>
-      ) : undefined}
-      <input
-        className={`${styles.input} 
-        ${passwordError.isError ? styles.isError : styles.noErrorInput} 
+    <>
+      <Form
+        hrefLink={"/auth/signup"}
+        text="Don’t"
+        hrefText="Sign Up"
+        title="Sign in"
+        formSubmitHandler={formSubmitHandler}
+      >
+        <input
+          className={`${styles.input}
+          ${emailError.isError ? styles.isError : styles.noErrorInput} `}
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email address"
+          required
+          onChange={onChangeInput}
+        />
+        {emailError.isError ? (
+          <p className={styles.errorMessage}>{emailError.errorMessage}</p>
+        ) : undefined}
+
+        <input
+          className={`${styles.input} 
+         ${passwordError.isError ? styles.isError : styles.noErrorInput} 
      `}
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Enter your password"
-        required
-        onChange={onChangeInput}
-      />
-      {passwordError.isError ? (
-        <p className={styles.errorMessage}>{passwordError.errorMessage}</p>
-      ) : undefined}
-    </Form>
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter your password"
+          required
+          onChange={onChangeInput}
+        />
+        {passwordError.isError ? (
+          <p className={styles.errorMessage}>{passwordError.errorMessage}</p>
+        ) : undefined}
+      </Form>
+    </>
   );
 };
 

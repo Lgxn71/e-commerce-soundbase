@@ -59,33 +59,10 @@
 
   background: rgba(0, 0, 0, 0.5);
 }
-.artistNumbers {
-  display: flex;
-  justify-content: space-between;
-  max-width: 465px;
-  padding-top: 40px;
+
+.col2 {
+  margin-bottom: 150px;
 }
-.artistNumbers h5 {
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: -0.04em;
-
-  padding-bottom: 10px;
-
-  color: #cfdae3;
-}
-.artistNumbers p {
-  font-family: var(--font-poppins);
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 36px;
-  letter-spacing: -0.04em;
-
-  color: #ffffff;
-}
-
 .col2 h3 {
   font-family: var(--font-poppins);
   font-weight: 700;
@@ -134,14 +111,34 @@
 
   border-bottom: 1px solid #2a2b3a;
 }
+
+.header .priceTitle {
+  font-family: var(--font-poppins);
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+
+  color: #4d5761;
+}
+
+.header .price {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #9978ff;
+
+  text-transform: uppercase;
+}
 .header h5 {
   font-family: var(--font-poppins);
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  /* identical to box height */
-
   letter-spacing: -0.03em;
 
   color: white;
@@ -155,51 +152,4 @@
 .song {
   padding-bottom: 4px;
   color: white;
-}
-
-.actions {
-  padding: 30px;
-}
-
-.actions button {
-  width: 100%;
-}
-.buy {
-  padding: 20px 0;
-  border: 1px solid transparent;
-  border-radius: 100px;
-
-  font-family: var(--font-poppins);
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: -0.01em;
-
-  color: #000000;
-
-  cursor: pointer;
-}
-.buy:hover {
-  background: #000000;
-  color: white;
-  border: 1px solid #ffffff;
-}
-.addToCart {
-  font-family: var(--font-poppins);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  letter-spacing: -0.01em;
-
-  margin-top: 20px;
-  border-radius: 100px;
-  padding: 20px;
-
-  border: none;
-  background-color: #000000;
-
-  color: #ffffff;
-  cursor: pointer;
-}
-.addToCart:hover {
-  background: rgba(255, 255, 255, 0.1);
 }

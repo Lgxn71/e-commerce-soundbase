@@ -62,7 +62,7 @@
 
   border-radius: 100px;
   background: linear-gradient(0deg, black, black) padding-box,
-    linear-gradient(140deg, #9978ff, #9978ff00, #9978ff) border-box;
+    linear-gradient(140deg, #9978ff, #9978ff40, #9978ff) border-box;
   border: 1px solid transparent;
   cursor: pointer;
 }

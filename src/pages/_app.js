@@ -2,6 +2,8 @@ import { SessionProvider } from "next-auth/react";
 
 import { RecoilRoot } from "recoil";
 
+import { useRouter } from "next/router";
+
 import { Poppins, Inter } from "next/font/google";
 
 import Layout from "../../components/Layout/Layout";
@@ -23,13 +25,24 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
-  return (
-    <>
-      <RecoilRoot>
-        <SessionProvider session={session}>
+  const router = useRouter();
+
+  const excludeLayoutPages = ["/auth/signin", "/auth/signup"];
+  const isExcludedLayout = excludeLayoutPages.includes(router.asPath);
+
+  const components = (
+    <RecoilRoot>
+      <SessionProvider session={session}>
+        {isExcludedLayout ? (
           <Component {...pageProps} />
-        </SessionProvider>
-      </RecoilRoot>
-    </>
+        ) : (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        )}
+      </SessionProvider>
+    </RecoilRoot>
   );
+
+  return <>{components}</>;
 }

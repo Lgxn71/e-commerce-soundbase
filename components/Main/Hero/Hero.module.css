@@ -10,10 +10,11 @@
     #c6b8f6 100%
   );
   padding: 360px 0;
+  border-radius: 0px 0px 50px 50px;
+
+  color: white;
 
   font-family: var(--font-poppins);
-  color: white;
-  border-radius: 0px 0px 50px 50px;
 }
 
 .heroContent {
@@ -24,23 +25,23 @@
   font-size: 50px;
   line-height: 75px;
   letter-spacing: -0.03em;
+
   padding-bottom: 10px;
 }
 .heroContent p {
   font-weight: 400;
   font-size: 14px;
   line-height: 28px;
+  letter-spacing: -0.03em;
 
   padding-bottom: 30px;
-
-  letter-spacing: -0.03em;
 }
 
 .actions button {
   margin-right: 15px;
   padding: 15px 30px;
 }
-.actions a {
+.actions .link {
   padding: 15px 30px;
 
   font-size: 14px;

@@ -6,7 +6,7 @@ import Button from "../Buttons/Button";
 import ButtonEmptyBlack from "../Buttons/ButtonEmptyBlack";
 import Link from "next/link";
 
-let shipping = 20;
+let shipping = 15;
 const Bill = () => {
   const cart = useRecoilValue(cartState);
   const sumCart = useRecoilValue(cartSumState);

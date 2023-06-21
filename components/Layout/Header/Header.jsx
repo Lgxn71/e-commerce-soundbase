@@ -64,8 +64,10 @@ const Header = ({}) => {
             ) : (
               <>
                 <div className={styles.unatentificated}>
-                  <ButtonViolet>Get Started</ButtonViolet>
-                  <Link href="/auth/signin">Sign Up</Link>
+                  <Link href="/auth/signin">
+                    <ButtonViolet>Get Started</ButtonViolet>
+                  </Link>
+                  <Link href="/auth/signup">Sign Up</Link>
                 </div>
               </>
             )}

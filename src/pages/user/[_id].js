@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 
-import Layout from "../../../components/Layout/Layout";
 import Container from "../../../components/UI/Container/Container";
 import User from "../../../components/User/User";
 import { poppins } from "../_app";
@@ -33,21 +32,21 @@ const UserPage = () => {
 
   if (session.status === "loading") {
     return (
-      <Layout>
+      <>
         <p>loading</p>
-      </Layout>
+      </>
     );
   }
   if (session.status === "unauthenticated" || `/user/${id}` !== router.asPath) {
     return (
-      <Layout>
+      <>
         <p>You are not allowed to visit this page</p>
-      </Layout>
+      </>
     );
   }
 
   return (
-    <Layout>
+    <>
       <Container>
         <h2
           className={poppins.className}
@@ -67,7 +66,7 @@ const UserPage = () => {
         </h2>
       </Container>
       <User session={session} />
-    </Layout>
+    </>
   );
 };
 

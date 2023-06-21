@@ -9,12 +9,14 @@ import styles from "./GradientButton.module.css";
 
 const GradientButton = ({ children, href }) => {
   return (
-    <button className={`${inter.variable} ${styles.gradientButton}`}>
-      <div className={styles.background}>
-        <FontAwesomeIcon icon={faArrowRight} rotation={180} />
-        <Link href={href}> {children}</Link>
-      </div>
-    </button>
+    <Link href={href}>
+      <button className={`${inter.variable} ${styles.gradientButton}`}>
+        <div className={styles.background}>
+          <FontAwesomeIcon icon={faArrowRight} rotation={180} />
+          {children}
+        </div>
+      </button>
+    </Link>
   );
 };
 

@@ -1,0 +1,15 @@
+.actions {
+  padding: 30px;
+}
+
+.actions button {
+  width: 100%;
+}
+
+.purchaseBtn button {
+  padding: 20px 0;
+}
+.addToCartBtn button {
+  margin-top: 20px;
+  padding: 20px;
+}

@@ -1,15 +1,15 @@
 import Link from "next/link";
 
-import Button from "../../UI/Buttons/Button";
-
 import { poppins } from "@/pages/_app";
 
-import styles from "./Hero.module.css";
+import Button from "../../UI/Buttons/Button";
 import Container from "../../UI/Container/Container";
+
+import styles from "./Hero.module.css";
 
 const Hero = () => {
   return (
-    <div className={` ${poppins.variable} ${styles.heroSection}`}>
+    <div className={`${poppins.variable} ${styles.heroSection}`}>
       <Container>
         <div className={styles.heroContent}>
           <h2>Discover the Ultimate Vinyl Collection</h2>
@@ -19,8 +19,13 @@ const Hero = () => {
             destination for all vinyl enthusiasts.{" "}
           </p>
           <div className={styles.actions}>
-            <Button>Get Started</Button>
-            <Link href="/shop">Discover</Link>
+            <Link href="/auth/signin">
+              <Button>Get Started</Button>
+            </Link>
+
+            <Link className={styles.link} href="/shop">
+              Discover
+            </Link>
           </div>
         </div>
       </Container>

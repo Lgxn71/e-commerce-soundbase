@@ -5,8 +5,8 @@
 .border {
   border-top: 1px solid;
   border-bottom: 1px solid;
+  border-radius: 5px;
 
   background: transparent;
-  border-image: linear-gradient(45deg, #ffffff0f, #ffffff33, #ffffff0f) 1;
-  border-radius: 5px;
+  border-image: linear-gradient(90deg, #ffffff0f, #ffffff33, #ffffff0f) 1;
 }

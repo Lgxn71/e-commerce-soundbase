@@ -3,13 +3,12 @@ import { ObjectId } from "mongodb";
 import connectToClient from "../../../../database/ConnectClient";
 
 import SingleAlbum from "../../../../components/Shop/SingleAlbum/SingleAlbum";
-import Layout from "../../../../components/Layout/Layout";
 
 const SingeAlbumPage = ({ singleAlbum, artistData }) => {
   return (
-    <Layout>
+    <>
       <SingleAlbum artistDetails={artistData} albumDetails={singleAlbum} />
-    </Layout>
+    </>
   );
 };
 
@@ -59,10 +58,6 @@ export const getStaticPaths = async () => {
 
   const collectionRecords = db.collection("vinylRecords");
   const allAlbums = await collectionRecords.find().toArray();
-  const convertedId = allAlbums.map((album) => ({
-    ...album,
-    _id: album._id.toString(),
-  }));
 
   const paths = allAlbums.map((album) => ({
     params: { _id: album._id.toString() },

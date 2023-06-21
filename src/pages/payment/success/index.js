@@ -1,11 +1,11 @@
 import { poppins } from "@/pages/_app";
-import Layout from "../../../../components/Layout/Layout";
-import Bill from "../../../../components/UI/Bill/Bill";
+
 import Container from "../../../../components/UI/Container/Container";
+import Bill from "../../../../components/UI/Bill/Bill";
 
 const Success = () => {
   return (
-    <Layout>
+    <>
       <h2
         className={poppins.className}
         style={{
@@ -23,9 +23,9 @@ const Success = () => {
         Payment Success!
       </h2>
       <Container isBorderThere={true}>
-        <Bill></Bill>
+        <Bill />
       </Container>
-    </Layout>
+    </>
   );
 };
 

@@ -1,5 +1,4 @@
 import Container from "../../UI/Container/Container";
-
 import AlbumCard from "../../UI/AlbumCard/AlbumCard";
 
 import styles from "./AlbumList.module.css";
@@ -11,15 +10,7 @@ const AlbumList = ({ albums, title }) => {
 
       <div className={styles.albums}>
         {albums.map((album) => (
-          <AlbumCard
-            album={album}
-            _id={album._id}
-            key={album._id}
-            albumName={album.albumName}
-            artist={album.artist}
-            albumSrc={album.imagePath}
-            price={album.price}
-          />
+          <AlbumCard album={album} key={album._id} />
         ))}
       </div>
     </Container>
