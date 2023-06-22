@@ -26,7 +26,6 @@ const handler = async (req, res) => {
 
     if (activeFilter === "All") {
       albums = await collectionRecords.find().toArray();
-
       albums.map((album) => {
         album._id = album._id.toString();
       });
@@ -38,6 +37,7 @@ const handler = async (req, res) => {
       await client.close();
       return;
     }
+
     genres.map(async (genre) => {
       if (genre === activeFilter) {
         albums = await collectionRecords

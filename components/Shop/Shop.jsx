@@ -7,31 +7,12 @@ import { poppins } from "@/pages/_app";
 
 import styles from "./Shop.module.css";
 
-const Shop = () => {
+const Shop = ({ initialData }) => {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const [albumsData, setAlbumsData] = useState({ albums: [], countRecords: 0 });
+  const [albumsData, setAlbumsData] = useState(initialData);
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchDataOnce = async () => {
-      try {
-        const response = await fetch("/api/filtered-albums", {
-          method: "POST",
-          body: JSON.stringify({ activeFilter: "All" }),
-          "Content-Type": "application/json",
-        });
-        const allAlbumsData = await response.json();
-        setAlbumsData(allAlbumsData);
-      } catch (error) {
-        console.error("failed to fetch data:", error);
-      }
-    };
-
-    fetchDataOnce();
-    setIsLoading(false);
-  }, []);
+  const [isLoading, setIsLoading] = useState(false);
 
   const activeFilterHandler = async (event) => {
     setActiveFilter(event.target.innerText);
@@ -115,3 +96,22 @@ const genres = [
   "Rock",
   "Electronic",
 ];
+
+// useEffect(() => {
+//   const fetchDataOnce = async () => {
+//     try {
+//       const response = await fetch("/api/filtered-albums", {
+//         method: "POST",
+//         body: JSON.stringify({ activeFilter: "All" }),
+//         "Content-Type": "application/json",
+//       });
+//       const allAlbumsData = await response.json();
+//       setAlbumsData(allAlbumsData);
+//     } catch (error) {
+//       console.error("failed to fetch data:", error);
+//     }
+//   };
+
+//   fetchDataOnce();
+//   setIsLoading(false);
+// }, []);
