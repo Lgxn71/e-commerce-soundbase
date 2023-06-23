@@ -15,7 +15,9 @@ export const getStaticProps = async () => {
     body: JSON.stringify({ activeFilter: "All" }),
     "Content-Type": "application/json",
   });
+  
   const allAlbumsData = await response.json();
+
   return {
     props: {
       initialData: allAlbumsData,

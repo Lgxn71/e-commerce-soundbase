@@ -1,7 +1,5 @@
 import connectToClient from "../../database/ConnectClient";
 
-import Layout from "../../components/Layout/Layout";
-
 import Hero from "../../components/Main/Hero/Hero";
 import Partner from "../../components/Main/Partners/Partners";
 import AlbumList from "../../components/Main/AlbumList/AlbumList";

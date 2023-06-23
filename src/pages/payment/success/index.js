@@ -3,23 +3,11 @@ import { poppins } from "@/pages/_app";
 import Container from "../../../../components/UI/Container/Container";
 import Bill from "../../../../components/UI/Bill/Bill";
 
+import styles from "../../../styles/payment/success/Success.module.css";
 const Success = () => {
   return (
     <>
-      <h2
-        className={poppins.className}
-        style={{
-          paddingTop: "120px",
-          fontwWeight: 700,
-          fontSize: "50px",
-          lineHeight: "75px",
-          letterSpacing: "-0.03em",
-
-          textAlign: "center",
-
-          color: "#FFFFFF",
-        }}
-      >
+      <h2 className={`${poppins.className} ${styles.title}`}>
         Payment Success!
       </h2>
       <Container isBorderThere={true}>

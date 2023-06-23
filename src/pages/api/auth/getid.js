@@ -3,6 +3,7 @@ async function handler(req, res) {
   if (req.method === "POST") {
     const emailJSON = req.body;
     const { email } = JSON.parse(emailJSON);
+
     const client = await connectToClient();
     const db = client.db("soundbase");
     const collectionUsers = db.collection("users");

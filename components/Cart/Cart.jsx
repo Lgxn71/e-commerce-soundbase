@@ -10,15 +10,13 @@ import { cartState, cartSumState } from "./atoms/cartAtom";
 import Link from "next/link";
 
 import CartAlbum from "./CartAlbum/CartAlbum";
+import Payment from "./Payment/Payment";
 import PleaseSignInPopup from "./PleaseSignInPopup/PleaseSignInPopup";
 
-import Button from "../UI/Buttons/Button";
 import Container from "../UI/Container/Container";
 import ButtonEmptyBlack from "../UI/Buttons/ButtonEmptyBlack";
 
 import styles from "./Cart.module.css";
-
-const shipping = 15;
 
 const Cart = () => {
   const session = useSession();
@@ -26,7 +24,7 @@ const Cart = () => {
   const router = useRouter();
 
   const cartItems = useRecoilValue(cartState);
-  const [cartSum, setCartSum] = useRecoilState(cartSumState);
+  const [cartSummaryPrice, setCartSummaryPrice] = useRecoilState(cartSumState);
   const [isModalOpen, setModalOpen] = useState(false);
 
   console.log(cartItems);
@@ -38,7 +36,7 @@ const Cart = () => {
     for (let index = 0; index < arrayOfPrices.length; index++) {
       sum += arrayOfPrices[index];
     }
-    setCartSum(sum);
+    setCartSummaryPrice(sum);
   }, [arrayOfPrices]);
 
   const modalOpenHandler = () => {
@@ -48,7 +46,7 @@ const Cart = () => {
     setModalOpen(false);
   };
 
-  const successHandler = () => {
+  const successPurchaseHandler = () => {
     router.push("/payment/success");
   };
 
@@ -85,48 +83,12 @@ const Cart = () => {
               ))}
             </div>
 
-            <div className={styles.payment}>
-              <div className={styles.pricingContainer}>
-                <ul className={styles.list}>
-                  <li>
-                    <span>Quantity:</span>
-                    <span className={styles.price}>{cartItems.length}</span>
-                  </li>
-                  <li>
-                    <span>Shipping:</span>
-                    <span className={styles.price}>$ {shipping}</span>
-                  </li>
-                  <li>
-                    <span>Price:</span>
-                    <span className={styles.price}> $ {cartSum}</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className={styles.actions}>
-                <p className={styles.totalPrice}>
-                  <span>Total Price:</span>
-                  <span className={styles.totalPriceHigh}>
-                    $ {cartSum + shipping}
-                  </span>
-                </p>
-                <Button
-                  onClick={
-                    session.status === "unauthenticated"
-                      ? modalOpenHandler
-                      : successHandler
-                  }
-                >
-                  Purchase
-                </Button>
-
-                {session.status === "unauthenticated" ? (
-                  <p className={styles.authentificate}>
-                    Please sign in to proceed with the payment
-                  </p>
-                ) : undefined}
-              </div>
-            </div>
+            <Payment
+              onSuccessPurchase={successPurchaseHandler}
+              onModalOpen={modalOpenHandler}
+              cartSummaryPrice={cartSummaryPrice}
+              session={session}
+            />
           </div>
         )}
       </Container>

@@ -9,29 +9,49 @@ import styles from "./Shop.module.css";
 
 const Shop = ({ initialData }) => {
   const [activeFilter, setActiveFilter] = useState("All");
-
-  const [albumsData, setAlbumsData] = useState(initialData);
-
+  
   const [isLoading, setIsLoading] = useState(false);
+  const [albumsData, setAlbumsData] = useState({
+    All: initialData,
+    Jazz: { countRecords: 0, albums: [] },
+    HipHop: { countRecords: 0, albums: [] },
+    "R&B": { countRecords: 0, albums: [] },
+    Pop: { countRecords: 0, albums: [] },
+    Classic: { countRecords: 0, albums: [] },
+    Rock: { countRecords: 0, albums: [] },
+    Electronic: { countRecords: 0, albums: [] },
+  });
 
-  const activeFilterHandler = async (event) => {
+  const changeFilterHandler = (event) => {
     setActiveFilter(event.target.innerText);
-
-    setIsLoading(true);
-    try {
-      const response = await fetch("/api/filtered-albums", {
-        method: "POST",
-        body: JSON.stringify({ activeFilter: event.target.innerText }),
-        "Content-Type": "application/json",
-      });
-      const filteredAlbumsData = await response.json();
-      setAlbumsData(filteredAlbumsData);
-    } catch (error) {
-      console.log(error);
-    }
-
-    setIsLoading(false);
   };
+
+  useEffect(() => {
+    const activeFilterHandler = async () => {
+      if (albumsData[activeFilter].albums.length === 0) {
+        setIsLoading(true);
+      }
+      try {
+        const response = await fetch("/api/filtered-albums", {
+          method: "POST",
+          body: JSON.stringify({ activeFilter: activeFilter }),
+          "Content-Type": "application/json",
+        });
+        const filteredAlbumsData = await response.json();
+
+        setAlbumsData(
+          Object.assign({}, albumsData, {
+            [activeFilter]: filteredAlbumsData,
+          })
+        );
+      } catch (error) {
+        console.log(error);
+      }
+
+      setIsLoading(false);
+    };
+    activeFilterHandler();
+  }, [activeFilter]);
 
   return (
     <>
@@ -47,9 +67,8 @@ const Shop = ({ initialData }) => {
           {genres.map((genre) => (
             <li
               key={genre}
-              onClick={activeFilterHandler}
-              className={`
-              ${styles.genre}
+              onClick={changeFilterHandler}
+              className={`${styles.genre}
               ${activeFilter === genre ? styles.activeFilter : ""}`}
             >
               {genre}
@@ -58,14 +77,16 @@ const Shop = ({ initialData }) => {
         </ul>
       </Container>
 
-      <Container isBorderThere={false}>
-        <p className={styles.counter}>Found vinyls {albumsData.countRecords}</p>
+      <Container>
+        <p className={styles.counter}>
+          Found vinyls {albumsData[activeFilter].countRecords}
+        </p>
 
         <ul className={styles.albums}>
           {isLoading ? (
             <p style={{ color: "white" }}>loading</p> // aidar will change
           ) : (
-            albumsData.albums.map((album) => (
+            albumsData[activeFilter].albums.map((album) => (
               <li key={album._id}>
                 <AlbumCard
                   album={album}
@@ -96,22 +117,3 @@ const genres = [
   "Rock",
   "Electronic",
 ];
-
-// useEffect(() => {
-//   const fetchDataOnce = async () => {
-//     try {
-//       const response = await fetch("/api/filtered-albums", {
-//         method: "POST",
-//         body: JSON.stringify({ activeFilter: "All" }),
-//         "Content-Type": "application/json",
-//       });
-//       const allAlbumsData = await response.json();
-//       setAlbumsData(allAlbumsData);
-//     } catch (error) {
-//       console.error("failed to fetch data:", error);
-//     }
-//   };
-
-//   fetchDataOnce();
-//   setIsLoading(false);
-// }, []);

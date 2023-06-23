@@ -65,4 +65,5 @@
   display: grid;
   gap: 32.5px 0px;
   grid-template-columns: repeat(4, 1fr);
+  padding-bottom: 200px;
 }
