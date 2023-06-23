@@ -14,13 +14,11 @@ const handler = async (req, res) => {
       res.status(400).json({
         message: "Password is too short, at least 8 characters needed",
       });
-
       return;
     }
 
     if (password.trim() !== confirmPassword.trim()) {
       res.status(400).json({ message: "Passwords doesnt match" });
-
       return;
     }
 

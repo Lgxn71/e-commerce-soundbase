@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import sendRequest from "../../helper/SendRequest";
+
 import AlbumCard from "../UI/AlbumCard/AlbumCard";
 import Container from "../UI/Container/Container";
 
@@ -9,7 +11,7 @@ import styles from "./Shop.module.css";
 
 const Shop = ({ initialData }) => {
   const [activeFilter, setActiveFilter] = useState("All");
-  
+
   const [isLoading, setIsLoading] = useState(false);
   const [albumsData, setAlbumsData] = useState({
     All: initialData,
@@ -32,12 +34,11 @@ const Shop = ({ initialData }) => {
         setIsLoading(true);
       }
       try {
-        const response = await fetch("/api/filtered-albums", {
-          method: "POST",
-          body: JSON.stringify({ activeFilter: activeFilter }),
-          "Content-Type": "application/json",
-        });
-        const filteredAlbumsData = await response.json();
+        const [filteredAlbumsData] = await sendRequest(
+          "/api/filtered-albums",
+          "POST",
+          { activeFilter: activeFilter }
+        );
 
         setAlbumsData(
           Object.assign({}, albumsData, {

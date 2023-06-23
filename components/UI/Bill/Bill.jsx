@@ -1,15 +1,17 @@
 import { useRecoilValue } from "recoil";
-import { cartState, cartSumState } from "../../Cart/atoms/cartAtom";
 
-import styles from "./Bill.module.css";
+import { cartState } from "../../Cart/atoms/cartAtom";
+
+import Link from "next/link";
+
 import Button from "../Buttons/Button";
 import ButtonEmptyBlack from "../Buttons/ButtonEmptyBlack";
-import Link from "next/link";
+
+import styles from "./Bill.module.css";
 
 let shipping = 15;
 const Bill = () => {
   const cart = useRecoilValue(cartState);
-  const sumCart = useRecoilValue(cartSumState);
 
   return (
     <div className={styles.bill}>
@@ -25,7 +27,7 @@ const Bill = () => {
         <ul>
           <li className={styles.list}>
             <span>Quantity</span>
-            <span className={styles.highlight}>{cart.length}</span>
+            <span className={styles.highlight}>{cart.cartItems.length}</span>
           </li>
           <li className={styles.list}>
             <span>Shipping</span>
@@ -33,7 +35,7 @@ const Bill = () => {
           </li>
           <li className={styles.list}>
             <span>Price</span>
-            <span className={styles.highlight}>$ {sumCart}</span>
+            <span className={styles.highlight}>$ {cart.cartTotalPrice}</span>
           </li>
         </ul>
       </div>
@@ -41,11 +43,13 @@ const Bill = () => {
       <div className={styles.actions}>
         <p className={styles.containerTotalPrice}>
           <span>Total Price</span>
-          <span className={styles.totalPrice}>$ {sumCart + shipping}</span>
+          <span className={styles.totalPrice}>
+            $ {cart.cartTotalPrice + shipping}
+          </span>
         </p>
 
         <div className={styles.buttons}>
-          {/* <Button>Visit Purchase History</Button> */}
+          <Button>Visit Purchase History</Button>
           <Link href="/shop">
             <ButtonEmptyBlack>Discover</ButtonEmptyBlack>
           </Link>

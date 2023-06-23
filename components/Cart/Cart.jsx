@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
 
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
-import { useRecoilValue, useRecoilState } from "recoil";
-import { cartState, cartSumState } from "./atoms/cartAtom";
+import { useRecoilState } from "recoil";
+import { cartState } from "./atoms/cartAtom";
 
 import Link from "next/link";
 
@@ -21,23 +19,25 @@ import styles from "./Cart.module.css";
 const Cart = () => {
   const session = useSession();
 
-  const router = useRouter();
+  const [cart, setCart] = useRecoilState(cartState);
+  const [sumTemp, setSumTemp] = useState(0);
 
-  const cartItems = useRecoilValue(cartState);
-  const [cartSummaryPrice, setCartSummaryPrice] = useRecoilState(cartSumState);
   const [isModalOpen, setModalOpen] = useState(false);
 
-  console.log(cartItems);
-
-  const arrayOfPrices = cartItems.map((item) => item.price * item.quantity);
-
   useEffect(() => {
+    const arrayOfPrices = cart.cartItems.map(
+      (item) => item.price * item.quantity
+    );
     let sum = 0;
     for (let index = 0; index < arrayOfPrices.length; index++) {
       sum += arrayOfPrices[index];
     }
-    setCartSummaryPrice(sum);
-  }, [arrayOfPrices]);
+    setSumTemp(sum);
+  });
+
+  useEffect(() => {
+    setCart((prevCart) => ({ ...prevCart, cartTotalPrice: sumTemp }));
+  }, [sumTemp]);
 
   const modalOpenHandler = () => {
     setModalOpen(true);
@@ -46,24 +46,16 @@ const Cart = () => {
     setModalOpen(false);
   };
 
-  const successPurchaseHandler = () => {
-    router.push("/payment/success");
-  };
-
   return (
     <>
-      {isModalOpen &&
-        createPortal(
-          <PleaseSignInPopup onClose={modalCloseHandler} />,
-          document.body
-        )}
+      {isModalOpen && <PleaseSignInPopup onClose={modalCloseHandler} />}
 
       <Container>
         <h2 className={styles.title}>Cart</h2>
       </Container>
 
       <Container isBorderThere={true}>
-        {cartItems.length === 0 ? (
+        {cart.cartItems.length === 0 ? (
           <div className={styles.cartEmpty}>
             <h3>You haven't added anything...yet!</h3>
             <p>
@@ -78,15 +70,15 @@ const Cart = () => {
         ) : (
           <div className={styles.cartContainer}>
             <div className={styles.cart}>
-              {cartItems.map((album) => (
+              {cart.cartItems.map((album) => (
                 <CartAlbum key={album._id} album={album} />
               ))}
             </div>
 
             <Payment
-              onSuccessPurchase={successPurchaseHandler}
+              cart={cart}
+              onSetCart={setCart}
               onModalOpen={modalOpenHandler}
-              cartSummaryPrice={cartSummaryPrice}
               session={session}
             />
           </div>

@@ -13,25 +13,28 @@ import Actions from "./Actions";
 import styles from "./SingleAlbum.module.css";
 
 const SingleAlbum = ({ albumDetails, artistDetails }) => {
-  const [cartItems, setCartItems] = useRecoilState(cartState);
+  const [cart, setCart] = useRecoilState(cartState);
 
   const genres = albumDetails.genres.join(" ");
 
   const addToCartHandler = () => {
-    const existingItem = cartItems.find(
+    const existingItem = cart.cartItems.find(
       (cartItem) => cartItem._id === albumDetails._id
     );
 
     if (existingItem) {
-      const updatedItems = cartItems.map((item) => {
+      const updatedItems = cart.cartItems.map((item) => {
         if (item._id === albumDetails._id) {
           return { ...item, quantity: item.quantity + 1 };
         }
         return item;
       });
-      setCartItems([...updatedItems]);
+      setCart({ ...cart, cartItems: [...updatedItems] });
     } else {
-      setCartItems([...cartItems, { ...albumDetails, quantity: 1 }]);
+      setCart({
+        ...cart,
+        cartItems: [...cart.cartItems, { ...albumDetails, quantity: 1 }],
+      });
     }
   };
 

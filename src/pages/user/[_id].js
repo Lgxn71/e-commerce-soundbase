@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import Container from "../../../components/UI/Container/Container";
 import User from "../../../components/User/User";
 import { poppins } from "../_app";
+import sendRequest from "../../../helper/SendRequest";
 
 const UserPage = () => {
   const [id, setId] = useState("");
@@ -13,13 +14,9 @@ const UserPage = () => {
   const router = useRouter();
 
   const getId = async () => {
-    const findUser = await fetch("/api/auth/getid", {
-      method: "POST",
-      body: JSON.stringify({ email: session.data.session.user.email }),
-      "Content-Type": "application/json",
+    const [userId] = await sendRequest("/api/auth/getid", "POST", {
+      email: session.data.session.user.email,
     });
-
-    const userId = await findUser.json();
 
     setId(userId._id);
   };

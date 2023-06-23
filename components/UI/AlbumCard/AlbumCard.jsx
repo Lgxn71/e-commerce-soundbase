@@ -8,24 +8,27 @@ import Image from "next/image";
 import styles from "./AlbumCard.module.css";
 
 const AlbumCard = ({ album }) => {
-  const [cartItems, setCartItems] = useRecoilState(cartState);
+  const [cart, setCart] = useRecoilState(cartState);
 
   const addToCartHandler = () => {
-    const existingItem = cartItems.find(
+    const existingItem = cart.cartItems.find(
       (cartItem) => cartItem._id === album._id
     );
 
     if (existingItem) {
-      const updatedItems = cartItems.map((item) => {
+      const updatedItems = cart.cartItems.map((item) => {
         if (item._id === album._id) {
           return { ...item, quantity: item.quantity + 1 };
         } else {
           return item;
         }
       });
-      setCartItems([...updatedItems]);
+      setCart({ ...cart, cartItems: updatedItems });
     } else {
-      setCartItems([...cartItems, { ...album, quantity: 1 }]);
+      setCart({
+        ...cart,
+        cartItems: [...cart.cartItems, { ...album, quantity: 1 }],
+      });
     }
   };
 

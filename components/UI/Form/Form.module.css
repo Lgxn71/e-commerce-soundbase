@@ -31,9 +31,9 @@
   width: 100%;
   max-width: 460px;
 
-  position: fixed;
-  top: 10%;
-  left: 45%;
+  position: absolute;
+  top: 12.5%;
+  left: 36.4%;
 }
 
 .header {
@@ -63,7 +63,8 @@
 
 .buttonSubmit {
   width: 100%;
-  margin-top: 40px;
+  margin-top: 30px;
+  margin-bottom: 92px;
   padding: 20px;
 
   border-radius: 4px;
@@ -77,4 +78,31 @@
   letter-spacing: -0.03em;
 
   cursor: pointer;
+}
+
+.logoContainer {
+  text-align: center;
+  padding-bottom: 52px;
+}
+.logoContainer span {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.54px;
+  padding-bottom: 10px;
+}
+.logoContainer p {
+  font-size: 12px;
+  letter-spacing: -0.36px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    #ffffff 31.28%,
+    #ffffff 49.47%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

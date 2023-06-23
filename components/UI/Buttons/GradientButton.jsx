@@ -13,6 +13,8 @@ const GradientButton = ({ children, href }) => {
       <button className={`${inter.variable} ${styles.gradientButton}`}>
         <div className={styles.background}>
           <FontAwesomeIcon icon={faArrowRight} rotation={180} />
+          <span> </span>
+          <span> </span>
           {children}
         </div>
       </button>

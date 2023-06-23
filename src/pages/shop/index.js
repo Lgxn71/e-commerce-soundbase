@@ -1,4 +1,5 @@
 import Shop from "../../../components/Shop/Shop";
+import sendRequest from "../../../helper/SendRequest";
 const ShopPage = ({ initialData }) => {
   return (
     <>
@@ -10,17 +11,17 @@ const ShopPage = ({ initialData }) => {
 export default ShopPage;
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${process.env.URL}/api/filtered-albums`, {
-    method: "POST",
-    body: JSON.stringify({ activeFilter: "All" }),
-    "Content-Type": "application/json",
-  });
-  
-  const allAlbumsData = await response.json();
+  const [data] = await sendRequest(
+    `${process.env.URL}/api/filtered-albums`,
+    "POST",
+    {
+      activeFilter: "All",
+    }
+  );
 
   return {
     props: {
-      initialData: allAlbumsData,
+      initialData: data,
     },
   };
 };

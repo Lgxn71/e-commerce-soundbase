@@ -5,21 +5,24 @@ import Image from "next/image";
 import Link from "next/link";
 
 import styles from "./CartAlbum.module.css";
+
 const CartAlbum = ({ album }) => {
-  const [cartItems, setCartItems] = useRecoilState(cartState);
+  const [cart, setCart] = useRecoilState(cartState);
 
   const removeFromCartHandler = () => {
-    const existingItem = cartItems.find((item) => item._id === album._id);
+    const existingItem = cart.cartItems.find((item) => item._id === album._id);
     console.log(existingItem);
 
     if (existingItem.quantity === 1) {
-      const updatedItems = cartItems.filter((item) => item._id !== album._id);
-      setCartItems([...updatedItems]);
+      const updatedItems = cart.cartItems.filter(
+        (item) => item._id !== album._id
+      );
+      setCart({ ...cart, cartItems: [...updatedItems] });
     } else {
-      const updatedItems = cartItems.map((item) =>
+      const updatedItems = cart.cartItems.map((item) =>
         item._id === album._id ? { ...item, quantity: item.quantity - 1 } : item
       );
-      setCartItems([...updatedItems]);
+      setCart({ ...cart, cartItems: [...updatedItems] });
     }
   };
 

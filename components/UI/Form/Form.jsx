@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import GradientButton from "../Buttons/GradientButton";
-
+import Logo from "../Logo/Logo";
 import { poppins } from "@/pages/_app";
 
 import styles from "./Form.module.css";
@@ -17,13 +17,11 @@ const Form = ({
   return (
     <main className={`${styles.body} ${poppins.variable}`}>
       <div className={styles.gradientContainer}>
-        <aside></aside>
+        <aside />
       </div>
 
       <div className={styles.form}>
         <GradientButton href="/">Get back to homepage</GradientButton>
-        {/* add link */}
-
         <form onSubmit={formSubmitHandler}>
           <div className={styles.header}>
             <h4>{title}</h4>
@@ -32,12 +30,16 @@ const Form = ({
               <Link href={hrefLink} className={styles.changeForm}>
                 {hrefText}
               </Link>
-              {/* hrefLink */}
             </p>
           </div>
           {children}
 
           <button className={styles.buttonSubmit}>{title}</button>
+
+          <div className={styles.logoContainer}>
+            <Logo />
+            <p className={poppins.className}>© 2023 All Rights Reserved</p>
+          </div>
         </form>
       </div>
     </main>

@@ -1,18 +1,20 @@
+import { createPortal } from "react-dom";
+import Link from "next/link";
+
 import Backdrop from "../../UI/Backdrop/Backdrop";
+import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
+import Button from "../../UI/Buttons/Button";
 
 import WhiteCross from "../../svg/WhiteCross";
 
 import { poppins, inter } from "@/pages/_app";
 
 import styles from "./PleaseSignInPopup.module.css";
-import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
-import Button from "../../UI/Buttons/Button";
-import Link from "next/link";
 
 const PleaseSignInPopup = ({ children, onClose }) => {
-  return (
+  return createPortal(
     <>
-      <Backdrop onClose={onClose}></Backdrop>
+      <Backdrop onClose={onClose} />
       <div className={`${poppins.variable} ${styles.modal}`}>
         <div className={styles.header}>
           <h2>Sign In</h2>
@@ -31,7 +33,8 @@ const PleaseSignInPopup = ({ children, onClose }) => {
           </div>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 };
 
