@@ -1,4 +1,6 @@
+import Layout from "../Layout/Layout";
 import Form from "../UI/Form/Form";
+import Input from "../UI/Form/Input";
 
 import styles from "./Signup.module.css";
 const Signup = ({
@@ -6,9 +8,12 @@ const Signup = ({
   onChangeInput,
   formSubmitHandler,
   formValidation,
+  userInput,
 }) => {
   return session.status === "authenticated" ? (
-    <p>Please logout to signup in a new account</p>
+    <Layout>
+      <p>Please logout to signup in a new account</p>
+    </Layout>
   ) : (
     <>
       <Form
@@ -18,42 +23,30 @@ const Signup = ({
         title="Sign up"
         formSubmitHandler={formSubmitHandler}
       >
-        <input
-          className={`${styles.input} ${styles.noErrorInput}`}
-          type="text"
+        <Input
+          inputType="text"
           name="name"
-          id="name"
           placeholder="Enter your name"
-          required
-          onChange={onChangeInput}
+          inputValue={userInput.name}
+          onChangeInput={onChangeInput}
         />
-        <input
-          className={`${styles.input} ${
-            formValidation.emailError.isError
-              ? styles.isError
-              : styles.noErrorInput
-          }`}
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Enter your email address"
-          required
-          onChange={onChangeInput}
-        />
-        {formValidation.emailError.isError ? (
-          <p className={styles.errorMessage}>
-            {formValidation.emailError.errorMessage}
-          </p>
-        ) : undefined}
 
-        <input
-          className={`${styles.input} ${styles.noErrorInput}`}
-          type="text"
+        <Input
+          isError={formValidation.emailError.isError}
+          errorMessage={formValidation.emailError.errorMessage}
+          inputValue={userInput.email}
+          onChangeInput={onChangeInput}
+          inputType="email"
+          name="email"
+          placeholder="Enter your email address"
+        />
+
+        <Input
+          inputType="text"
           name="address"
-          id="address"
           placeholder="Enter your home address"
-          required
-          onChange={onChangeInput}
+          inputValue={userInput.address}
+          onChangeInput={onChangeInput}
         />
 
         <input
@@ -68,6 +61,7 @@ const Signup = ({
           id="password"
           placeholder="Enter your password"
           required
+          value={userInput.password}
           onChange={onChangeInput}
         />
 
@@ -82,6 +76,7 @@ const Signup = ({
           id="confirmPassword"
           placeholder="Confirm your password"
           required
+          value={userInput.confirmPassword}
           onChange={onChangeInput}
         />
         {formValidation.passwordError.isError && (
@@ -96,7 +91,6 @@ const Signup = ({
           </p>
         )}
       </Form>
-    
     </>
   );
 };

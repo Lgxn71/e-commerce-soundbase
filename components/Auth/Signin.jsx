@@ -1,8 +1,12 @@
 import Form from "../UI/Form/Form";
+import Input from "../UI/Form/Input";
 
-import styles from "./Signin.module.css";
-
-const Signin = ({ formSubmitHandler, onChangeInput, formValidation }) => {
+const Signin = ({
+  formSubmitHandler,
+  onChangeInput,
+  formValidation,
+  userInput,
+}) => {
   return (
     <Form
       hrefLink={"/auth/signup"}
@@ -11,45 +15,25 @@ const Signin = ({ formSubmitHandler, onChangeInput, formValidation }) => {
       title="Sign in"
       formSubmitHandler={formSubmitHandler}
     >
-      <input
-        className={`${styles.input}
-            ${
-              formValidation.emailError.isError
-                ? styles.isError
-                : styles.noErrorInput
-            } `}
-        type="email"
-        name="email"
-        id="email"
+      <Input
+        isError={formValidation.emailError.isError}
+        errorMessage={formValidation.emailError.errorMessage}
+        inputValue={userInput.email}
+        onChangeInput={onChangeInput}
         placeholder="Enter your email address"
-        required
-        onChange={onChangeInput}
+        inputType="email"
+        name="email"
       />
-      {formValidation.emailError.isError && (
-        <p className={styles.errorMessage}>
-          {formValidation.emailError.errorMessage}
-        </p>
-      )}
 
-      <input
-        className={`${styles.input} 
-           ${
-             formValidation.passwordError.isError
-               ? styles.isError
-               : styles.noErrorInput
-           }`}
-        type="password"
+      <Input
+        isError={formValidation.passwordError.isError}
+        errorMessage={formValidation.passwordError.errorMessage}
+        inputValue={userInput.password}
+        onChangeInput={onChangeInput}
+        inputType="password"
         name="password"
-        id="password"
         placeholder="Enter your password"
-        required
-        onChange={onChangeInput}
       />
-      {formValidation.passwordError.isError && (
-        <p className={styles.errorMessage}>
-          {formValidation.passwordError.errorMessage}
-        </p>
-      )}
     </Form>
   );
 };

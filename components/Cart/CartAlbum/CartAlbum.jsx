@@ -11,7 +11,6 @@ const CartAlbum = ({ album }) => {
 
   const removeFromCartHandler = () => {
     const existingItem = cart.cartItems.find((item) => item._id === album._id);
-    console.log(existingItem);
 
     if (existingItem.quantity === 1) {
       const updatedItems = cart.cartItems.filter(

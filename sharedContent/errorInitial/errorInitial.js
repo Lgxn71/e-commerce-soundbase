@@ -1,2 +1,2 @@
-const errorInitial = { isError: false, errorMessage: "" };
+const errorInitial = { isError: false, errorMessage: " " };
 export default errorInitial;

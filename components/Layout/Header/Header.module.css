@@ -17,8 +17,7 @@
 }
 .headerContent {
   display: flex;
-  justify-content: center;
-  gap: 270px;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -93,7 +92,9 @@
 .unActiveLink:focus::before {
   transform: scaleX(1);
 }
-
+.actions {
+  max-width: 201px;
+}
 .actions button {
   margin-right: 30px;
 }

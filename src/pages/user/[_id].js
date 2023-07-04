@@ -1,32 +1,13 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useState } from "react";
 import { useSession } from "next-auth/react";
 
-import Container from "../../../components/UI/Container/Container";
 import User from "../../../components/User/User";
-import { poppins } from "../_app";
-import sendRequest from "../../../helper/SendRequest";
 
-const UserPage = () => {
-  const [id, setId] = useState("");
+const UserPage = ({}) => {
   const session = useSession();
-  const router = useRouter();
 
-  const getId = async () => {
-    const [userId] = await sendRequest("/api/auth/getid", "POST", {
-      email: session.data.session.user.email,
-    });
-
-    setId(userId._id);
-  };
-
-  if (session.status === "authenticated") {
-    getId().then((res) => {
-      console.log(res);
-    });
+  if (session.status === "unauthenticated") {
+    return <p>unauth</p>;
   }
-
   if (session.status === "loading") {
     return (
       <>
@@ -34,34 +15,9 @@ const UserPage = () => {
       </>
     );
   }
-  if (session.status === "unauthenticated" || `/user/${id}` !== router.asPath) {
-    return (
-      <>
-        <p>You are not allowed to visit this page</p>
-      </>
-    );
-  }
 
   return (
     <>
-      <Container>
-        <h2
-          className={poppins.className}
-          style={{
-            fontWeight: 700,
-            fontSize: "50px",
-            lineHeight: "75px",
-            letterSpacing: "-0.03em",
-
-            color: "#ffffff",
-
-            paddingTop: "120px",
-            paddingBottom: "20px",
-          }}
-        >
-          My Profile
-        </h2>
-      </Container>
       <User session={session} />
     </>
   );

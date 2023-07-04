@@ -24,10 +24,10 @@ const authOption = {
         const collectionUsers = db.collection("users");
 
         const user = await collectionUsers.findOne({ email: email });
+
         if (!user) {
           throw new Error("User not found");
         }
-
         const resultOfCompare = await bcrypt.compare(
           password,
           user.hashedPassword
@@ -39,10 +39,11 @@ const authOption = {
 
         await client.close();
 
-        return {
-          _id: user._id.toString(),
+        const convertedUserId = {
           ...user,
+          _id: user._id.toString(),
         };
+        return convertedUserId;
       },
     }),
   ],

@@ -13,12 +13,12 @@ import { poppins } from "@/pages/_app";
 import styles from "./Header.module.css";
 
 const Header = ({}) => {
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
 
   const session = useSession();
 
   const isLinkActive = (href) => {
-    return pathname === href;
+    return asPath === href;
   };
 
   return (
@@ -51,11 +51,17 @@ const Header = ({}) => {
           <div className={styles.actions}>
             {session.status === "authenticated" || !session === undefined ? (
               <div className={styles.navbarAuth}>
-                <Link href={`user/${session.data.session.user.id}`}>
+                {asPath === `/user/${session.data.session.user.id}` ? (
                   <div className={styles.profileContainer}>
                     <div className={styles.profile}></div>
                   </div>
-                </Link>
+                ) : (
+                  <Link href={`/user/${session.data.session.user.id}`}>
+                    <div className={styles.profileContainer}>
+                      <div className={styles.profile}></div>
+                    </div>
+                  </Link>
+                )}
 
                 <div>
                   <a onClick={() => signOut()}>Sign out</a>

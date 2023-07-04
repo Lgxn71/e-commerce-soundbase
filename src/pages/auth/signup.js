@@ -98,6 +98,7 @@ const SignUpPage = () => {
 
   return (
     <Signup
+      userInput={user}
       session={session}
       onChangeInput={onChangeInput}
       formSubmitHandler={formSubmitHandler}

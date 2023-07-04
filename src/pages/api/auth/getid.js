@@ -1,5 +1,5 @@
 import connectToClient from "../../../../database/ConnectClient";
-async function handler(req, res) {
+const handler = async (req, res) => {
   if (req.method === "POST") {
     const emailJSON = req.body;
     const { email } = JSON.parse(emailJSON);
@@ -14,6 +14,6 @@ async function handler(req, res) {
     res.status(200).json({ _id: userId });
     await client.close();
   }
-}
+};
 
 export default handler;

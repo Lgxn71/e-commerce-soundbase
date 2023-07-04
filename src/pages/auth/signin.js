@@ -18,7 +18,7 @@ const SignInPage = () => {
     emailError: errorInitial,
     passwordError: errorInitial,
   });
-
+  // LOADING STATE
   const { user, onChangeInput } = useFormInput({
     email: "",
     password: "",
@@ -47,8 +47,7 @@ const SignInPage = () => {
           emailError: { isError: true, errorMessage: res.error },
         });
         return;
-      }
-      if (res.error === "Invalid password") {
+      } else if (res.error === "Invalid password") {
         setFormValidation({
           ...formValidation,
           passwordError: { isError: true, errorMessage: res.error },
@@ -66,6 +65,7 @@ const SignInPage = () => {
 
   return (
     <Signin
+      userInput={user}
       onChangeInput={onChangeInput}
       formSubmitHandler={formSubmitHandler}
       formValidation={formValidation}
