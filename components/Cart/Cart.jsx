@@ -33,11 +33,11 @@ const Cart = () => {
       sum += arrayOfPrices[index];
     }
     setSumTemp(sum);
-  });
+  }, [cart.cartItems]);
 
   useEffect(() => {
     setCart((prevCart) => ({ ...prevCart, cartTotalPrice: sumTemp }));
-  }, [sumTemp]);
+  }, [sumTemp, setCart]);
 
   const modalOpenHandler = () => {
     setModalOpen(true);
@@ -57,9 +57,9 @@ const Cart = () => {
       <Container isBorderThere={true}>
         {cart.cartItems.length === 0 ? (
           <div className={styles.cartEmpty}>
-            <h3>You haven't added anything...yet!</h3>
+            <h3>You haven{"'"}t added anything...yet!</h3>
             <p>
-              Once you do, it'll show up here so you can complete your
+              Once you do, it{"'"}ll show up here so you can complete your
               purchases.
             </p>
 
