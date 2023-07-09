@@ -1,0 +1,58 @@
+.card {
+  font-family: var(--font-poppins);
+  max-width: 935px;
+  width: 100%;
+  margin-bottom: 150px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px 10px 0px 0px;
+  padding: 20px;
+  border: 1px solid #2a2b3a;
+}
+.header h4 {
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.56px;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  gap: 20px;
+  border: 1px solid #2a2b3a;
+  border-top: none;
+  border-radius: 0px 0px 10px 10px;
+}
+.body h5 {
+  color: #4d5761;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.56px;
+}
+.body p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.56px;
+}
+.albumName {
+  max-width: 465px;
+  width: 100%;
+}
+.artist {
+  max-width: 170px;
+  width: 100%;
+}
+
+.quantity {
+  max-width: 70px;
+  width: 100%;
+}
+.price {
+  max-width: 70px;
+  width: 100px;
+}

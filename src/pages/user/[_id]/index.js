@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 
-import User from "../../../components/User/User";
+import User from "../../../../components/User/User";
 
 const UserPage = ({}) => {
   const session = useSession();
@@ -8,6 +8,8 @@ const UserPage = ({}) => {
   if (session.status === "unauthenticated") {
     return <p>unauth</p>;
   }
+
+  // ! СДЕЛАТЬ LOADNG SKELETON
   if (session.status === "loading") {
     return (
       <>

@@ -8,7 +8,7 @@ import { cartState } from "./atoms/cartAtom";
 import Link from "next/link";
 
 import CartAlbum from "./CartAlbum/CartAlbum";
-import Payment from "./Payment/Payment";
+import Payment from "./PaymentDetails/PaymentDetails";
 import PleaseSignInPopup from "./PleaseSignInPopup/PleaseSignInPopup";
 
 import Container from "../UI/Container/Container";

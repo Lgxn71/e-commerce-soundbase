@@ -1,6 +1,4 @@
-import { useRecoilValue } from "recoil";
-
-import { cartState } from "../../Cart/atoms/cartAtom";
+import { useState, useEffect } from "react";
 
 import Link from "next/link";
 
@@ -11,7 +9,19 @@ import styles from "./Bill.module.css";
 
 let shipping = 15;
 const Bill = () => {
-  const cart = useRecoilValue(cartState);
+  const [cartLocal, setCartLocal] = useState({
+    quantity: 0,
+    sum: 0,
+  });
+  let cartLocalStorage;
+  useEffect(() => {
+    cartLocalStorage = JSON.parse(localStorage.getItem("cartData"));
+    // 0 quantity 1 sum
+    setCartLocal({
+      quantity: cartLocalStorage[0],
+      sum: cartLocalStorage[1],
+    });
+  }, []);
 
   return (
     <div className={styles.bill}>
@@ -27,7 +37,7 @@ const Bill = () => {
         <ul>
           <li className={styles.list}>
             <span>Quantity</span>
-            <span className={styles.highlight}>{cart.cartItems.length}</span>
+            <span className={styles.highlight}>{cartLocal.quantity}</span>
           </li>
           <li className={styles.list}>
             <span>Shipping</span>
@@ -35,7 +45,7 @@ const Bill = () => {
           </li>
           <li className={styles.list}>
             <span>Price</span>
-            <span className={styles.highlight}>$ {cart.cartTotalPrice}</span>
+            <span className={styles.highlight}>$ {cartLocal.sum}</span>
           </li>
         </ul>
       </div>
@@ -44,7 +54,7 @@ const Bill = () => {
         <p className={styles.containerTotalPrice}>
           <span>Total Price</span>
           <span className={styles.totalPrice}>
-            $ {cart.cartTotalPrice + shipping}
+            $ {cartLocal.sum + shipping}
           </span>
         </p>
 

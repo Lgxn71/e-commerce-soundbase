@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 
-import Link from "next/link";
+import Navigation from "./Navigation/Navigation.jsx";
+import UserProfile from "./UserData/UserProfile.jsx";
+import UserPurchaseHistory from "./UserData/UserPurchaseHistory.jsx";
 
-import UserDataCard from "./UserDataCard/UserDataCard";
 import Container from "../UI/Container/Container";
 
 import sendRequest from "../../helper/SendRequest";
@@ -13,21 +14,19 @@ import { poppins } from "@/pages/_app";
 import styles from "./User.module.css";
 
 const User = ({ session }) => {
+  const [isGeneral, setIsGeneral] = useState(true);
+
   const [userData, setUserData] = useState({
     nameInput: "",
     emailInput: "",
     addressInput: "",
   });
 
-  console.log(userData.nameInput.length);
-
   const [formValidation, setFormValidation] = useState({
     nameInput: errorInitial,
     emailInput: errorInitial,
     addressInput: errorInitial,
   });
-
-  console.log(formValidation);
 
   useEffect(() => {
     setUserData({
@@ -62,6 +61,7 @@ const User = ({ session }) => {
       "POST",
       { id: session.data.session.user.id, [fieldName]: input }
     );
+
     if (!res.ok) {
       if (
         data.message === "Invalid input, max length is 32 characters" ||
@@ -95,67 +95,21 @@ const User = ({ session }) => {
       <Container>
         <h2 className={`${poppins.className} ${styles.title}`}>My Profile</h2>
       </Container>
+
       <Container isBorderThere={true}>
         <div className={styles.profile}>
-          <aside>
-            <ul className={styles.links}>
-              <li>
-                <a>General</a>
-              </li>
-              <li>
-                <a>Purchase History</a>
-              </li>
-            </ul>
-          </aside>
+          <Navigation isGeneral={isGeneral} onSetIsGeneral={setIsGeneral} />
 
-          <div className={styles.details}>
-            <UserDataCard
-              title="Full Name"
-              label="Please enter your full name, or a display name you are comfortable with"
-              bottomText="Please use 32 characters at maximum."
-              inputValue={userData.nameInput}
-              onChangeInput={(event) => handleInputChange(event, "nameInput")}
-              onSubmit={(event) =>
-                handleSubmit(event, "name", userData.nameInput)
-              }
-              inputType="text"
-              name="name"
-              isError={formValidation.nameInput.isError}
-              errorMessage={formValidation.nameInput.errorMessage}
+          {isGeneral ? (
+            <UserProfile
+              userData={userData}
+              onHandleInputChange={handleInputChange}
+              onHandleSubmit={handleSubmit}
+              formValidation={formValidation}
             />
-
-            <UserDataCard
-              title="Email"
-              label="Please enter the email address you want to use to log in with Soundbase."
-              bottomText="We will email you to verify the change"
-              inputValue={userData.emailInput}
-              onChangeInput={(event) => handleInputChange(event, "emailInput")}
-              onSubmit={(event) =>
-                handleSubmit(event, "email", userData.emailInput)
-              }
-              inputType="email"
-              name="email"
-              isError={formValidation.emailInput.isError}
-              errorMessage={formValidation.emailInput.errorMessage}
-            />
-
-            <UserDataCard
-              title="Address"
-              label="Please enter the address where you want to ship your vinyls."
-              bottomText="We will email you to verify the change"
-              inputValue={userData.addressInput}
-              onChangeInput={(event) =>
-                handleInputChange(event, "addressInput")
-              }
-              onSubmit={(event) =>
-                handleSubmit(event, "address", userData.addressInput)
-              }
-              inputType="text"
-              name="address"
-              isError={formValidation.addressInput.isError}
-              errorMessage={formValidation.addressInput.errorMessage}
-            />
-          </div>
+          ) : (
+            <UserPurchaseHistory />
+          )}
         </div>
       </Container>
     </>

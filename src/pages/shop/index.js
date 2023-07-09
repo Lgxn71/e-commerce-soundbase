@@ -11,14 +11,13 @@ const ShopPage = ({ initialData }) => {
 export default ShopPage;
 
 export const getStaticProps = async () => {
-  const [data] = await sendRequest(
+  const [data, res] = await sendRequest(
     `${process.env.URL}/api/filtered-albums`,
     "POST",
     {
       activeFilter: "All",
     }
   );
-
   return {
     props: {
       initialData: data,

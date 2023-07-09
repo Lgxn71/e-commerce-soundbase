@@ -1,0 +1,32 @@
+.actionsAuth {
+  width: 201px;
+  height: 42.9px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profileContainer {
+  border: 1px solid #2a2b3a;
+  border-radius: 100px;
+
+  padding: 6px;
+
+  width: 40px;
+  height: 40px;
+}
+
+.profile {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border-radius: 100px;
+  background: radial-gradient(
+    71.73% 100% at 50% 0%,
+    rgba(153, 120, 255, 0) 0%,
+    #9978ff 74.88%,
+    #3e00ff 100%
+  );
+  border: 1px solid #2a2b3a;
+}

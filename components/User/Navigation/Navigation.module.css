@@ -1,0 +1,23 @@
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 120px;
+}
+.links li a {
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.14px;
+
+  color: #4d5761;
+
+  cursor: pointer;
+}
+.links li a:hover {
+  color: white;
+}
+.links li .active {
+  color: white;
+}

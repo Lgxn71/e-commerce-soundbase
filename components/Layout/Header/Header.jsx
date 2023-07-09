@@ -1,15 +1,17 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-import { signOut } from "next-auth/react";
 import Link from "next/link";
+
+import ActionsAuth from "./Actions/ActionsAuth";
+import ActionUnauth from "./Actions/ActionsUnAuth";
 
 import Container from "../../UI/Container/Container";
 import Logo from "../../UI/Logo/Logo";
-import ButtonViolet from "../../UI/Buttons/ButtonViolet";
 import pageLinks from "../../../sharedContent/links/pageLinks";
 
 import { poppins } from "@/pages/_app";
+
 import styles from "./Header.module.css";
 
 const Header = ({}) => {
@@ -21,6 +23,17 @@ const Header = ({}) => {
     return asPath === href;
   };
 
+  const linksMap = pageLinks.map((link) => (
+    <Link
+      className={`${styles.navLink} 
+       ${isLinkActive(link.href) ? styles.activeLink : styles.unActiveLink}`}
+      key={link.title}
+      href={link.href}
+    >
+      {link.title}
+    </Link>
+  ));
+
   return (
     <header className={`${styles.header} ${poppins.variable}`}>
       <Container>
@@ -31,51 +44,13 @@ const Header = ({}) => {
             </h3>
           </Link>
 
-          <nav className={styles.links}>
-            {pageLinks.map((link) => (
-              <Link
-                className={`${styles.navLink} 
-                 ${
-                   isLinkActive(link.href)
-                     ? styles.activeLink
-                     : styles.unActiveLink
-                 }`}
-                key={link.title}
-                href={link.href}
-              >
-                {link.title}
-              </Link>
-            ))}
-          </nav>
+          <nav className={styles.links}>{linksMap}</nav>
 
           <div className={styles.actions}>
             {session.status === "authenticated" || !session === undefined ? (
-              <div className={styles.navbarAuth}>
-                {asPath === `/user/${session.data.session.user.id}` ? (
-                  <div className={styles.profileContainer}>
-                    <div className={styles.profile}></div>
-                  </div>
-                ) : (
-                  <Link href={`/user/${session.data.session.user.id}`}>
-                    <div className={styles.profileContainer}>
-                      <div className={styles.profile}></div>
-                    </div>
-                  </Link>
-                )}
-
-                <div>
-                  <a onClick={() => signOut()}>Sign out</a>
-                </div>
-              </div>
+              <ActionsAuth Link={Link} session={session} asPath={asPath} />
             ) : (
-              <>
-                <div className={styles.unatentificated}>
-                  <Link href="/auth/signin">
-                    <ButtonViolet>Get Started</ButtonViolet>
-                  </Link>
-                  <Link href="/auth/signup">Sign Up</Link>
-                </div>
-              </>
+              <ActionUnauth Link={Link} />
             )}
           </div>
         </div>
