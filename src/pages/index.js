@@ -33,21 +33,17 @@ export const getStaticProps = async () => {
     .limit(4)
     .toArray();
 
-  const featuredAlbums = featuredAlbumsDB.map((album) => ({
-    ...album,
-    _id: album._id.toString(),
-  }));
-
-  const newArrivalAlbums = newArrivalAlbumsDB.map((album) => ({
-    ...album,
-    _id: album._id.toString(),
-  }));
-
   await client.close();
   return {
     props: {
-      featuredAlbums: featuredAlbums,
-      newArrivalAlbums: newArrivalAlbums,
+      featuredAlbums: featuredAlbumsDB.map((album) => ({
+        ...album,
+        _id: album._id.toString(),
+      })),
+      newArrivalAlbums: newArrivalAlbumsDB.map((album) => ({
+        ...album,
+        _id: album._id.toString(),
+      })),
     },
   };
 };

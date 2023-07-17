@@ -14,7 +14,7 @@ import { poppins } from "@/pages/_app";
 
 import styles from "./Header.module.css";
 
-const Header = ({}) => {
+const Header = () => {
   const { asPath } = useRouter();
 
   const session = useSession();

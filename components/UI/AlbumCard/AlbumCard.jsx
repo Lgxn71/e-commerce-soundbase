@@ -23,12 +23,12 @@ const AlbumCard = ({ album }) => {
           return item;
         }
       });
-      setCart({ ...cart, cartItems: updatedItems });
+      setCart((prevState) => ({ ...prevState, cartItems: updatedItems }));
     } else {
-      setCart({
-        ...cart,
+      setCart((prevState) => ({
+        ...prevState,
         cartItems: [...cart.cartItems, { ...album, quantity: 1 }],
-      });
+      }));
     }
   };
 

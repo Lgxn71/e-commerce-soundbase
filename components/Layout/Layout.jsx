@@ -1,6 +1,5 @@
-import Footer from "./Footer/Footer";
-
 import Header from "./Header/Header";
+import Footer from "./Footer/Footer";
 
 const Layout = ({ children }) => {
   return (

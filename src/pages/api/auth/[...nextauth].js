@@ -63,15 +63,15 @@ const authOption = {
         email: session.session.user.email,
       });
 
+      const userID = userData._id.toString();
+
       await client.close();
       return {
-        session: {
-          user: {
-            id: userData._id.toString(),
-            email: userData.email,
-            address: userData.address,
-            name: userData.name,
-          },
+        user: {
+          id: userID,
+          email: userData.email,
+          address: userData.address,
+          name: userData.name,
         },
       };
     },

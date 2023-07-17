@@ -1,7 +1,7 @@
 import { inter } from "@/pages/_app";
 
 import styles from "./UserDataCard.module.css";
-import Input from "../../UI/Form/Input";
+import Input from "../../../UI/Form/Input";
 
 const UserDataCard = ({
   title,

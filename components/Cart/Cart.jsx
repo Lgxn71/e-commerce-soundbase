@@ -9,7 +9,7 @@ import Link from "next/link";
 
 import CartAlbum from "./CartAlbum/CartAlbum";
 import Payment from "./PaymentDetails/PaymentDetails";
-import PleaseSignInPopup from "./PleaseSignInPopup/PleaseSignInPopup";
+import PleaseSignInPopup from "./SignInPopup/SignInPopup";
 
 import Container from "../UI/Container/Container";
 import ButtonEmptyBlack from "../UI/Buttons/ButtonEmptyBlack";
@@ -77,7 +77,6 @@ const Cart = () => {
 
             <Payment
               cart={cart}
-              onSetCart={setCart}
               onModalOpen={modalOpenHandler}
               session={session}
             />

@@ -4,12 +4,12 @@ import styles from "./ActionsAuth.module.css";
 const ActionsAuth = ({ session, asPath, Link }) => {
   return (
     <div className={styles.actionsAuth}>
-      {asPath === `/user/${session.data.session.user.id}` ? (
+      {asPath === `/user/${session.data.user.id}` ? (
         <div className={styles.profileContainer}>
           <div className={styles.profile} />
         </div>
       ) : (
-        <Link href={`/user/${session.data.session.user.id}`}>
+        <Link href={`/user/${session.data.user.id}`}>
           <div className={styles.profileContainer}>
             <div className={styles.profile} />
           </div>

@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
-
 import bcrypt from "bcryptjs";
 
 import connectToClient from "../../../../database/ConnectClient";
@@ -37,25 +35,13 @@ const handler = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const data = await collectionUsers.insertOne({
+    await collectionUsers.insertOne({
       name: name,
       email: email,
       address: address,
       hashedPassword: hashedPassword,
-      orders: [
-        {
-          orderId: uuidv4(),
-          albums: [
-            {
-              albumId: uuidv4(),
-              quantity: 1,
-              price: 1,
-            },
-          ],
-        },
-      ],
+      orders: [],
     });
-    // left just for reference
 
     await client.close();
 

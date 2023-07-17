@@ -9,9 +9,9 @@ import WhiteCross from "../../svg/WhiteCross";
 
 import { poppins, inter } from "@/pages/_app";
 
-import styles from "./PleaseSignInPopup.module.css";
+import styles from "./SignInPopup.module.css";
 
-const PleaseSignInPopup = ({ children, onClose }) => {
+const PleaseSignInPopup = ({ onClose }) => {
   return createPortal(
     <>
       <Backdrop onClose={onClose} />
@@ -20,6 +20,7 @@ const PleaseSignInPopup = ({ children, onClose }) => {
           <h2>Sign In</h2>
           <WhiteCross onClick={onClose} />
         </div>
+
         <div className={styles.body}>
           <h3>Sign In to Proceed</h3>
           <p>Complete your payment securely by signing in to your account.</p>

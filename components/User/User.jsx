@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 
 import Navigation from "./Navigation/Navigation.jsx";
-import UserProfile from "./UserData/UserProfile.jsx";
-import UserPurchaseHistory from "./UserData/UserPurchaseHistory.jsx";
+import UserProfile from "./UserData/General/UserProfile.jsx";
+import UserPurchaseHistory from "./UserData/PurchaseHistory/UserPurchaseHistory.jsx";
 
 import Container from "../UI/Container/Container";
 
 import sendRequest from "../../helper/SendRequest";
 import errorInitial from "../../sharedContent/errorInitial/errorInitial";
-
-import { poppins } from "@/pages/_app";
 
 import styles from "./User.module.css";
 
@@ -30,14 +28,14 @@ const User = ({ session }) => {
 
   useEffect(() => {
     setUserData({
-      nameInput: session.data.session.user.name,
-      emailInput: session.data.session.user.email,
-      addressInput: session.data.session.user.address,
+      nameInput: session.data.user.name,
+      emailInput: session.data.user.email,
+      addressInput: session.data.user.address,
     });
   }, [
-    session.data.session.user.name,
-    session.data.session.user.address,
-    session.data.session.user.email,
+    session.data.user.name,
+    session.data.user.address,
+    session.data.user.email,
   ]);
 
   const handleInputChange = (event, fieldName) => {
@@ -59,7 +57,7 @@ const User = ({ session }) => {
     const [data, res] = await sendRequest(
       "/api/auth/changecredentials/",
       "POST",
-      { id: session.data.session.user.id, [fieldName]: input }
+      { id: session.data.user.id, [fieldName]: input }
     );
 
     if (!res.ok) {
@@ -90,12 +88,10 @@ const User = ({ session }) => {
     }
   };
 
+  // ! СДЕЛАТЬ LOADNG SKELETON
+
   return (
     <>
-      <Container>
-        <h2 className={`${poppins.className} ${styles.title}`}>My Profile</h2>
-      </Container>
-
       <Container isBorderThere={true}>
         <div className={styles.profile}>
           <Navigation isGeneral={isGeneral} onSetIsGeneral={setIsGeneral} />
@@ -108,7 +104,10 @@ const User = ({ session }) => {
               formValidation={formValidation}
             />
           ) : (
-            <UserPurchaseHistory />
+            <UserPurchaseHistory
+              isGeneral={isGeneral}
+              id={session.data.user.id}
+            />
           )}
         </div>
       </Container>

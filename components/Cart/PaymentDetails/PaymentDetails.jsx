@@ -3,26 +3,32 @@ import { useRouter } from "next/router";
 import Button from "../../UI/Buttons/Button";
 
 import styles from "./PaymentDetails.module.css";
+import sendRequest from "../../../helper/SendRequest";
 
 const shipping = 15;
 
-const Payment = ({ cart, onModalOpen, onSetCart, session }) => {
+const Payment = ({ cart, onModalOpen, session }) => {
   const router = useRouter();
 
   const successPurchaseHandler = async () => {
     const cartLocalStorage = [cart.cartItems.length, cart.cartTotalPrice];
     localStorage.setItem("cartData", JSON.stringify(cartLocalStorage));
 
-    const res = await fetch("/api/payment/checkout_session", {
-      method: "POST",
-      body: JSON.stringify({ cart: cart.cartItems }),
-      headers: { "content-type": "application/json" },
-    });
-    const data = await res.json();
-    console.log(data);
+    const [data, res] = await sendRequest(
+      "/api/payment/checkout_session",
+      "POST",
+      {
+        cart: cart.cartItems,
+        email: session.data.user.email,
+        id: session.data.user.id,
+      }
+    );
+
     if (!res.ok) {
-      console.log("not");
+      console.log("Something went wrong");
+      return;
     }
+
     router.push(data.url);
   };
 
@@ -34,10 +40,12 @@ const Payment = ({ cart, onModalOpen, onSetCart, session }) => {
             <span>Quantity:</span>
             <span className={styles.price}>{cart.cartItems.length}</span>
           </li>
+
           <li>
             <span>Shipping:</span>
             <span className={styles.price}>$ {shipping}</span>
           </li>
+
           <li>
             <span>Price:</span>
             <span className={styles.price}> $ {cart.cartTotalPrice}</span>
@@ -52,6 +60,7 @@ const Payment = ({ cart, onModalOpen, onSetCart, session }) => {
             $ {cart.cartTotalPrice + shipping}
           </span>
         </p>
+
         <Button
           onClick={
             session.status === "unauthenticated"
@@ -62,11 +71,11 @@ const Payment = ({ cart, onModalOpen, onSetCart, session }) => {
           Purchase
         </Button>
 
-        {session.status === "unauthenticated" ? (
+        {session.status === "unauthenticated" && (
           <p className={styles.authentificate}>
             Please sign in to proceed with the payment
           </p>
-        ) : undefined}
+        )}
       </div>
     </div>
   );

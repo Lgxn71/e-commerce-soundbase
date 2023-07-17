@@ -11,11 +11,8 @@ const genres = [
 ];
 
 const handler = async (req, res) => {
+  const { activeFilter } = JSON.parse(req.body);
   if (req.method === "POST") {
-    const activeFilterJSON = req.body;
-    const activeFilterObject = JSON.parse(activeFilterJSON);
-    const { activeFilter } = activeFilterObject;
-
     const client = await connectToClient();
     const db = client.db("soundbase");
 
@@ -33,31 +30,30 @@ const handler = async (req, res) => {
       countRecords = await collectionRecords.countDocuments();
 
       res.status(200).json({ countRecords: countRecords, albums: albums });
-
       await client.close();
       return;
+    } else {
+      genres.map(async (genre) => {
+        if (genre === activeFilter) {
+          albums = await collectionRecords
+            .find({ genres: activeFilter })
+            .toArray();
+
+          albums.map((album) => {
+            album._id = album._id.toString();
+          });
+
+          countRecords = await collectionRecords.countDocuments({
+            genres: activeFilter,
+          });
+
+          res.status(200).json({ countRecords: countRecords, albums: albums });
+
+          await client.close();
+          return;
+        }
+      });
     }
-
-    genres.map(async (genre) => {
-      if (genre === activeFilter) {
-        albums = await collectionRecords
-          .find({ genres: activeFilter })
-          .toArray();
-
-        albums.map((album) => {
-          album._id = album._id.toString();
-        });
-
-        countRecords = await collectionRecords.countDocuments({
-          genres: activeFilter,
-        });
-
-        res.status(200).json({ countRecords: countRecords, albums: albums });
-
-        await client.close();
-        return;
-      }
-    });
   }
 };
 export default handler;

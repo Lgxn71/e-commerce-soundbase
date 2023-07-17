@@ -8,6 +8,9 @@ import Container from "../UI/Container/Container";
 import { poppins } from "@/pages/_app";
 
 import styles from "./Shop.module.css";
+import PageTitle from "../UI/PageTitle/PageTitle";
+import Input from "../UI/Form/Input";
+import Search from "../svg/Search";
 
 const Shop = ({ initialData }) => {
   const [activeFilter, setActiveFilter] = useState("All");
@@ -58,8 +61,14 @@ const Shop = ({ initialData }) => {
     <>
       <Container>
         <div className={`${poppins.variable} ${styles.header}`}>
-          <h2>Discover</h2>
-          <input></input>
+          <PageTitle title="Discover"></PageTitle>
+          <Input
+            id="search"
+            placeholder="Search for artist or album name"
+            inputType="text"
+          ></Input>
+          {/* //! MAYBE REFACTOR TO SEPARATE COMPNONENT CHECK WITH FOOTER */}
+          
         </div>
       </Container>
 
@@ -85,18 +94,11 @@ const Shop = ({ initialData }) => {
 
         <ul className={styles.albums}>
           {isLoading ? (
-            <p style={{ color: "white" }}>loading</p> // aidar will change
+            <p style={{ color: "white" }}>loading</p> //!CHANGE TO SKELETONNNNN
           ) : (
             albumsData[activeFilter].albums.map((album) => (
               <li key={album._id}>
-                <AlbumCard
-                  album={album}
-                  artist={album.artist}
-                  albumSrc={album.imagePath}
-                  albumName={album.albumName}
-                  id={album._id}
-                  price={album.price}
-                />
+                <AlbumCard album={album} />
               </li>
             ))
           )}

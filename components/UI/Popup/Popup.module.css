@@ -1,0 +1,18 @@
+.modal {
+  max-width: 490px;
+  width: 100%;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 4;
+}
+.title {
+  color: white;
+  font-family: var(--font-poppins);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.48px;
+}
