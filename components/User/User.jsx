@@ -27,16 +27,14 @@ const User = ({ session }) => {
   });
 
   useEffect(() => {
-    setUserData({
-      nameInput: session.data.user.name,
-      emailInput: session.data.user.email,
-      addressInput: session.data.user.address,
-    });
-  }, [
-    session.data.user.name,
-    session.data.user.address,
-    session.data.user.email,
-  ]);
+    if (session.status === "authenticated") {
+      setUserData({
+        nameInput: session.data.user.name,
+        emailInput: session.data.user.email,
+        addressInput: session.data.user.address,
+      });
+    }
+  }, [session]);
 
   const handleInputChange = (event, fieldName) => {
     setUserData((prevState) => ({
@@ -88,30 +86,38 @@ const User = ({ session }) => {
     }
   };
 
-  // ! СДЕЛАТЬ LOADNG SKELETON
-
-  return (
-    <>
+  if (session.status === "loading") {
+    return (
       <Container isBorderThere={true}>
         <div className={styles.profile}>
-          <Navigation isGeneral={isGeneral} onSetIsGeneral={setIsGeneral} />
+          <Navigation isLoading={true} />
 
-          {isGeneral ? (
-            <UserProfile
-              userData={userData}
-              onHandleInputChange={handleInputChange}
-              onHandleSubmit={handleSubmit}
-              formValidation={formValidation}
-            />
-          ) : (
-            <UserPurchaseHistory
-              isGeneral={isGeneral}
-              id={session.data.user.id}
-            />
-          )}
+          <UserProfile isLoading={true} />
         </div>
       </Container>
-    </>
+    );
+  }
+
+  return (
+    <Container isBorderThere={true}>
+      <div className={styles.profile}>
+        <Navigation isGeneral={isGeneral} onSetIsGeneral={setIsGeneral} />
+
+        {isGeneral ? (
+          <UserProfile
+            userData={userData}
+            onHandleInputChange={handleInputChange}
+            onHandleSubmit={handleSubmit}
+            formValidation={formValidation}
+          />
+        ) : (
+          <UserPurchaseHistory
+            isGeneral={isGeneral}
+            id={session.data.user.id}
+          />
+        )}
+      </div>
+    </Container>
   );
 };
 

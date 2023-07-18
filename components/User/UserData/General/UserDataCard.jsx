@@ -1,7 +1,8 @@
 import { inter } from "@/pages/_app";
 
-import styles from "./UserDataCard.module.css";
 import Input from "../../../UI/Form/Input";
+
+import styles from "./UserDataCard.module.css";
 
 const UserDataCard = ({
   title,
@@ -14,31 +15,47 @@ const UserDataCard = ({
   name,
   isError,
   errorMessage,
+  isLoading,
 }) => {
-  return (
-    <div>
+  if (isLoading) {
+    return (
       <form onSubmit={onSubmit}>
         <div className={styles.detailContainer}>
-          <h3>{title}</h3>
-          <label htmlFor={name}>{label}</label>
-          <Input
-            inputValue={inputValue}
-            name={name}
-            inputType={inputType}
-            onChangeInput={onChangeInput}
-            isError={isError}
-            errorMessage={errorMessage}
-          />
+          <div className={`${styles.skeleton} ${styles.skeletonTextTitle}`} />
+          <div className={`${styles.skeleton} ${styles.skeletonText}`} />
+          <div className={`${styles.skeleton} ${styles.skeletonInput}`} />
         </div>
 
         <div className={styles.detailsBottom}>
-          <p>{bottomText}</p>
-          <button className={`${styles.button} ${inter.className}`}>
-            Save
-          </button>
+          <div
+            className={`${styles.skeleton} ${styles.skeletonTextNoMargin}`}
+          />
+          <div className={`${styles.skeleton} ${styles.skeletonButton}`} />
         </div>
       </form>
-    </div>
+    );
+  }
+
+  return (
+    <form onSubmit={onSubmit}>
+      <div className={styles.detailContainer}>
+        <h3>{title}</h3>
+        <label htmlFor={name}>{label}</label>
+        <Input
+          inputValue={inputValue}
+          name={name}
+          inputType={inputType}
+          onChangeInput={onChangeInput}
+          isError={isError}
+          errorMessage={errorMessage}
+        />
+      </div>
+
+      <div className={styles.detailsBottom}>
+        <p>{bottomText}</p>
+        <button className={`${styles.button} ${inter.className}`}>Save</button>
+      </div>
+    </form>
   );
 };
 

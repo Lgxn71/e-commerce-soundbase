@@ -6,7 +6,18 @@ const UserProfile = ({
   onHandleInputChange,
   onHandleSubmit,
   formValidation,
+  isLoading,
 }) => {
+  if (isLoading) {
+    return (
+      <div className={styles.details}>
+        <UserDataCard isLoading={isLoading} />
+        <UserDataCard isLoading={isLoading} />
+        <UserDataCard isLoading={isLoading} />
+      </div>
+    );
+  }
+
   return (
     <div className={styles.details}>
       <UserDataCard

@@ -1,12 +1,33 @@
 import { useState } from "react";
 
-import Popup from "../../../../UI/Popup/Popup";
-
 import styles from "./SingleOrderCard.module.css";
-import Button from "../../../../UI/Buttons/Button";
+import OrderPopup from "./OrderPopup";
 
-const SingleOrderCard = ({ order }) => {
+const SingleOrderCard = ({ order, loading }) => {
   const [isPopupShown, setIsPopUpShown] = useState(false);
+
+  if (loading) {
+    return (
+      <div className={styles.card}>
+        <div className={styles.idContainer}>
+          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+        </div>
+        <div className={styles.detailsContainer}>
+          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+        </div>
+        <div className={styles.detailsContainer}>
+          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+        </div>
+        <div className={styles.detailsContainer}>
+          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+        </div>
+      </div>
+    );
+  }
 
   const formattedId = order.orderId.slice(0, 7);
 
@@ -31,76 +52,14 @@ const SingleOrderCard = ({ order }) => {
   return (
     <>
       {isPopupShown && (
-        <Popup
-          body={
-            <div className={styles.popupBody}>
-              <div className={styles.orderDetails}>
-                <div className={styles.orderedAlbums}>
-                  <p>My Order</p>
-                  <p className={styles.highlight}>
-                    <span>Album</span> <span>by </span>
-                    <span className={styles.highlight}> Artist </span>
-                  </p>
-                </div>
-
-                <div className={styles.cardData}>
-                  <div className={styles.row}>
-                    <p>OrderId</p>
-                    <p
-                      className={`${styles.highlight} ${styles.cardDataDetails}`}
-                    >
-                      {formattedId}
-                    </p>
-                  </div>
-                  <div className={styles.row}>
-                    <p>Quantity: </p>
-                    <p
-                      className={`${styles.highlight} ${styles.cardDataDetails}`}
-                    >
-                      {order.albums.length}
-                    </p>
-                  </div>
-                  <div className={styles.row}>
-                    <p>Date:</p>
-                    <p
-                      className={`${styles.highlight} ${styles.cardDataDetails}`}
-                    >
-                      {formattedDate}
-                    </p>
-                  </div>
-                  <div className={styles.row}>
-                    <p>Shipping: </p>
-                    <p
-                      className={`${styles.highlight} ${styles.cardDataDetails}`}
-                    >
-                      $ {shipping}
-                    </p>
-                  </div>
-                  <div className={styles.row}>
-                    <p>Price: </p>
-                    <p
-                      className={`${styles.highlight} ${styles.cardDataDetails}`}
-                    >
-                      $ {orderSum}
-                    </p>
-                  </div>
-                </div>
-
-                <div className={styles.priceDetails}>
-                  <p>Total Price</p>
-                  <p>
-                    USD <span>$ {orderSum + shipping}</span>
-                  </p>
-                </div>
-
-                <div className={styles.actions}>
-                  <Button onClick={closePopupHandler}>Close</Button>
-                </div>
-              </div>
-            </div>
-          }
-          onClose={closePopupHandler}
-          title="Order Details"
+        <OrderPopup
+          order={order}
+          quantity={order.albums.length}
+          shipping={shipping}
+          orderSum={orderSum}
+          formattedDate={formattedDate}
+          formattedId={formattedId}
+          closePopupHandler={closePopupHandler}
         />
       )}
 

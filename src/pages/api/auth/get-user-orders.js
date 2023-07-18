@@ -12,12 +12,12 @@ const handler = async (req, res) => {
 
       const user = await usersCollection.findOne({ _id: new ObjectId(id) });
       const orders = [...user.orders];
+      await client.close();
       res.status(200).json({ orders: orders });
+      return;
     } catch (error) {
       console.logz(error);
     }
-
-    return;
   }
 };
 

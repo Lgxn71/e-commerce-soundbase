@@ -1,0 +1,63 @@
+.popupBody {
+  padding: 40px;
+  color: #4d5761;
+
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.42px;
+}
+.orderedDetails {
+  width: 340px;
+  margin: auto;
+}
+.highlight {
+  color: white;
+}
+
+.orderedAlbums {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding-bottom: 20px;
+}
+
+.cardData {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  border-top: 1px solid #2a2b3a;
+  border-bottom: 1px solid #2a2b3a;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.cardDataDetails {
+  font-weight: 500;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+.priceDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+.priceDetails span {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 28px; /* 116.667% */
+  letter-spacing: -0.72px;
+  padding-left: 10px;
+}
+.actions button {
+  width: 100%;
+  padding: 20px;
+}
+.greyColor {
+  color: #4d5761;
+}

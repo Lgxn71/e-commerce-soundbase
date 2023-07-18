@@ -64,10 +64,13 @@ const handler = async (req, res) => {
           }
         );
 
+        await client.close();
         res.status(200).json({ url: session.url });
+        return;
       } catch (error) {
         console.log(error.message);
         res.status(500).json({ error: error.messsage });
+        return;
       }
     }
   }
