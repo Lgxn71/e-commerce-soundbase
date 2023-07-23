@@ -7,7 +7,7 @@ import Image from "next/image";
 
 import styles from "./AlbumCard.module.css";
 
-const AlbumCard = ({ album }) => {
+const AlbumCard = ({ album, isLoading, artist }) => {
   const [cart, setCart] = useRecoilState(cartState);
 
   const addToCartHandler = () => {
@@ -32,29 +32,50 @@ const AlbumCard = ({ album }) => {
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className={styles.card}>
+        <div className={`${styles.skeletonImage} skeleton`} />
+
+        <div className={`${styles.skeletonTitle} skeleton`} />
+
+        <div className={`${styles.skeletonText} skeleton`} />
+
+        <div className={styles.actions}>
+          <div className={`${styles.skeletonTextShorter} skeleton`} />
+          <div className={`${styles.skeletonButton} skeleton`} />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className={styles.card}>
-      <Image
-        className={styles.image}
-        src={album.imagePath}
-        alt={`cover of ${album.albumName}`}
-        width={290}
-        height={290}
-        quality={100}
-      />
+      <div className={styles.imageContainer}>
+        <Image
+          className={styles.image}
+          src={album.imagePath}
+          alt={`cover of ${album.albumName}`}
+          width={280}
+          height={280}
+          quality={100}
+        />
+        <div onClick={addToCartHandler} className={styles.addToCartButton}>
+          + Add To Cart
+        </div>
+      </div>
 
       <Link href={`/shop/${album._id}`}>
         <h4>{album.albumName}</h4>
       </Link>
 
-      <p className={styles.artist}>
+      <Link href={`/artist/${artist._id}`} className={styles.artist}>
         album by <span>{album.artist}</span>
-      </p>
+      </Link>
       <div className={styles.actions}>
         <p className={styles.price}>PRICE</p>
-        <button onClick={addToCartHandler} className={styles.button}>
+        <div className={styles.button}>
           <div className={styles.buttonBackGroundColor}>$ {album.price}</div>
-        </button>
+        </div>
       </div>
     </div>
   );

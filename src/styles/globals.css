@@ -11,3 +11,15 @@ ul {
   list-style-type: none;
 }
 
+.skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(0, 2%, 12%);
+  }
+  100% {
+    background-color: hsl(0, 0%, 0%);
+  }
+}

@@ -69,11 +69,11 @@ const SingleAlbum = ({ albumDetails, artistDetails }) => {
             <div className={styles.albumName}>
               <div>
                 <h3>{albumDetails.albumName}</h3>
-                {/* place for icon */}
-
                 <p className={styles.artist}>
                   Album by{" "}
-                  <Link href="need to make a path">{artistDetails.artist}</Link>
+                  <Link href={`/artist/${artistDetails._id}`}>
+                    {artistDetails.artist}
+                  </Link>
                 </p>
               </div>
             </div>

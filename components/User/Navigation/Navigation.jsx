@@ -13,10 +13,10 @@ const Navigation = ({ isGeneral, onSetIsGeneral, isLoading }) => {
       <aside>
         <ul className={styles.links}>
           <li>
-            <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+            <div className={`${styles.skeletonText} skeleton`}></div>
           </li>
           <li>
-            <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+            <div className={`${styles.skeletonText} skeleton`}></div>
           </li>
         </ul>
       </aside>
@@ -27,10 +27,10 @@ const Navigation = ({ isGeneral, onSetIsGeneral, isLoading }) => {
     <aside>
       <ul className={styles.links}>
         <li onClick={changeToGeneralHandler}>
-          <a className={isGeneral ? styles.active : ""}>General</a>
+          <a className={isGeneral && styles.active}>General</a>
         </li>
         <li onClick={changeToPurchaseHandler}>
-          <a className={!isGeneral ? styles.active : ""}>Purchase History</a>
+          <a className={!isGeneral && styles.active}>Purchase History</a>
         </li>
       </ul>
     </aside>

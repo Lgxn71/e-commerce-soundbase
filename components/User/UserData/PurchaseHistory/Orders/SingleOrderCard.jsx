@@ -10,20 +10,20 @@ const SingleOrderCard = ({ order, loading }) => {
     return (
       <div className={styles.card}>
         <div className={styles.idContainer}>
-          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
-          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+          <div className={`${styles.skeletonText} skeleton`} />
+          <div className={`${styles.skeletonText} skeleton`} />
         </div>
         <div className={styles.detailsContainer}>
-          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
-          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+          <div className={`${styles.skeletonText} skeleton`} />
+          <div className={`${styles.skeletonText} skeleton`} />
         </div>
         <div className={styles.detailsContainer}>
-          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
-          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+          <div className={`${styles.skeletonText} skeleton`} />
+          <div className={`${styles.skeletonText} skeleton`} />
         </div>
         <div className={styles.detailsContainer}>
-          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
-          <div className={`${styles.skeletonText} ${styles.skeleton}`}></div>
+          <div className={`${styles.skeletonText} skeleton`} />
+          <div className={`${styles.skeletonText} skeleton`} />
         </div>
       </div>
     );

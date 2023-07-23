@@ -1,5 +1,9 @@
 import { useSession } from "next-auth/react";
+
 import { useRouter } from "next/router";
+
+import { useRecoilState } from "recoil";
+import { cartState } from "../../Cart/atoms/cartAtom";
 
 import Link from "next/link";
 
@@ -15,6 +19,7 @@ import { poppins } from "@/pages/_app";
 import styles from "./Header.module.css";
 
 const Header = () => {
+  const [cart, setCart] = useRecoilState(cartState);
   const { asPath } = useRouter();
 
   const session = useSession();
@@ -22,17 +27,6 @@ const Header = () => {
   const isLinkActive = (href) => {
     return asPath === href;
   };
-
-  const linksMap = pageLinks.map((link) => (
-    <Link
-      className={`${styles.navLink} 
-       ${isLinkActive(link.href) ? styles.activeLink : styles.unActiveLink}`}
-      key={link.title}
-      href={link.href}
-    >
-      {link.title}
-    </Link>
-  ));
 
   return (
     <header className={`${styles.header} ${poppins.variable}`}>
@@ -44,7 +38,28 @@ const Header = () => {
             </h3>
           </Link>
 
-          <nav className={styles.links}>{linksMap}</nav>
+          <nav className={styles.links}>
+            <Link
+              className={`${styles.navLink} 
+            ${isLinkActive("/shop") ? styles.activeLink : styles.unActiveLink}`}
+              key="shop"
+              href="/shop"
+            >
+              Discover
+            </Link>
+
+            <Link
+              className={`${styles.navLink} 
+            ${isLinkActive("/cart") ? styles.activeLink : styles.unActiveLink}`}
+              key="cart"
+              href="/cart"
+            >
+              Cart{" "}
+              <span className={styles.cartCounter}>
+                {cart.cartItems.length}
+              </span>
+            </Link>
+          </nav>
 
           <div className={styles.actions}>
             {session.status === "authenticated" || !session === undefined ? (

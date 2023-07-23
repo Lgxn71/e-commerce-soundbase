@@ -5,11 +5,7 @@ import connectToClient from "../../../../database/ConnectClient";
 import SingleAlbum from "../../../../components/Shop/SingleAlbum/SingleAlbum";
 
 const SingeAlbumPage = ({ singleAlbum, artistData }) => {
-  return (
-    <>
-      <SingleAlbum artistDetails={artistData} albumDetails={singleAlbum} />
-    </>
-  );
+  return <SingleAlbum artistDetails={artistData} albumDetails={singleAlbum} />;
 };
 
 export default SingeAlbumPage;
@@ -21,25 +17,20 @@ export const getStaticProps = async ({ params }) => {
   const collectionRecords = db.collection("vinylRecords");
   const collectionArtist = db.collection("artists");
 
-  const convertedIdFilter = new ObjectId(params._id);
-
-  let findedAlbum = await collectionRecords.findOne({ _id: convertedIdFilter });
-
-  const convertIdAlbum = findedAlbum._id.toString();
-
+  const currentAlbum = await collectionRecords.findOne({
+    _id: new ObjectId(params._id),
+  });
   const album = {
-    ...findedAlbum,
-    _id: convertIdAlbum,
+    ...currentAlbum,
+    _id: currentAlbum._id.toString(),
   };
 
   const artistData = await collectionArtist.findOne({
-    artist: findedAlbum.artist,
+    artist: currentAlbum.artist,
   });
-
-  const convertArtistId = artistData._id.toString();
   const artist = {
     ...artistData,
-    _id: convertArtistId,
+    _id: artistData._id.toString(),
   };
 
   await client.close();

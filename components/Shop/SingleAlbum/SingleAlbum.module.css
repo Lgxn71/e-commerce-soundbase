@@ -74,9 +74,14 @@
 
   color: #ffffff;
 }
+
 .albumName {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 30px;
 }
+
 .col2 p {
   font-family: var(--font-poppins);
   font-weight: 400;
@@ -146,8 +151,8 @@
 
 .songs {
   padding: 10px 20px;
-  /* max-height: 165px; */
-  /* overflow-x: hidden; */
+  max-height: 165px;
+  overflow-x: hidden;
 }
 .song {
   padding-bottom: 4px;

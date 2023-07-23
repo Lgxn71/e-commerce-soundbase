@@ -21,16 +21,14 @@ const UserDataCard = ({
     return (
       <form onSubmit={onSubmit}>
         <div className={styles.detailContainer}>
-          <div className={`${styles.skeleton} ${styles.skeletonTextTitle}`} />
-          <div className={`${styles.skeleton} ${styles.skeletonText}`} />
-          <div className={`${styles.skeleton} ${styles.skeletonInput}`} />
+          <div className={`skeleton ${styles.skeletonTextTitle}`} />
+          <div className={`skeleton ${styles.skeletonText}`} />
+          <div className={`skeleton ${styles.skeletonInput}`} />
         </div>
 
         <div className={styles.detailsBottom}>
-          <div
-            className={`${styles.skeleton} ${styles.skeletonTextNoMargin}`}
-          />
-          <div className={`${styles.skeleton} ${styles.skeletonButton}`} />
+          <div className={`skeleton ${styles.skeletonTextNoMargin}`} />
+          <div className={`skeleton ${styles.skeletonButton}`} />
         </div>
       </form>
     );

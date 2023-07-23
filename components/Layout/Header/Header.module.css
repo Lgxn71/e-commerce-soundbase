@@ -99,3 +99,11 @@
   margin-right: 30px;
 }
 
+.cartCounter {
+  margin-left: 2px;
+  color: #9978ff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.56px;
+}

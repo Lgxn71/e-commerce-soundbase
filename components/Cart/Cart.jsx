@@ -9,7 +9,7 @@ import Link from "next/link";
 
 import CartAlbum from "./CartAlbum/CartAlbum";
 import Payment from "./PaymentDetails/PaymentDetails";
-import PleaseSignInPopup from "./SignInPopup/SignInPopup";
+import SignInPopup from "./SignInPopup/SignInPopup";
 
 import Container from "../UI/Container/Container";
 import ButtonEmptyBlack from "../UI/Buttons/ButtonEmptyBlack";
@@ -48,7 +48,7 @@ const Cart = () => {
 
   return (
     <>
-      {isModalOpen && <PleaseSignInPopup onClose={modalCloseHandler} />}
+      {isModalOpen && <SignInPopup onClose={modalCloseHandler} />}
 
       <Container>
         <h2 className={styles.title}>Cart</h2>

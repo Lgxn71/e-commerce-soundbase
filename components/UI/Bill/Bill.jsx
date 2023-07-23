@@ -30,32 +30,26 @@ const Bill = ({ session, router, cartLocal, setCartLocal }) => {
         </Container>
         <CardEmpty>
           <div className={styles.header}>
-            <div className={`${styles.skeletonText} ${styles.skeleton}`} />
-            <div className={`${styles.skeletonText} ${styles.skeleton}`} />
+            <div className={`${styles.skeletonText}skeleton `} />
+            <div className={`${styles.skeletonText} skeleton `} />
           </div>
 
           <div className={styles.body}>
             <ul>
-              <div className={`${styles.skeletonText} ${styles.skeleton}`} />
-              <div className={`${styles.skeletonText} ${styles.skeleton}`} />
-              <div className={`${styles.skeletonText} ${styles.skeleton}`} />
+              <div className={`${styles.skeletonText} skeleton `} />
+              <div className={`${styles.skeletonText} skeleton `} />
+              <div className={`${styles.skeletonText} skeleton `} />
             </ul>
           </div>
 
           <div className={styles.actions}>
             <div className={styles.containerTotalPrice}>
-              <div
-                className={`${styles.skeletonTextLarger} ${styles.skeleton}`}
-              />
+              <div className={`${styles.skeletonTextLarger} skeleton `} />
             </div>
 
             <div className={styles.buttons}>
-              <div
-                className={`${styles.skeletonTextLarger} ${styles.skeleton}`}
-              />
-              <div
-                className={`${styles.skeletonTextLarger} ${styles.skeleton}`}
-              />
+              <div className={`${styles.skeletonTextLarger} skeleton `} />
+              <div className={`${styles.skeletonTextLarger} skeleton `} />
             </div>
           </div>
         </CardEmpty>

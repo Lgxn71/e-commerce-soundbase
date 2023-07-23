@@ -5,14 +5,27 @@ import Partner from "../../components/Main/Partners/Partners";
 import AlbumList from "../../components/Main/AlbumList/AlbumList";
 import WhyTrustUs from "../../components/Main/WhyTrustUs/WhyTrustUs";
 
-export default function Home({ featuredAlbums, newArrivalAlbums }) {
+export default function Home({
+  featuredAlbums,
+  featuredArtists,
+  newArrivalAlbums,
+  newArrivalArtists,
+}) {
   return (
     <>
       <Hero />
       <Partner />
-      <AlbumList albums={featuredAlbums} title="Featured Album" />
+      <AlbumList
+        albums={featuredAlbums}
+        artists={featuredArtists}
+        title="Featured Album"
+      />
       <WhyTrustUs />
-      <AlbumList albums={newArrivalAlbums} title="New Arrival" />
+      <AlbumList
+        albums={newArrivalAlbums}
+        artists={newArrivalArtists}
+        title="New Arrival"
+      />
     </>
   );
 }
@@ -22,16 +35,38 @@ export const getStaticProps = async () => {
   const db = client.db("soundbase");
 
   const collectionRecords = db.collection("vinylRecords");
+  const collectionArtists = db.collection("artists");
 
-  let featuredAlbumsDB = await collectionRecords
+  const featuredAlbumsDB = await collectionRecords
     .find({ isFeatured: true })
     .limit(4)
     .toArray();
 
-  let newArrivalAlbumsDB = await collectionRecords
+  const featuredArtists = [];
+  for (let i = 0; i < 4; i++) {
+    const artist = await collectionArtists.findOne({
+      artist: featuredAlbumsDB[i].artist,
+    });
+    if (artist) {
+      artist["_id"] = artist["_id"].toString();
+      featuredArtists.push(artist);
+    }
+  }
+  const newArrivalArtists = [];
+  const newArrivalAlbumsDB = await collectionRecords
     .find({ isNewArrival: true })
     .limit(4)
     .toArray();
+
+  for (let i = 0; i < 4; i++) {
+    const artist = await collectionArtists.findOne({
+      artist: newArrivalAlbumsDB[i].artist,
+    });
+    if (artist) {
+      artist["_id"] = artist["_id"].toString();
+      newArrivalArtists.push(artist);
+    }
+  }
 
   await client.close();
   return {
@@ -40,12 +75,13 @@ export const getStaticProps = async () => {
         ...album,
         _id: album._id.toString(),
       })),
+      featuredArtists,
+
       newArrivalAlbums: newArrivalAlbumsDB.map((album) => ({
         ...album,
         _id: album._id.toString(),
       })),
+      newArrivalArtists,
     },
   };
 };
-
-// .find({ artist: "Aphex Twin" })

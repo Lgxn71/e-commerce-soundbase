@@ -1,0 +1,77 @@
+.aboutArtist {
+  max-width: 630px;
+  width: 100%;
+
+  margin: auto;
+  padding-top: 150px;
+
+  text-align: center;
+  color: white;
+  font-family: var(--font-poppins);
+}
+.artistImage {
+  margin-bottom: 20px;
+
+  border-radius: 100px;
+  border: 1px solid #2a2b3a;
+  object-fit: cover;
+}
+.aboutArtist h3 {
+  padding-bottom: 10px;
+
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.72px;
+}
+.aboutArtist h5 {
+  text-transform: uppercase;
+
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.42px;
+
+  padding-bottom: 5px;
+}
+.aboutArtist p {
+  color: #7e7a8d;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: -0.42px;
+
+  padding-bottom: 48px;
+}
+
+.artistDetails {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  padding: 20px;
+
+  font-family: var(--font-poppins);
+
+  /* color: white; */
+}
+.details {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.64px;
+}
+.details span {
+  display: block;
+}
+.detailsTitle {
+  color: #cfdae3;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.48px;
+}
+
+.body {
+  padding: 50px 0 150px 0;
+
+  display: flex;
+  gap: 20px 30px;
+}
