@@ -11,9 +11,8 @@ const genres = [
 ];
 
 const handler = async (req, res) => {
-  console.log(req.body);
-
   const { activeFilter } = JSON.parse(req.body);
+  console.log(activeFilter);
   if (req.method === "POST") {
     const client = await connectToClient();
 
@@ -46,12 +45,11 @@ const handler = async (req, res) => {
 
       await client.close();
 
+      console.log(recordsQuantity);
       res.status(200).json({
-        data: {
-          recordsQuantity: recordsQuantity,
-          albums: albums,
-          artists: artists,
-        },
+        recordsQuantity: recordsQuantity,
+        albums: albums,
+        artists: artists,
       });
 
       return;
@@ -82,11 +80,9 @@ const handler = async (req, res) => {
           await client.close();
 
           res.status(200).json({
-            data: {
-              recordsQuantity: recordsQuantity,
-              albums: albums,
-              artists: artists,
-            },
+            recordsQuantity: recordsQuantity,
+            albums: albums,
+            artists: artists,
           });
 
           return;

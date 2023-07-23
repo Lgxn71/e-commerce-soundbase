@@ -26,6 +26,7 @@ const genres = [
 
 const Shop = ({ recordsQuantity, albums, artists }) => {
   const [activeFilter, setActiveFilter] = useState("All");
+  
 
   const [isLoading, setIsLoading] = useState(false);
   const [albumsData, setAlbumsData] = useState({
