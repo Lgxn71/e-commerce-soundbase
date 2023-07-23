@@ -20,9 +20,9 @@ export const getStaticProps = async () => {
 
     return {
       props: {
-        recordsQuantity,
-        albums,
-        artists,
+        recordsQuantity: recordsQuantity,
+        albums: albums,
+        artists: artists,
       },
       revalidate: 5000,
     };
