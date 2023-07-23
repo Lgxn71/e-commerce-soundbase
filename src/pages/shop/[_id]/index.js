@@ -40,7 +40,6 @@ export const getStaticProps = async ({ params }) => {
       singleAlbum: album,
       artistData: artist,
     },
-    revalidate: 5000,
   };
 };
 
@@ -57,5 +56,5 @@ export const getStaticPaths = async () => {
 
   await client.close();
 
-  return { paths, fallback: true };
+  return { paths, fallback: false };
 };

@@ -11,6 +11,8 @@ const genres = [
 ];
 
 const handler = async (req, res) => {
+  console.log(req.body);
+
   const { activeFilter } = JSON.parse(req.body);
   if (req.method === "POST") {
     const client = await connectToClient();

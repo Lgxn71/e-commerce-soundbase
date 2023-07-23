@@ -15,7 +15,7 @@ import styles from "./SingleAlbum.module.css";
 const SingleAlbum = ({ albumDetails, artistDetails }) => {
   const [cart, setCart] = useRecoilState(cartState);
 
-  const genres = albumDetails.genres.join(" ");
+  // const genres = albumDetails.genres.join(" ");
 
   const addToCartHandler = () => {
     const existingItem = cart.cartItems.find(
@@ -56,7 +56,7 @@ const SingleAlbum = ({ albumDetails, artistDetails }) => {
               />
 
               <div className={styles.overlay}>
-                <span className={styles.genres}>{genres}</span>
+                <span className={styles.genres}>{}</span>
 
                 <span className={styles.date}>{albumDetails.releaseDate}</span>
               </div>
