@@ -1,4 +1,5 @@
-import { poppins } from "@/pages/_app";
+import { poppins } from "../../../src/pages/_app";
+
 import styles from "./ButtonViolet.module.css";
 
 const ButtonViolet = ({ children }) => {

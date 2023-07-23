@@ -1,4 +1,4 @@
-import { inter } from "@/pages/_app";
+import { inter } from "../../../../src/pages/_app";
 
 import Input from "../../../UI/Form/Input";
 

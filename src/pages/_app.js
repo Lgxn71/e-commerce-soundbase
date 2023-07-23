@@ -8,7 +8,7 @@ import { Poppins, Inter } from "next/font/google";
 
 import Layout from "../../components/Layout/Layout";
 
-import "@/styles/globals.css";
+import "../styles/globals.css";
 
 export const poppins = Poppins({
   subsets: ["latin"],

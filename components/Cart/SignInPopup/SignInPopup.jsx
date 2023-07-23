@@ -3,7 +3,7 @@ import Link from "next/link";
 import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
 import Button from "../../UI/Buttons/Button";
 
-import { inter } from "@/pages/_app";
+import { inter } from "../../../src/pages/_app";
 
 import styles from "./SignInPopup.module.css";
 import Popup from "../../UI/Popup/Popup";

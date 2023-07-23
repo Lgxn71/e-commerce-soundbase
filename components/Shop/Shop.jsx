@@ -7,8 +7,7 @@ import Container from "../UI/Container/Container";
 import PageTitle from "../UI/PageTitle/PageTitle";
 import Input from "../UI/Form/Input";
 
-import { poppins } from "@/pages/_app";
-
+import { poppins } from "../../src/pages/_app";
 import styles from "./Shop.module.css";
 
 import Search from "../svg/Search";
@@ -30,7 +29,7 @@ const Shop = ({ recordsQuantity, albums, artists }) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [albumsData, setAlbumsData] = useState({
-    All: { recordsQuantity, albums },
+    All: { recordsQuantity: recordsQuantity, albums: albums },
     Jazz: { recordsQuantity: 0, albums: [] },
     HipHop: { recordsQuantity: 0, albums: [] },
     "R&B": { recordsQuantity: 0, albums: [] },

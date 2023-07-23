@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import { poppins } from "@/pages/_app";
-
+import { poppins } from "../../../src/pages/_app";
 import Button from "../../UI/Buttons/Button";
 import Container from "../../UI/Container/Container";
 

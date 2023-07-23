@@ -2,7 +2,8 @@ import Link from "next/link";
 
 import GradientButton from "../Buttons/GradientButton";
 import Logo from "../Logo/Logo";
-import { poppins } from "@/pages/_app";
+
+import { poppins } from "../../../src/pages/_app";
 
 import styles from "./Form.module.css";
 

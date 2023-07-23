@@ -14,14 +14,15 @@ const handler = async (req, res) => {
   const { activeFilter } = JSON.parse(req.body);
   if (req.method === "POST") {
     const client = await connectToClient();
+
     const db = client.db("soundbase");
 
     const collectionRecords = db.collection("vinylRecords");
     const collectionArtists = db.collection("artists");
 
     let artists = [];
-    let albums;
-    let recordsQuantity;
+    let albums = [];
+    let recordsQuantity = null;
 
     if (activeFilter === "All") {
       albums = await collectionRecords.find().toArray();
@@ -41,12 +42,16 @@ const handler = async (req, res) => {
 
       recordsQuantity = await collectionRecords.countDocuments();
 
-      res.status(200).json({
-        recordsQuantity,
-        albums,
-        artists,
-      });
       await client.close();
+
+      res.status(200).json({
+        data: {
+          recordsQuantity: recordsQuantity,
+          albums: albums,
+          artists: artists,
+        },
+      });
+
       return;
     } else {
       genres.map(async (genre) => {
@@ -72,9 +77,16 @@ const handler = async (req, res) => {
             genres: activeFilter,
           });
 
-          res.status(200).json({ recordsQuantity, albums, artists });
-
           await client.close();
+
+          res.status(200).json({
+            data: {
+              recordsQuantity: recordsQuantity,
+              albums: albums,
+              artists: artists,
+            },
+          });
+
           return;
         }
       });

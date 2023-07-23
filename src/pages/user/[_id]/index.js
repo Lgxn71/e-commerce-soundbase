@@ -5,7 +5,7 @@ import User from "../../../../components/User/User";
 import Container from "../../../../components/UI/Container/Container";
 import PageTitle from "../../../../components/UI/PageTitle/PageTitle";
 
-import { poppins } from "@/pages/_app";
+import { poppins } from "../../_app";
 
 const UserPage = () => {
   const router = useRouter();

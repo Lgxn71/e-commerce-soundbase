@@ -1,5 +1,4 @@
-import { poppins } from "@/pages/_app";
-
+import { poppins } from "../../../src/pages/_app";
 import styles from "./Container.module.css";
 
 const Container = ({ isBorderThere, children }) => {

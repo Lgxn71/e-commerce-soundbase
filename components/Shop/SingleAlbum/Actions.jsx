@@ -1,7 +1,7 @@
-import { inter } from "@/pages/_app";
-
 import Button from "../../UI/Buttons/Button";
 import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
+
+import { inter } from "../../../src/pages/_app";
 
 import styles from "./Actions.module.css";
 

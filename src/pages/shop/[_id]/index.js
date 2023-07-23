@@ -57,5 +57,5 @@ export const getStaticPaths = async () => {
 
   await client.close();
 
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };

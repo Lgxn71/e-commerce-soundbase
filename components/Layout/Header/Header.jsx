@@ -12,10 +12,9 @@ import ActionUnauth from "./Actions/ActionsUnAuth";
 
 import Container from "../../UI/Container/Container";
 import Logo from "../../UI/Logo/Logo";
-import pageLinks from "../../../sharedContent/links/pageLinks";
+// import pageLinks from "../../../sharedContent/links/pageLinks";
 
-import { poppins } from "@/pages/_app";
-
+import { poppins } from "../../../src/pages/_app";
 import styles from "./Header.module.css";
 
 const Header = () => {

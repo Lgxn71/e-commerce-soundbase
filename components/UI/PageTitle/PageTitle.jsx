@@ -1,10 +1,11 @@
-import { poppins } from "@/pages/_app";
+import { poppins } from "../../../src/pages/_app";
+
 import styles from "./PageTitle.module.css";
 
 const PageTitle = ({ title, isCenter }) => {
   return (
     <h2
-      style={isCenter && { textAlign: "center" }  }
+      style={isCenter && { textAlign: "center" }}
       className={`${poppins.className} ${styles.title}`}
     >
       {title}
