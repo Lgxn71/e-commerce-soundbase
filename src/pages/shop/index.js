@@ -22,6 +22,7 @@ export const getStaticProps = async () => {
     console.log(data);
     return {
       props: {
+        recordsQuantity: data.recordsQuantity,
         albums: data.albums,
         artists: data.artists,
       },
