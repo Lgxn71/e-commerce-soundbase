@@ -94,11 +94,6 @@ const handler = async (req, res) => {
       console.log(error);
     }
   }
-
-  return await res.status(400).json({
-    recordsQuantity: 0,
-    albums: [],
-    artists: [],
-  });
+  return;
 };
 export default handler;

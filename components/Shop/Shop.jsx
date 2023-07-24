@@ -51,12 +51,13 @@ const Shop = ({ recordsQuantity, albums, artists }) => {
       }
 
       try {
-        const [filteredAlbumsData] = await sendRequest(
+        const [filteredAlbumsData, res] = await sendRequest(
           "/api/filter-albums",
           "POST",
           { activeFilter: activeFilter }
         );
-
+        console.log(filteredAlbumsData);
+        console.log(1);
         setAlbumsData(
           Object.assign({}, albumsData, {
             [activeFilter]: filteredAlbumsData,
