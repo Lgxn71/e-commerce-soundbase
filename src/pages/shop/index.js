@@ -1,7 +1,7 @@
 import Shop from "../../../components/Shop/Shop";
 import sendRequest from "../../../helper/SendRequest";
 
-const ShopPage = ({ recordsQuantity, albums, artists }) => {
+const ShopPage = ({ recordsQuantity = 1, albums = [], artists = [] }) => {
   return (
     <Shop recordsQuantity={recordsQuantity} albums={albums} artists={artists} />
   );
@@ -10,19 +10,27 @@ const ShopPage = ({ recordsQuantity, albums, artists }) => {
 export default ShopPage;
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${process.env.URL}/api/filter-albums`, {
-    method: "POST",
-    body: JSON.stringify({ activeFilter: "All" }),
-  });
+  let props = {};
+  try {
+    const res = await fetch(`${process.env.URL}/api/filter-albums`, {
+      method: "POST",
+      body: JSON.stringify({ activeFilter: "All" }),
+    });
+    console.log(res.status);
 
-  const data = await res.json();
+    const data = await res.json();
+    console.log(data);
+    return {
+      props: {
+        albums: data.albums,
+        artists: data.artists,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+  }
   return {
-    props: {
-      recordsQuantity: data.recordsQuantity,
-      albums: data.albums,
-      artists: data.artists,
-    },
-    revalidate: 2000,
+    props,
   };
 };
 

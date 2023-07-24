@@ -11,9 +11,10 @@ const genres = [
 ];
 
 const handler = async (req, res) => {
-  const { activeFilter } = JSON.parse(req.body);
-  console.log(activeFilter);
+  console.log(req.method);
   if (req.method === "POST") {
+    const { activeFilter } = JSON.parse(req.body);
+
     const client = await connectToClient();
 
     const db = client.db("soundbase");
@@ -23,37 +24,40 @@ const handler = async (req, res) => {
 
     let artists = [];
     let albums = [];
-    let recordsQuantity = null;
+    let recordsQuantity = 0;
 
-    if (activeFilter === "All") {
-      albums = await collectionRecords.find().toArray();
-      albums.map((album) => {
-        album._id = album._id.toString();
-      });
-
-      for (let i = 0; i < albums.length; i++) {
-        const artist = await collectionArtists.findOne({
-          artist: albums[i].artist,
+    try {
+      if (activeFilter === "All") {
+        albums = await collectionRecords.find().toArray();
+        albums.map((album) => {
+          album._id = album._id.toString();
         });
-        if (artist) {
-          artist["_id"] = artist["_id"].toString();
-          artists.push(artist);
+
+        for (let i = 0; i < albums.length; i++) {
+          const artist = await collectionArtists.findOne({
+            artist: albums[i].artist,
+          });
+          if (artist) {
+            artist["_id"] = artist["_id"].toString();
+            artists.push(artist);
+          }
         }
+
+        recordsQuantity = await collectionRecords.countDocuments();
+
+        await client.close();
+
+        return await res.status(200).json({
+          recordsQuantity,
+          albums: albums,
+          artists: artists,
+        });
       }
+    } catch (error) {
+      console.error(error);
+    }
 
-      recordsQuantity = await collectionRecords.countDocuments();
-
-      await client.close();
-
-      console.log(recordsQuantity);
-      res.status(200).json({
-        recordsQuantity: recordsQuantity,
-        albums: albums,
-        artists: artists,
-      });
-
-      return;
-    } else {
+    try {
       genres.map(async (genre) => {
         if (genre === activeFilter) {
           albums = await collectionRecords
@@ -79,16 +83,22 @@ const handler = async (req, res) => {
 
           await client.close();
 
-          res.status(200).json({
+          return await res.status(200).json({
             recordsQuantity: recordsQuantity,
             albums: albums,
             artists: artists,
           });
-
-          return;
         }
       });
+    } catch (error) {
+      console.log(error);
     }
   }
+
+  return await res.status(400).json({
+    recordsQuantity: 0,
+    albums: [],
+    artists: [],
+  });
 };
 export default handler;

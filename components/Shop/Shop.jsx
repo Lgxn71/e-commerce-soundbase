@@ -26,7 +26,6 @@ const genres = [
 
 const Shop = ({ recordsQuantity, albums, artists }) => {
   const [activeFilter, setActiveFilter] = useState("All");
-  
 
   const [isLoading, setIsLoading] = useState(false);
   const [albumsData, setAlbumsData] = useState({
@@ -39,6 +38,7 @@ const Shop = ({ recordsQuantity, albums, artists }) => {
     Rock: { recordsQuantity: 0, albums: [] },
     Electronic: { recordsQuantity: 0, albums: [] },
   });
+  console.log(albumsData);
 
   useEffect(() => {
     const activeFilterHandler = async () => {
@@ -52,7 +52,7 @@ const Shop = ({ recordsQuantity, albums, artists }) => {
 
       try {
         const [filteredAlbumsData] = await sendRequest(
-          "/api/filtered-albums",
+          "/api/filter-albums",
           "POST",
           { activeFilter: activeFilter }
         );
