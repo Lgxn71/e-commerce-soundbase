@@ -7,10 +7,10 @@ import Container from "../UI/Container/Container";
 import PageTitle from "../UI/PageTitle/PageTitle";
 import Input from "../UI/Form/Input";
 
+import Search from "../svg/Search";
+
 import { poppins } from "../../src/pages/_app";
 import styles from "./Shop.module.css";
-
-import Search from "../svg/Search";
 
 const loadingArray = [1, 2, 3, 4, 5, 6, 7, 8];
 const genres = [
@@ -38,7 +38,6 @@ const Shop = ({ recordsQuantity, albums, artists }) => {
     Rock: { recordsQuantity: 0, albums: [] },
     Electronic: { recordsQuantity: 0, albums: [] },
   });
-  console.log(albumsData);
 
   useEffect(() => {
     const activeFilterHandler = async () => {
@@ -56,8 +55,7 @@ const Shop = ({ recordsQuantity, albums, artists }) => {
           "POST",
           { activeFilter: activeFilter }
         );
-        console.log(filteredAlbumsData);
-        console.log(1);
+
         setAlbumsData(
           Object.assign({}, albumsData, {
             [activeFilter]: filteredAlbumsData,
@@ -87,7 +85,6 @@ const Shop = ({ recordsQuantity, albums, artists }) => {
             placeholder="Search for artist or album name"
             inputType="text"
           />
-          {/* //! MAYBE REFACTOR TO SEPARATE COMPNONENT CHECK WITH FOOTER */}
         </div>
       </Container>
 

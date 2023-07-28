@@ -2,13 +2,13 @@ import { useEffect } from "react";
 
 import Link from "next/link";
 
-import CardEmpty from "../Cards/CardEmpty/CartEmpty";
-import PageTitle from "../PageTitle/PageTitle";
-import Button from "../Buttons/Button";
-import ButtonEmptyBlack from "../Buttons/ButtonEmptyBlack";
+import CardEmpty from "../../UI/Cards/CardEmpty/CartEmpty";
+import PageTitle from "../../UI/PageTitle/PageTitle";
+import Button from "../../UI/Buttons/Button";
+import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
 
 import styles from "./Bill.module.css";
-import Container from "../Container/Container";
+import Container from "../../UI/Container/Container";
 
 let shipping = 15;
 const Bill = ({ session, router, cartLocal, setCartLocal }) => {

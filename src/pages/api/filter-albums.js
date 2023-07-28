@@ -11,7 +11,6 @@ const genres = [
 ];
 
 const handler = async (req, res) => {
-  console.log(req.method);
   if (req.method === "POST") {
     const { activeFilter } = JSON.parse(req.body);
 
@@ -52,46 +51,42 @@ const handler = async (req, res) => {
           albums: albums,
           artists: artists,
         });
+      } else {
+        genres.map(async (genre) => {
+          if (genre === activeFilter) {
+            albums = await collectionRecords
+              .find({ genres: activeFilter })
+              .toArray();
+            albums.map((album) => {
+              album._id = album._id.toString();
+            });
+
+            for (let i = 0; i < albums.length; i++) {
+              const artist = await collectionArtists.findOne({
+                artist: albums[i].artist,
+              });
+              if (artist) {
+                artist["_id"] = artist["_id"].toString();
+                artists.push(artist);
+              }
+            }
+
+            recordsQuantity = await collectionRecords.countDocuments({
+              genres: activeFilter,
+            });
+
+            await client.close();
+
+            return await res.status(200).json({
+              recordsQuantity: recordsQuantity,
+              albums: albums,
+              artists: artists,
+            });
+          }
+        });
       }
     } catch (error) {
-      console.error(error);
-    }
-
-    try {
-      genres.map(async (genre) => {
-        if (genre === activeFilter) {
-          albums = await collectionRecords
-            .find({ genres: activeFilter })
-            .toArray();
-          albums.map((album) => {
-            album._id = album._id.toString();
-          });
-
-          for (let i = 0; i < albums.length; i++) {
-            const artist = await collectionArtists.findOne({
-              artist: albums[i].artist,
-            });
-            if (artist) {
-              artist["_id"] = artist["_id"].toString();
-              artists.push(artist);
-            }
-          }
-
-          recordsQuantity = await collectionRecords.countDocuments({
-            genres: activeFilter,
-          });
-
-          await client.close();
-
-          return await res.status(200).json({
-            recordsQuantity: recordsQuantity,
-            albums: albums,
-            artists: artists,
-          });
-        }
-      });
-    } catch (error) {
-      console.log(error);
+      return console.error(error);
     }
   }
   return;

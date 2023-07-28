@@ -4,12 +4,14 @@ import Hero from "../../components/Main/Hero/Hero";
 import Partner from "../../components/Main/Partners/Partners";
 import AlbumList from "../../components/Main/AlbumList/AlbumList";
 import WhyTrustUs from "../../components/Main/WhyTrustUs/WhyTrustUs";
+import FeaturedArtist from "../../components/Main/FeaturedArtist/FeaturedArtist";
 
 export default function Home({
   featuredAlbums,
   featuredArtists,
   newArrivalAlbums,
   newArrivalArtists,
+  featuredArtist,
 }) {
   return (
     <>
@@ -20,12 +22,13 @@ export default function Home({
         artists={featuredArtists}
         title="Featured Album"
       />
-      <WhyTrustUs />
+      <FeaturedArtist featuredArtist={featuredArtist} />
       <AlbumList
         albums={newArrivalAlbums}
         artists={newArrivalArtists}
         title="New Arrival"
       />
+      <WhyTrustUs />
     </>
   );
 }
@@ -41,32 +44,37 @@ export const getStaticProps = async () => {
     .find({ isFeatured: true })
     .limit(4)
     .toArray();
-
-  const featuredArtists = [];
-  for (let i = 0; i < 4; i++) {
-    const artist = await collectionArtists.findOne({
-      artist: featuredAlbumsDB[i].artist,
-    });
-    if (artist) {
-      artist["_id"] = artist["_id"].toString();
-      featuredArtists.push(artist);
-    }
-  }
-  const newArrivalArtists = [];
   const newArrivalAlbumsDB = await collectionRecords
     .find({ isNewArrival: true })
     .limit(4)
     .toArray();
 
+  const featuredArtists = [];
+  const newArrivalArtists = [];
+
   for (let i = 0; i < 4; i++) {
-    const artist = await collectionArtists.findOne({
+    const featuredArtist = await collectionArtists.findOne({
+      artist: featuredAlbumsDB[i].artist,
+    });
+    const newArrivalArtist = await collectionArtists.findOne({
       artist: newArrivalAlbumsDB[i].artist,
     });
-    if (artist) {
-      artist["_id"] = artist["_id"].toString();
-      newArrivalArtists.push(artist);
+
+    if (featuredArtist && newArrivalArtist) {
+      featuredArtist["_id"] = featuredArtist["_id"].toString();
+      newArrivalArtist["_id"] = newArrivalArtist["_id"].toString();
+
+      featuredArtists.push(featuredArtist);
+      newArrivalArtists.push(newArrivalArtist);
     }
   }
+
+  const theMostFeaturedArtist = await collectionArtists.findOne({
+    artist: "Aphex Twin",
+  });
+  const theMostFeaturedAlbum = await collectionRecords.findOne({
+    albumName: "Selected Ambient Works",
+  });
 
   await client.close();
   return {
@@ -82,6 +90,17 @@ export const getStaticProps = async () => {
         _id: album._id.toString(),
       })),
       newArrivalArtists,
+
+      featuredArtist: {
+        artist: {
+          ...theMostFeaturedArtist,
+          _id: theMostFeaturedArtist._id.toString(),
+        },
+        album: {
+          ...theMostFeaturedAlbum,
+          _id: theMostFeaturedAlbum._id.toString(),
+        },
+      },
     },
   };
 };

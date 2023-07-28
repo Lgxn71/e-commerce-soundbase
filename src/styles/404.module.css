@@ -1,0 +1,30 @@
+.body {
+  text-align: center;
+  max-width: 330px;
+  margin: auto;
+
+  font-family: var(--font-poppins);
+  padding: 100px 0 150px 0;
+}
+
+.body h4 {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+
+  padding-bottom: 5px;
+}
+
+.body p {
+  color: #4d5761;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.42px;
+
+  padding-bottom: 30px;
+}
+
+.body button {
+  padding: 20px 70px;
+}

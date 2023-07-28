@@ -12,13 +12,13 @@ import ActionUnauth from "./Actions/ActionsUnAuth";
 
 import Container from "../../UI/Container/Container";
 import Logo from "../../UI/Logo/Logo";
-// import pageLinks from "../../../sharedContent/links/pageLinks";
 
 import { poppins } from "../../../src/pages/_app";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const [cart, setCart] = useRecoilState(cartState);
+
   const { asPath } = useRouter();
 
   const session = useSession();
@@ -26,6 +26,32 @@ const Header = () => {
   const isLinkActive = (href) => {
     return asPath === href;
   };
+
+  if (session.status === "loading") {
+    return (
+      <header className={`${styles.header} ${poppins.variable}`}>
+        <Container>
+          <div className={styles.headerContent}>
+            <Link href="/">
+              <h3 className={styles.logo}>
+                <Logo />
+              </h3>
+            </Link>
+
+            <nav className={styles.links}>
+              <div className={`${styles.skeletonText} skeleton`} />
+              <div className={`${styles.skeletonText} skeleton`} />
+            </nav>
+
+            <div className={styles.actions}>
+              <div className={`${styles.skeletonButton} skeleton`}></div>
+              <div className={`${styles.skeletonText} skeleton`} />
+            </div>
+          </div>
+        </Container>
+      </header>
+    );
+  }
 
   return (
     <header className={`${styles.header} ${poppins.variable}`}>

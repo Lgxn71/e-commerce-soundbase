@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
 import Container from "../../../../components/UI/Container/Container";
-import Bill from "../../../../components/UI/Bill/Bill";
+import Bill from "../../../../components/Payment/Bill/Bill";
 
 const Success = () => {
   const router = useRouter();
@@ -17,16 +17,14 @@ const Success = () => {
   });
 
   return (
-    <>
-      <Container isBorderThere={true}>
-        <Bill
-          router={router}
-          session={session}
-          cartLocal={cartLocal}
-          setCartLocal={setCartLocal}
-        />
-      </Container>
-    </>
+    <Container isBorderThere={true}>
+      <Bill
+        router={router}
+        session={session}
+        cartLocal={cartLocal}
+        setCartLocal={setCartLocal}
+      />
+    </Container>
   );
 };
 

@@ -12,14 +12,12 @@ export default ShopPage;
 export const getStaticProps = async () => {
   let props = {};
   try {
-    const res = await fetch(`${process.env.URL}/api/filter-albums`, {
-      method: "POST",
-      body: JSON.stringify({ activeFilter: "All" }),
-    });
-    console.log(res.status);
+    const [data, res] = await sendRequest(
+      `${process.env.URL}/api/filter-albums`,
+      "POST",
+      { activeFilter: "All" }
+    );
 
-    const data = await res.json();
-    console.log(data);
     return {
       props: {
         recordsQuantity: data.recordsQuantity,
@@ -34,9 +32,3 @@ export const getStaticProps = async () => {
     props,
   };
 };
-
-// const [data, res] = await sendRequest(
-//   `${process.env.URL}/api/filter-albums`,
-//   "POST",
-//   { activeFilter: "All" }
-// );

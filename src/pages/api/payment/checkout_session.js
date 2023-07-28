@@ -32,8 +32,7 @@ const handler = async (req, res) => {
           };
         }),
         success_url: `${process.env.URL}/payment/success`,
-        cancel_url: `${process.env.URL}/path-to-cancel`,
-        // make path to failed payment
+        cancel_url: `${process.env.URL}//payment/failure`,
       });
     } catch (error) {
       console.log(error.message);

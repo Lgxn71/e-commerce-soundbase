@@ -2,11 +2,12 @@ import Container from "../../UI/Container/Container";
 import AlbumCard from "../../UI/AlbumCard/AlbumCard";
 
 import styles from "./AlbumList.module.css";
+import ContainerTitle from "../ContainerTitle/ContainerTitle";
 
 const AlbumList = ({ albums, title, artists }) => {
   return (
     <Container isBorderThere={true}>
-      <h1 className={styles.title}>{title}</h1>
+      <ContainerTitle title={title} />
 
       <div className={styles.albums}>
         {albums.map((album) => {
