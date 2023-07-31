@@ -32,6 +32,7 @@ export const getStaticProps = async ({ params }) => {
       singleAlbum: { ...currentAlbum, _id: currentAlbum._id.toString() },
       artistData: { ...artistData, _id: artistData._id.toString() },
     },
+    revalidate: 50000,
   };
 };
 

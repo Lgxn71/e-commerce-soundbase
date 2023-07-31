@@ -40,7 +40,7 @@ export const getStaticProps = async ({ params }) => {
       artist,
       albums,
     },
-    revalidate: 5000,
+    revalidate: 50000,
   };
 };
 
