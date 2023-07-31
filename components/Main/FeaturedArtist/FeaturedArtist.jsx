@@ -43,10 +43,12 @@ const FeaturedArtist = ({ featuredArtist }) => {
 
           <div className={styles.details}>
             <h3>ARTIST OF THE MONTH</h3>
+
             <p className={styles.albumDescirptipn}>{artist.aboutArtist}</p>
+
             <ul>{formattedArtistDetails}</ul>
+
             <Link href={`/shop/${album._id}`}>
-              {" "}
               <p className={`${styles.albumName} ${styles.highlight}`}>
                 {album.albumName}
               </p>

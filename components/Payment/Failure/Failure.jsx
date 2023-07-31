@@ -1,12 +1,10 @@
 import Link from "next/link";
 
+import Container from "../../UI/Container/Container";
 import Card from "../../UI/Cards/CardEmpty/CartEmpty";
 import Button from "../../UI/Buttons/Button";
 
-import { poppins } from "../../../src/pages/_app";
-
 import styles from "./Failure.module.css";
-import Container from "../../UI/Container/Container";
 const Failed = () => {
   return (
     <Container isBorderThere={true}>

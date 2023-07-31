@@ -20,25 +20,17 @@ export const getStaticProps = async ({ params }) => {
   const currentAlbum = await collectionRecords.findOne({
     _id: new ObjectId(params._id),
   });
-  const album = {
-    ...currentAlbum,
-    _id: currentAlbum._id.toString(),
-  };
 
   const artistData = await collectionArtist.findOne({
     artist: currentAlbum.artist,
   });
-  const artist = {
-    ...artistData,
-    _id: artistData._id.toString(),
-  };
 
   await client.close();
 
   return {
     props: {
-      singleAlbum: album,
-      artistData: artist,
+      singleAlbum: { ...currentAlbum, _id: currentAlbum._id.toString() },
+      artistData: { ...artistData, _id: artistData._id.toString() },
     },
   };
 };
@@ -50,11 +42,13 @@ export const getStaticPaths = async () => {
   const collectionRecords = db.collection("vinylRecords");
   const allAlbums = await collectionRecords.find().toArray();
 
-  const paths = allAlbums.map((album) => ({
-    params: { _id: album._id.toString() },
-  }));
-
   await client.close();
 
-  return { paths, fallback: false };
+  return {
+    paths: allAlbums.map((album) => ({
+      params: { _id: album._id.toString() },
+    })),
+
+    fallback: false,
+  };
 };

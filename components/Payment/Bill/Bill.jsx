@@ -14,6 +14,7 @@ let shipping = 15;
 const Bill = ({ session, router, cartLocal, setCartLocal }) => {
   useEffect(() => {
     const cartLocalStorage = JSON.parse(localStorage.getItem("cartData"));
+
     if (cartLocalStorage && Array.isArray(cartLocalStorage)) {
       setCartLocal({
         quantity: cartLocalStorage[0],
@@ -57,15 +58,19 @@ const Bill = ({ session, router, cartLocal, setCartLocal }) => {
     );
   }
   if (session.status === "unauthenticated") {
-    <Container>
-      <PageTitle title="Payment Success" />
-    </Container>;
+    setTimeout(() => {
+      router.push("/");
+    }, 3000);
 
-    router.push("/");
     return (
-      <p className={styles.notAuthParagraph}>
-        You are not authentificated, redirecting to home page...
-      </p>
+      <>
+        <Container>
+          <PageTitle title="Payment Success" />
+        </Container>
+        <p className={styles.notAuthParagraph}>
+          You are not authentificated, redirecting to home page...
+        </p>
+      </>
     );
   }
 

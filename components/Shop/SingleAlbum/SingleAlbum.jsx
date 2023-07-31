@@ -15,7 +15,6 @@ import styles from "./SingleAlbum.module.css";
 
 const SingleAlbum = ({ albumDetails, artistDetails }) => {
   const [cart, setCart] = useRecoilState(cartState);
-  console.log(cart);
 
   const genres = albumDetails.genres.join(" ");
 

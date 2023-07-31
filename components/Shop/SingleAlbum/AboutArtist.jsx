@@ -10,7 +10,9 @@ const AboutArist = ({ artistDetails }) => {
   return (
     <div className={styles.container}>
       <h4 className={styles.title}>About Artist</h4>
+
       <p>{artistDetails.aboutArtist}</p>
+
       <ul className={styles.artistNumbers}>
         {artistData.map((data) => (
           <li key={data.text}>

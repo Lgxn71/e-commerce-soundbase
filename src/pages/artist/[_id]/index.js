@@ -51,11 +51,12 @@ export const getStaticPaths = async () => {
   const collectionArtist = db.collection("artists");
   const allArtist = await collectionArtist.find().toArray();
 
-  const paths = allArtist.map((artist) => ({
-    params: { _id: artist._id.toString() },
-  }));
-
   await client.close();
 
-  return { paths, fallback: false };
+  return {
+    paths: allArtist.map((artist) => ({
+      params: { _id: artist._id.toString() },
+    })),
+    fallback: false,
+  };
 };

@@ -5,7 +5,7 @@ const PaymentFailedPage = () => {
   return (
     <>
       <PageTitle isCenter={true} title="Payment Failed!" />
-      <Failed></Failed>
+      <Failed />
     </>
   );
 };

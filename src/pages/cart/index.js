@@ -6,11 +6,7 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
 const CartPage = () => {
-  return (
-    <>
-      <Cart stripePromise={stripePromise} />
-    </>
-  );
+  return <Cart stripePromise={stripePromise} />;
 };
 
 export default CartPage;
