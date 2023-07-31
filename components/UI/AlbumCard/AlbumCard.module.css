@@ -46,6 +46,9 @@
 .imageContainer {
   position: relative;
   display: inline-block;
+
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .addToCartButton {
@@ -79,7 +82,8 @@
 }
 .image {
   border-radius: 8px;
-  padding-bottom: 15px;
+  margin-bottom: 10px;
+  overflow: hidden;
 }
 .card h4 {
   font-weight: 500;

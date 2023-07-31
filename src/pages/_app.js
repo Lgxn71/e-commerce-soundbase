@@ -30,7 +30,7 @@ export default function App({
   const excludeLayoutPages = ["/auth/signin", "/auth/signup"];
   const isExcludedLayout = excludeLayoutPages.includes(router.asPath);
 
-  const components = (
+  return (
     <RecoilRoot>
       <SessionProvider session={session}>
         {isExcludedLayout ? (
@@ -43,6 +43,4 @@ export default function App({
       </SessionProvider>
     </RecoilRoot>
   );
-
-  return <>{components}</>;
 }

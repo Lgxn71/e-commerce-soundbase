@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 import { useRecoilState } from "recoil";
-import { cartState } from "../../Cart/atoms/cartAtom";
+import { cartState } from "../../Cart/CartAtom/cartAtom";
 
 import Link from "next/link";
 

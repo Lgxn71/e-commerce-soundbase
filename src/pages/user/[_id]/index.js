@@ -12,7 +12,10 @@ const UserPage = () => {
   const session = useSession();
 
   if (session.status === "unauthenticated") {
-    router.push("/");
+    setTimeout(() => {
+      console.log(1);
+      router.push("/auth/signin");
+    }, 3000);
 
     return (
       <Container>

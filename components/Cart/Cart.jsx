@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 
 import { useRecoilState } from "recoil";
-import { cartState } from "./atoms/cartAtom";
+import { cartState } from "./CartAtom/cartAtom";
 
 import Link from "next/link";
 

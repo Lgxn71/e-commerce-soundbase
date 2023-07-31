@@ -8,9 +8,7 @@ import FeaturedArtist from "../../components/Main/FeaturedArtist/FeaturedArtist"
 
 export default function Home({
   featuredAlbums,
-  featuredArtists,
   newArrivalAlbums,
-  newArrivalArtists,
   featuredArtist,
 }) {
   return (
@@ -18,14 +16,14 @@ export default function Home({
       <Hero />
       <Partner />
       <AlbumList
-        albums={featuredAlbums}
-        artists={featuredArtists}
+        albums={featuredAlbums.albums}
+        artists={featuredAlbums.artists}
         title="Featured Album"
       />
       <FeaturedArtist featuredArtist={featuredArtist} />
       <AlbumList
-        albums={newArrivalAlbums}
-        artists={newArrivalArtists}
+        albums={newArrivalAlbums.albums}
+        artists={newArrivalAlbums.artists}
         title="New Arrival"
       />
       <WhyTrustUs />
@@ -79,18 +77,22 @@ export const getStaticProps = async () => {
   await client.close();
   return {
     props: {
-      featuredAlbums: featuredAlbumsDB.map((album) => ({
-        ...album,
-        _id: album._id.toString(),
-      })),
-      featuredArtists,
+      featuredAlbums: {
+        artists: featuredArtists,
 
-      newArrivalAlbums: newArrivalAlbumsDB.map((album) => ({
-        ...album,
-        _id: album._id.toString(),
-      })),
-      newArrivalArtists,
+        albums: featuredAlbumsDB.map((album) => ({
+          ...album,
+          _id: album._id.toString(),
+        })),
+      },
+      newArrivalAlbums: {
+        artists: newArrivalArtists,
 
+        albums: newArrivalAlbumsDB.map((album) => ({
+          ...album,
+          _id: album._id.toString(),
+        })),
+      },
       featuredArtist: {
         artist: {
           ...theMostFeaturedArtist,

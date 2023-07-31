@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
-import { cartState } from "../../Cart/atoms/cartAtom";
+import { cartState } from "../../Cart/CartAtom/cartAtom";
+import { updateCart } from "../../Cart/cartUitls/cartUtils";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -14,28 +15,13 @@ import styles from "./SingleAlbum.module.css";
 
 const SingleAlbum = ({ albumDetails, artistDetails }) => {
   const [cart, setCart] = useRecoilState(cartState);
+  console.log(cart);
 
   const genres = albumDetails.genres.join(" ");
 
   const addToCartHandler = () => {
-    const existingItem = cart.cartItems.find(
-      (cartItem) => cartItem._id === albumDetails._id
-    );
-
-    if (existingItem) {
-      const updatedItems = cart.cartItems.map((item) => {
-        if (item._id === albumDetails._id) {
-          return { ...item, quantity: item.quantity + 1 };
-        }
-        return item;
-      });
-      setCart({ ...cart, cartItems: [...updatedItems] });
-    } else {
-      setCart({
-        ...cart,
-        cartItems: [...cart.cartItems, { ...albumDetails, quantity: 1 }],
-      });
-    }
+    const updatedCart = updateCart(cart, albumDetails);
+    setCart(updatedCart);
   };
 
   return (

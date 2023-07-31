@@ -1,6 +1,7 @@
 import { useRecoilState } from "recoil";
 
-import { cartState } from "../../Cart/atoms/cartAtom";
+import { cartState } from "../../Cart/CartAtom/cartAtom";
+import { updateCart } from "../../Cart/cartUitls/cartUtils";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -11,25 +12,8 @@ const AlbumCard = ({ album, isLoading, artist }) => {
   const [cart, setCart] = useRecoilState(cartState);
 
   const addToCartHandler = () => {
-    const existingItem = cart.cartItems.find(
-      (cartItem) => cartItem._id === album._id
-    );
-
-    if (existingItem) {
-      const updatedItems = cart.cartItems.map((item) => {
-        if (item._id === album._id) {
-          return { ...item, quantity: item.quantity + 1 };
-        } else {
-          return item;
-        }
-      });
-      setCart((prevState) => ({ ...prevState, cartItems: updatedItems }));
-    } else {
-      setCart((prevState) => ({
-        ...prevState,
-        cartItems: [...cart.cartItems, { ...album, quantity: 1 }],
-      }));
-    }
+    const updatedCart = updateCart(cart, album);
+    setCart(updatedCart);
   };
 
   if (isLoading) {

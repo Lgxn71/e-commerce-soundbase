@@ -11,18 +11,23 @@ const Partner = () => {
   return (
     <Container isBorderThere={false}>
       <div className={styles.partners}>
-        <h3 className={styles.title}>Music enthusiasts all over the world trust SoundBase to purchase vinyl records.</h3>
+        <h3 className={styles.title}>
+          Music enthusiasts all over the world trust SoundBase to purchase vinyl
+          records.
+        </h3>
+
         <div>
-          <div>
+          <ul>
             {mapLogos1.map((logo) => (
               <VisaSvg key={logo} />
             ))}
-          </div>
-          <div>
+          </ul>
+
+          <ul>
             {mapLogos2.map((logo) => (
               <VisaSvg key={logo} />
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </Container>
