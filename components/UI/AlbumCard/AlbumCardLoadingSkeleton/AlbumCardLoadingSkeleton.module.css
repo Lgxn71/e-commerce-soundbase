@@ -1,0 +1,47 @@
+.skeletonImage {
+  width: 280px;
+  height: 280px;
+
+  margin-bottom: 15px;
+
+  border-radius: 4px;
+}
+
+.skeletonTitle {
+  width: 145px;
+  height: 21px;
+
+  margin-bottom: 10px;
+
+  border-radius: 4px;
+}
+
+.skeletonText {
+  width: 120px;
+  height: 10px;
+
+  margin-bottom: 12px;
+
+  border-radius: 4px;
+}
+
+.skeletonTextShorter {
+  width: 40px;
+  height: 21px;
+
+  border-radius: 4px;
+}
+
+.skeletonButton {
+  width: 45px;
+  height: 26px;
+
+  border-radius: 100px;
+}
+
+.actions {
+  max-width: 280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

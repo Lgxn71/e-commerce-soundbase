@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { useSession } from "next-auth/react";
 
 import { useRouter } from "next/router";
@@ -14,6 +16,7 @@ import Container from "../../UI/Container/Container";
 import Logo from "../../UI/Logo/Logo";
 
 import { poppins } from "../../../src/pages/_app";
+
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -23,9 +26,25 @@ const Header = () => {
 
   const session = useSession();
 
-  const isLinkActive = (href) => {
-    return asPath === href;
-  };
+  useEffect(() => {
+    if (cart.cartItems.length === 0) {
+      const cartCurrent = localStorage.getItem("cart");
+      setCart(JSON.parse(cartCurrent));
+    }
+  }, [cart.cartItems.length, setCart]);
+
+  useEffect(() => {
+    if (cart.cartItems !== 0) {
+      let countSumQuantity = 0;
+      setCart((prevValue) => {
+        for (let i = 0; i < cart.cartItems.length; i++) {
+          countSumQuantity += cart.cartItems[i].quantity;
+        }
+
+        return { ...prevValue, cartLength: countSumQuantity };
+      });
+    }
+  }, [cart.cartItems]);
 
   if (session.status === "loading") {
     return (
@@ -53,6 +72,8 @@ const Header = () => {
     );
   }
 
+  const isLinkActive = (href) => asPath === href;
+
   return (
     <header className={`${styles.header} ${poppins.variable}`}>
       <Container>
@@ -79,10 +100,7 @@ const Header = () => {
               key="cart"
               href="/cart"
             >
-              Cart{" "}
-              <span className={styles.cartCounter}>
-                {cart.cartItems.length}
-              </span>
+              Cart <span className={styles.cartCounter}>{cart.cartLength}</span>
             </Link>
           </nav>
 

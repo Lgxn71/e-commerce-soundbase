@@ -1,0 +1,37 @@
+.genres {
+  display: flex;
+  gap: 40px;
+
+  padding: 30px 0;
+
+  align-items: center;
+
+  color: white;
+}
+.genre {
+  cursor: pointer;
+
+  padding: 10px 20px;
+
+  font-family: var(--font-poppins);
+
+  border: 1px solid transparent;
+  border-radius: 100px;
+}
+.activeFilter {
+  background: linear-gradient(#000000, #000000) padding-box,
+    conic-gradient(
+        from 180deg at 48.65% 48.28%,
+        #2e00cc -44.02deg,
+        #ffffff 38.45deg,
+        #ffffff 59.07deg,
+        #4213d2 69.37deg,
+        #704ae7 167.8deg,
+        #b8a6f5 224.67deg,
+        #2700ac 245deg,
+        #b8a6f5 263.63deg,
+        #2e00cc 315.98deg,
+        #ffffff 398.45deg
+      )
+      border-box;
+}

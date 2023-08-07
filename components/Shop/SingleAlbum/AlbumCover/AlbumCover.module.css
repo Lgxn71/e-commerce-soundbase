@@ -1,0 +1,32 @@
+.imageContainer {
+  z-index: -1;
+  position: relative;
+}
+
+.imageContainer .overlay {
+  font-family: var(--font-poppins);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+
+  color: white;
+
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+.image {
+  padding-bottom: 40px;
+  height: 700px;
+  border-radius: 10px;
+}
+
+.overlay span {
+  padding: 5px 10px;
+  border: 1px solid #ffffff;
+  margin-right: 10px;
+  border-radius: 100px;
+
+  background: rgba(0, 0, 0, 0.5);
+}

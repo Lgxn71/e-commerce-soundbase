@@ -10,25 +10,29 @@ const FooterLinks = () => {
     { title: "Linkedin", href: "https://github.com/Lgxn71" },
   ];
 
+  const pageLinksMap = pageLinks.map((link) => (
+    <li className={styles.link} key={link.href}>
+      <a href={link.href}>{link.title}</a>
+    </li>
+  ));
+  const personalLinksMap = personalLinks.map((link) => (
+    <li className={styles.link} key={link.href}>
+      <a href={link.href} target="_blank">
+        {link.title}
+      </a>
+    </li>
+  ));
 
-  
   return (
     <div className={styles.col2}>
       <ul className={styles.linksContainer}>
-        <p className={styles.title}>Company</p>
-        {pageLinks.map((link) => (
-          <li className={styles.link} key={link.href}>
-            <Link href={link.href}>{link.title}</Link>
-          </li>
-        ))}
+        <li className={styles.title}>Company</li>
+        {pageLinksMap}
       </ul>
+
       <ul className={styles.linksContainer}>
-        <p className={styles.title}>Social Links</p>
-        {personalLinks.map((link) => (
-          <li className={styles.link} key={link.href}>
-            <Link href={link.href}>{link.title}</Link>
-          </li>
-        ))}
+        <li className={styles.title}>Social Links</li>
+        {personalLinksMap}
       </ul>
     </div>
   );

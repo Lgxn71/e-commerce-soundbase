@@ -1,18 +1,16 @@
 .singleAlbumContent {
+  font-family: var(--font-poppins);
+
   padding-top: 140px;
 }
 
 .albumBody {
-  margin-top: 70px;
   display: flex;
   gap: 60px;
+
+  margin-top: 70px;
 }
 
-.image {
-  padding-bottom: 40px;
-  height: 700px;
-  border-radius: 10px;
-}
 .col1 h4 {
   font-family: var(--font-poppins);
   font-weight: 500;
@@ -33,32 +31,6 @@
 
   max-width: 630px;
 }
-.imageContainer {
-  z-index: -1;
-  position: relative;
-}
-.imageContainer .overlay {
-  font-family: var(--font-poppins);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.03em;
-
-  color: white;
-
-  position: absolute;
-  top: 30px;
-  left: 30px;
-}
-
-.overlay span {
-  padding: 5px 10px;
-  border: 1px solid #ffffff;
-  margin-right: 10px;
-  border-radius: 100px;
-
-  background: rgba(0, 0, 0, 0.5);
-}
 
 .col2 {
   margin-bottom: 150px;
@@ -70,91 +42,36 @@
   line-height: 36px;
   letter-spacing: -0.03em;
 
-  padding-bottom: 5px;
-
   color: #ffffff;
+
+  padding-bottom: 5px;
 }
 
 .albumName {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   margin-bottom: 30px;
 }
 
-.col2 p {
+.col2 {
   font-family: var(--font-poppins);
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.03em;
 }
-.artist {
-  font-family: var(--font-poppins);
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.03em;
 
+.grey {
   color: #4d5761;
 }
-.artist a {
+.artistName {
   color: white;
 }
-.card {
-  border: 1px solid #2a2b3a;
-  border-radius: 10px;
-  width: 490px;
-  margin-bottom: 30px;
-}
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 20px;
-
-  border-bottom: 1px solid #2a2b3a;
-}
-
-.header .priceTitle {
-  font-family: var(--font-poppins);
-
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-
-  color: #4d5761;
-}
-
-.header .price {
-  font-family: var(--font-poppins);
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 30px;
+.artistName:hover {
   color: #9978ff;
-
-  text-transform: uppercase;
 }
-.header h5 {
-  font-family: var(--font-poppins);
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.03em;
-
-  color: white;
-}
-
-.songs {
-  padding: 10px 20px;
-  max-height: 165px;
-  overflow-x: hidden;
-}
-.song {
-  padding-bottom: 4px;
-  color: white;
+.artistName:active {
+  color: #4716df;
 }

@@ -1,0 +1,58 @@
+.albumName {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.42px;
+
+  margin-bottom: 5px;
+}
+.artist {
+  color: #4d5761;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.36px;
+}
+.artist span {
+  color: white;
+}
+.artist span:hover {
+  color: #9978ff;
+}
+.artist span:active {
+  color: #4716df;
+}
+
+.details {
+  max-width: 280px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.price {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+
+  color: #4d5761;
+}
+.badge {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: -0.01em;
+
+  color: white;
+
+  border-radius: 100px;
+  background: linear-gradient(0deg, black, black) padding-box,
+    linear-gradient(140deg, #9978ff, #9978ff40, #9978ff) border-box;
+  border: 1px solid transparent;
+}
+.badgeBackground {
+  padding: 4px 10px;
+  border-radius: 100px;
+
+  background: rgba(153, 120, 255, 0.2);
+}

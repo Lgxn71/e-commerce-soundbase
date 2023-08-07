@@ -1,16 +1,16 @@
-import Button from "../../UI/Buttons/Button";
-import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
+import Button from "../../../../UI/Buttons/Button";
+import ButtonEmptyBlack from "../../../../UI/Buttons/ButtonEmptyBlack";
 
-import { inter } from "../../../src/pages/_app";
+import { inter } from "../../../../../src/pages/_app";
 
 import styles from "./Actions.module.css";
 
-const Actions = ({ onAddToCart }) => {
+const Actions = ({ onAddToCart, Link }) => {
   return (
     <div className={`${inter.variable} ${styles.actions}`}>
-      <div className={styles.purchaseBtn}>
-        <Button id="purchaseBtn">Purchase</Button>
-      </div>
+      <Link href={`/cart`} className={styles.purchaseBtn}>
+        <Button id="Cart">Cart</Button>
+      </Link>
 
       <div className={styles.addToCartBtn}>
         <ButtonEmptyBlack onClick={onAddToCart} className={styles.addToCart}>

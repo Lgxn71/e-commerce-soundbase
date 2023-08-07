@@ -20,7 +20,7 @@ const Cart = () => {
   const session = useSession();
 
   const [cart, setCart] = useRecoilState(cartState);
-  const [sumTemp, setSumTemp] = useState(0);
+  const [cartSum, setCartSum] = useState(0);
 
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -28,16 +28,17 @@ const Cart = () => {
     const arrayOfPrices = cart.cartItems.map(
       (item) => item.price * item.quantity
     );
-    let sum = 0;
-    for (let index = 0; index < arrayOfPrices.length; index++) {
-      sum += arrayOfPrices[index];
+
+    let sumTemp = 0;
+    for (let i = 0; i < arrayOfPrices.length; i++) {
+      sumTemp += arrayOfPrices[i];
     }
-    setSumTemp(sum);
+    setCartSum(sumTemp);
   }, [cart.cartItems]);
 
   useEffect(() => {
-    setCart((prevCart) => ({ ...prevCart, cartTotalPrice: sumTemp }));
-  }, [sumTemp, setCart]);
+    setCart((prevCart) => ({ ...prevCart, cartTotalPrice: cartSum }));
+  }, [cartSum, setCart]);
 
   const modalOpenHandler = () => {
     setModalOpen(true);

@@ -1,5 +1,6 @@
 import { useRecoilState } from "recoil";
 import { cartState } from "../CartAtom/cartAtom";
+import { decreaseCartItem } from "../cartUitls/cartUtils";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -10,19 +11,9 @@ const CartAlbum = ({ album }) => {
   const [cart, setCart] = useRecoilState(cartState);
 
   const removeFromCartHandler = () => {
-    const existingItem = cart.cartItems.find((item) => item._id === album._id);
-
-    if (existingItem.quantity === 1) {
-      const updatedItems = cart.cartItems.filter(
-        (item) => item._id !== album._id
-      );
-      setCart({ ...cart, cartItems: [...updatedItems] });
-    } else {
-      const updatedItems = cart.cartItems.map((item) =>
-        item._id === album._id ? { ...item, quantity: item.quantity - 1 } : item
-      );
-      setCart({ ...cart, cartItems: [...updatedItems] });
-    }
+    const updatedCart = decreaseCartItem(cart, album);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    setCart(updatedCart);
   };
 
   return (

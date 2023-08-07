@@ -1,0 +1,46 @@
+.priceTitle {
+  font-family: var(--font-poppins);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+
+  color: #4d5761;
+}
+
+.price {
+  font-family: var(--font-poppins);
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  line-height: 30px;
+
+  color: #9978ff;
+}
+
+.cardContainer {
+  width: 490px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.42px;
+}
+
+.songsContainerBody {
+  max-height: 144px;
+  padding: 10px 20px;
+
+  overflow-x: hidden;
+}
+
+.songParagraph {
+  padding-bottom: 5px;
+}

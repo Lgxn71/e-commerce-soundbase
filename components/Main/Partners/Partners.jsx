@@ -19,13 +19,17 @@ const Partner = () => {
         <div>
           <ul>
             {mapLogos1.map((logo) => (
-              <VisaSvg key={logo} />
+              <li key={logo}>
+                <VisaSvg />
+              </li>
             ))}
           </ul>
 
           <ul>
             {mapLogos2.map((logo) => (
-              <VisaSvg key={logo} />
+              <li key={logo}>
+                <VisaSvg />
+              </li>
             ))}
           </ul>
         </div>

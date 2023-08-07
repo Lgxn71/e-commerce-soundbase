@@ -38,7 +38,7 @@ const Payment = ({ cart, onModalOpen, session }) => {
         <ul className={styles.list}>
           <li>
             <span>Quantity:</span>
-            <span className={styles.price}>{cart.cartItems.length}</span>
+            <span className={styles.price}>{cart.cartLength}</span>
           </li>
 
           <li>

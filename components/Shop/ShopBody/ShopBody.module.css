@@ -1,0 +1,27 @@
+.counterSkeleton {
+  width: 90px;
+  height: 21px;
+
+  margin: 50px 0;
+
+  border-radius: 4px;
+}
+
+.counter {
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.01em;
+  padding: 50px 0;
+
+  color: #ffffff;
+}
+
+.albums {
+  display: grid;
+  grid-gap: 30px 20px;
+  grid-template-columns: repeat(4, 1fr);
+
+  padding-bottom: 200px;
+}

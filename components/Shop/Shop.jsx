@@ -1,33 +1,18 @@
 import { useEffect, useState } from "react";
 
+import ShopHeader from "./ShopHeader/ShopHeader";
+import Genres from "./Genres/Genres";
+import ShopBody from "./ShopBody/ShopBody";
+
 import sendRequest from "../../helper/SendRequest";
 
-import AlbumCard from "../UI/AlbumCard/AlbumCard";
 import Container from "../UI/Container/Container";
-import PageTitle from "../UI/PageTitle/PageTitle";
-import Input from "../UI/Form/Input";
-
-import Search from "../svg/Search";
-
-import { poppins } from "../../src/pages/_app";
-import styles from "./Shop.module.css";
-
-const loadingArray = [1, 2, 3, 4, 5, 6, 7, 8];
-const genres = [
-  "All",
-  "Jazz",
-  "HipHop",
-  "R&B",
-  "Pop",
-  "Classic",
-  "Rock",
-  "Electronic",
-];
 
 const Shop = ({ recordsQuantity, albums, artists }) => {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const [isLoading, setIsLoading] = useState(false);
+
   const [albumsData, setAlbumsData] = useState({
     All: { recordsQuantity: recordsQuantity, albums: albums },
     Jazz: { recordsQuantity: 0, albums: [] },
@@ -77,65 +62,21 @@ const Shop = ({ recordsQuantity, albums, artists }) => {
 
   return (
     <>
-      <Container>
-        <div className={`${poppins.variable} ${styles.header}`}>
-          <PageTitle title="Discover" />
-          <Input
-            id="search"
-            placeholder="Search for artist or album name"
-            inputType="text"
-          />
-        </div>
-      </Container>
+      <ShopHeader Container={Container} />
 
-      <Container isBorderThere={true}>
-        <ul className={styles.genres}>
-          {genres.map((genre) => (
-            <li
-              key={genre}
-              onClick={changeFilterHandler}
-              className={`${styles.genre}
-              ${activeFilter === genre && styles.activeFilter}`}
-            >
-              {genre}
-            </li>
-          ))}
-        </ul>
-      </Container>
+      <Genres
+        Container={Container}
+        activeFilter={activeFilter}
+        onChangeFilter={changeFilterHandler}
+      />
 
-      <Container>
-        {isLoading ? (
-          <div className={`${styles.counterSkeleton} skeleton `} />
-        ) : (
-          <p className={styles.counter}>
-            Found vinyls {albumsData[activeFilter].recordsQuantity}
-          </p>
-        )}
-
-        <ul className={styles.albums}>
-          {isLoading
-            ? loadingArray.map((card) => (
-                <li key={card}>
-                  <AlbumCard
-                    isLoading={isLoading}
-                    activeFilter={activeFilter}
-                    albumsData={albumsData}
-                  />
-                </li>
-              ))
-            : albumsData[activeFilter].albums.map((album) => {
-                for (let i = 0; i < artists.length; i++) {
-                  if (artists[i].artist === album.artist) {
-                    return (
-                      <li key={album._id}>
-                        <AlbumCard album={album} artist={artists[i]} />
-                      </li>
-                    );
-                  }
-                }
-              })}
-        </ul>
-      </Container>
+      <ShopBody
+        Container={Container}
+        isLoading={isLoading}
+        albums={albumsData}
+        filter={activeFilter}
+        artists={artists}
+      />
     </>
   );
 };
