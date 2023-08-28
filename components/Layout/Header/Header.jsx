@@ -27,17 +27,14 @@ const Header = () => {
   const session = useSession();
 
   useEffect(() => {
-    try {
-      if (cart.cartItems.length === 0) {
-        const cartCurrent = localStorage.getItem("cart");
-        console.log(cartCurrent, "cart current");
-        if (typeof cartCurrent !== null) {
-          setCart(JSON.parse(cartCurrent));
-        }
-      }
-    } catch (error) {
-      console.log(error);
+    if (cart.cartItems.length === 0) {
+      const cartCurrent = localStorage.getItem("cart");
+      console.log(cartCurrent, "cart current");
+      // if (typeof cartCurrent !== null) {
+      //   setCart(JSON.parse(cartCurrent));
+      // }
     }
+    
   }, [cart.cartItems]);
 
   // useEffect(() => {
