@@ -22,6 +22,7 @@ import styles from "./Header.module.css";
 const Header = () => {
   const [cart, setCart] = useRecoilState(cartState);
 
+  console.log(cart);
   const { asPath } = useRouter();
 
   const session = useSession();
