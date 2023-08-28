@@ -30,11 +30,10 @@ const Header = () => {
     if (cart.cartItems.length === 0) {
       const cartCurrent = localStorage.getItem("cart");
       console.log(cartCurrent, "cart current");
-      // if (typeof cartCurrent !== null) {
-      //   setCart(JSON.parse(cartCurrent));
-      // }
+      if (cartCurrent !== null) {
+        setCart(JSON.parse(cartCurrent));
+      }
     }
-    
   }, [cart.cartItems]);
 
   // useEffect(() => {
