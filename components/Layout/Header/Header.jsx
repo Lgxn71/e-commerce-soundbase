@@ -26,27 +26,28 @@ const Header = () => {
 
   const session = useSession();
 
+  // !!FOR RELOADING
   useEffect(() => {
     if (cart.cartItems.length === 0) {
       const cartCurrent = localStorage.getItem("cart");
-      console.log(cartCurrent, "cart current");
+      console.log(typeof cartCurrent, "cart current");
       if (cartCurrent !== null) {
         setCart(JSON.parse(cartCurrent));
       }
     }
   }, [cart.cartItems]);
+// !! TO UPDAATE QUANTITY 
+  useEffect(() => {
+    let countSumQuantity = 0;
+    setCart((prevValue) => {
+      console.log(prevValue);
+      for (let i = 0; i < cart.cartItems.length; i++) {
+        countSumQuantity += cart.cartItems[i].quantity;
+      }
 
-  // useEffect(() => {
-  //   let countSumQuantity = 0;
-  //   setCart((prevValue) => {
-  //     console.log(prevValue);
-  //     for (let i = 0; i < cart.cartItems.length; i++) {
-  //       countSumQuantity += cart.cartItems[i].quantity;
-  //     }
-
-  //     return { ...prevValue, cartLength: countSumQuantity };
-  //   });
-  // }, [cart.cartItems]);
+      return { ...prevValue, cartLength: countSumQuantity };
+    });
+  }, [cart.cartItems]);
 
   if (session.status === "loading") {
     return (
