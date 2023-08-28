@@ -33,9 +33,13 @@ const Header = () => {
     try {
       if (cart.cartItems.length === 0) {
         const cartCurrent = localStorage.getItem("cart");
-        setCart((prevValue) => {
-          return { ...prevValue, cartItems: cartCurrent };
-        });
+        if (typeof cartCurrent !== null) {
+          setCart((prevValue) => {
+            return { ...prevValue, cartItems: cartCurrent };
+          });
+        } else {
+          console.log("cart current is null");
+        }
       }
     } catch (error) {
       console.log(error);
