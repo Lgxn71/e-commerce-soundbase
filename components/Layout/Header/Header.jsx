@@ -41,17 +41,17 @@ const Header = () => {
     }
   }, [cart.cartItems.length, setCart]);
 
-  useEffect(() => {
-    let countSumQuantity = 0;
-    setCart((prevValue) => {
-      console.log(prevValue);
-      for (let i = 0; i < cart.cartItems.length; i++) {
-        countSumQuantity += cart.cartItems[i].quantity;
-      }
+  // useEffect(() => {
+  //   let countSumQuantity = 0;
+  //   setCart((prevValue) => {
+  //     console.log(prevValue);
+  //     for (let i = 0; i < cart.cartItems.length; i++) {
+  //       countSumQuantity += cart.cartItems[i].quantity;
+  //     }
 
-      return { ...prevValue, cartLength: countSumQuantity };
-    });
-  }, [cart.cartItems]);
+  //     return { ...prevValue, cartLength: countSumQuantity };
+  //   });
+  // }, [cart.cartItems]);
 
   if (session.status === "loading") {
     return (
