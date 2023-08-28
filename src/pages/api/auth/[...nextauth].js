@@ -66,6 +66,7 @@ const authOption = {
       const userID = userData._id.toString();
 
       await client.close();
+      
       return {
         user: {
           id: userID,

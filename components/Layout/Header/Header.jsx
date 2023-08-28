@@ -31,7 +31,7 @@ const Header = () => {
       const cartCurrent = localStorage.getItem("cart");
       setCart(JSON.parse(cartCurrent));
     }
-  }, [cart.cartItems.length, setCart]);
+  }, [cart.cartItems, setCart]);
 
   useEffect(() => {
     if (cart.cartItems !== 0) {
@@ -44,7 +44,7 @@ const Header = () => {
         return { ...prevValue, cartLength: countSumQuantity };
       });
     }
-  }, [cart.cartItems]);
+  }, [cart.cartItems, setCart]);
 
   if (session.status === "loading") {
     return (

@@ -2,16 +2,18 @@ import { useEffect } from "react";
 
 import Link from "next/link";
 
+import Container from "../../UI/Container/Container";
 import CardEmpty from "../../UI/Cards/CardEmpty/CartEmpty";
 import PageTitle from "../../UI/PageTitle/PageTitle";
 import Button from "../../UI/Buttons/Button";
 import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
 
 import styles from "./Bill.module.css";
-import Container from "../../UI/Container/Container";
 
 let shipping = 15;
 const Bill = ({ session, router, cartLocal, setCartLocal }) => {
+
+
   useEffect(() => {
     const cartLocalStorage = JSON.parse(localStorage.getItem("cartData"));
 

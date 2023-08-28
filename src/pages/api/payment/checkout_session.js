@@ -31,6 +31,7 @@ const handler = async (req, res) => {
             quantity: item.quantity,
           };
         }),
+
         success_url: `${process.env.URL}/payment/success`,
         cancel_url: `${process.env.URL}//payment/failure`,
       });

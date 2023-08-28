@@ -1,10 +1,10 @@
 import { useState } from "react";
-
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
-import Container from "../../../../components/UI/Container/Container";
 import Bill from "../../../../components/Payment/Bill/Bill";
+
+import Container from "../../../../components/UI/Container/Container";
 
 const Success = () => {
   const router = useRouter();
