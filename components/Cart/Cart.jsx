@@ -24,6 +24,7 @@ const Cart = () => {
 
   const [isModalOpen, setModalOpen] = useState(false);
 
+  // !! We need price only here, therefore it recalculates only here
   useEffect(() => {
     const arrayOfPrices = cart.cartItems.map(
       (item) => item.price * item.quantity

@@ -32,21 +32,21 @@ const Header = () => {
       const cartCurrent = localStorage.getItem("cart");
       console.log(typeof cartCurrent, "cart current");
       if (cartCurrent !== null) {
-        setCart(JSON.parse(cartCurrent));
+        setCart({ cartItems: JSON.parse(cartCurrent) });
       }
     }
-  }, [cart.cartItems]);
-// !! TO UPDAATE QUANTITY 
+  }, [cart.cartItems, setCart]);
+  // !! TO UPDAATE
   useEffect(() => {
     let countSumQuantity = 0;
-    setCart((prevValue) => {
+    (prevValue) => {
       console.log(prevValue);
       for (let i = 0; i < cart.cartItems.length; i++) {
         countSumQuantity += cart.cartItems[i].quantity;
       }
 
       return { ...prevValue, cartLength: countSumQuantity };
-    });
+    };
   }, [cart.cartItems]);
 
   if (session.status === "loading") {
