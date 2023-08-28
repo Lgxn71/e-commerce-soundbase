@@ -31,7 +31,7 @@ const Header = () => {
     try {
       if (cart.cartItems.length === 0) {
         const cartCurrent = localStorage.getItem("cart");
-        console.log(typeof cartCurrent);
+        console.log(typeof JSON.parse(cartCurrent));
         if (typeof cartCurrent !== null) {
           setCart(JSON.parse(cartCurrent));
         }
@@ -41,22 +41,16 @@ const Header = () => {
     }
   }, [cart.cartItems.length, setCart]);
 
-  // useEffect(() => {
-  //   try {
-  //     if (cart.cartItems.length !== 0) {
-  //       let countSumQuantity = 0;
-  //       setCart((prevValue) => {
-  //         for (let i = 0; i < cart.cartItems.length; i++) {
-  //           countSumQuantity += cart.cartItems[i].quantity;
-  //         }
+  useEffect(() => {
+    let countSumQuantity = 0;
+    setCart((prevValue) => {
+      for (let i = 0; i < cart.cartItems.length; i++) {
+        countSumQuantity += cart.cartItems[i].quantity;
+      }
 
-  //         return { ...prevValue, cartLength: countSumQuantity };
-  //       });
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }, [cart.cartItems, setCart]);
+      return { ...prevValue, cartLength: countSumQuantity };
+    });
+  }, [cart.cartItems]);
 
   if (session.status === "loading") {
     return (
