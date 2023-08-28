@@ -44,6 +44,7 @@ const Header = () => {
   useEffect(() => {
     let countSumQuantity = 0;
     setCart((prevValue) => {
+      console.log(prevValue);
       for (let i = 0; i < cart.cartItems.length; i++) {
         countSumQuantity += cart.cartItems[i].quantity;
       }
