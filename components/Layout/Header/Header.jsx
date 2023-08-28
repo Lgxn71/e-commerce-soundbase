@@ -32,22 +32,22 @@ const Header = () => {
       const cartCurrent = localStorage.getItem("cart");
       console.log(typeof cartCurrent, "cart current");
       if (cartCurrent !== null) {
-        setCart({ cartItems: JSON.parse(cartCurrent) });
+        setCart(JSON.parse(cartCurrent));
       }
     }
   }, [cart.cartItems, setCart]);
   // !! TO UPDAATE
   useEffect(() => {
     let countSumQuantity = 0;
-    (prevValue) => {
+    setCart((prevValue) => {
       console.log(prevValue);
       for (let i = 0; i < cart.cartItems.length; i++) {
         countSumQuantity += cart.cartItems[i].quantity;
       }
 
       return { ...prevValue, cartLength: countSumQuantity };
-    };
-  }, [cart.cartItems]);
+    });
+  }, [cart.cartItems, setCart]);
 
   if (session.status === "loading") {
     return (
