@@ -27,22 +27,30 @@ const Header = () => {
   const session = useSession();
 
   useEffect(() => {
-    if (cart.cartItems) {
-      const cartCurrent = localStorage.getItem("cart");
-      setCart(JSON.parse(cartCurrent));
+    try {
+      if (cart.cartItems.length === 0) {
+        const cartCurrent = localStorage.getItem("cart");
+        setCart(JSON.parse(cartCurrent));
+      }
+    } catch (error) {
+      console.log(error);
     }
-  }, [cart.cartItems, setCart]);
+  }, [cart.cartItems.length, setCart]);
 
   useEffect(() => {
-    if (cart.cartItems !== 0) {
-      let countSumQuantity = 0;
-      setCart((prevValue) => {
-        for (let i = 0; i < cart.cartItems.length; i++) {
-          countSumQuantity += cart.cartItems[i].quantity;
-        }
+    try {
+      if (cart.cartItems.length !== 0) {
+        let countSumQuantity = 0;
+        setCart((prevValue) => {
+          for (let i = 0; i < cart.cartItems.length; i++) {
+            countSumQuantity += cart.cartItems[i].quantity;
+          }
 
-        return { ...prevValue, cartLength: countSumQuantity };
-      });
+          return { ...prevValue, cartLength: countSumQuantity };
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   }, [cart.cartItems, setCart]);
 
