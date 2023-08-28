@@ -33,7 +33,9 @@ const Header = () => {
     try {
       if (cart.cartItems.length === 0) {
         const cartCurrent = localStorage.getItem("cart");
-        setCart(JSON.parse(cartCurrent));
+        setCart((prevValue) => {
+          return { ...prevValue, cartItems: cartCurrent };
+        });
       }
     } catch (error) {
       console.log(error);
@@ -74,7 +76,7 @@ const Header = () => {
             </nav>
 
             <div className={styles.actions}>
-              <div className={`${styles.skeletonButton} skeleton`}></div>
+              <div className={`${styles.skeletonButton} skeleton`} />
               <div className={`${styles.skeletonText} skeleton`} />
             </div>
           </div>

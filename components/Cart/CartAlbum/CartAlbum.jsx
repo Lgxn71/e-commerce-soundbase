@@ -13,7 +13,9 @@ const CartAlbum = ({ album }) => {
   const removeFromCartHandler = () => {
     const updatedCart = decreaseCartItem(cart, album);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    setCart(updatedCart);
+    setCart((prevValue) => {
+      return { ...prevValue, cartItems: updatedCart };
+    });
   };
 
   return (
