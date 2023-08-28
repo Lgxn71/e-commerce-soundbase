@@ -36,7 +36,7 @@ const Header = () => {
         setCart(JSON.parse(cartCurrent));
       }
     }
-  }, [cart.cartItems, setCart]);
+  }, []);
   // !! TO UPDAATE
   useEffect(() => {
     let countSumQuantity = 0;
