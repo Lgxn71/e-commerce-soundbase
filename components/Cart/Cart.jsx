@@ -37,6 +37,7 @@ const Cart = () => {
   }, [cart.cartItems]);
 
   useEffect(() => {
+    console.log(prevCart);
     setCart((prevCart) => ({ ...prevCart, cartTotalPrice: cartSum }));
   }, [cartSum, setCart]);
 
