@@ -21,9 +21,6 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   const [cart, setCart] = useRecoilState(cartState);
-  console.log(cart);
-  console.log(typeof cart.cartItems);
-  console.log(cart.cartItems.length);
 
   const { asPath } = useRouter();
 
@@ -35,11 +32,7 @@ const Header = () => {
         const cartCurrent = localStorage.getItem("cart");
         console.log(typeof cartCurrent);
         if (typeof cartCurrent !== null) {
-          setCart((prevValue) => {
-            return { ...prevValue, cartItems: cartCurrent };
-          });
-        } else {
-          console.log("cart current is null");
+          setCart(JSON.parse(cartCurrent));
         }
       }
     } catch (error) {
@@ -47,22 +40,22 @@ const Header = () => {
     }
   }, [cart.cartItems.length, setCart]);
 
-  useEffect(() => {
-    try {
-      if (cart.cartItems.length !== 0) {
-        let countSumQuantity = 0;
-        setCart((prevValue) => {
-          for (let i = 0; i < cart.cartItems.length; i++) {
-            countSumQuantity += cart.cartItems[i].quantity;
-          }
+  // useEffect(() => {
+  //   try {
+  //     if (cart.cartItems.length !== 0) {
+  //       let countSumQuantity = 0;
+  //       setCart((prevValue) => {
+  //         for (let i = 0; i < cart.cartItems.length; i++) {
+  //           countSumQuantity += cart.cartItems[i].quantity;
+  //         }
 
-          return { ...prevValue, cartLength: countSumQuantity };
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [cart.cartItems, setCart]);
+  //         return { ...prevValue, cartLength: countSumQuantity };
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, [cart.cartItems, setCart]);
 
   if (session.status === "loading") {
     return (
@@ -81,7 +74,7 @@ const Header = () => {
             </nav>
 
             <div className={styles.actions}>
-              <div className={`${styles.skeletonButton} skeleton`} />
+              <div className={`${styles.skeletonButton} skeleton`}></div>
               <div className={`${styles.skeletonText} skeleton`} />
             </div>
           </div>
