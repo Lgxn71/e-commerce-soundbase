@@ -21,7 +21,7 @@ import styles from "./Header.module.css";
 
 const Header = () => {
   const [cart, setCart] = useRecoilState(cartState);
-
+  console.log(cart, "cart");
   const { asPath } = useRouter();
 
   const session = useSession();
@@ -30,7 +30,7 @@ const Header = () => {
     try {
       if (cart.cartItems.length === 0) {
         const cartCurrent = localStorage.getItem("cart");
-        console.log(JSON.parse(cartCurrent));
+        console.log(cartCurrent, "cart current");
         if (typeof cartCurrent !== null) {
           setCart(JSON.parse(cartCurrent));
         }
@@ -38,7 +38,7 @@ const Header = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [cart.cartItems.length, setCart]);
+  }, [cart.cartItems]);
 
   // useEffect(() => {
   //   let countSumQuantity = 0;

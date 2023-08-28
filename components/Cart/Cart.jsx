@@ -37,9 +37,11 @@ const Cart = () => {
   }, [cart.cartItems]);
 
   useEffect(() => {
-    console.log(prevCart);
-    setCart((prevCart) => ({ ...prevCart, cartTotalPrice: cartSum }));
-  }, [cartSum, setCart]);
+    setCart((prevCart) => {
+      console.log(prevCart);
+      return { ...prevCart, cartTotalPrice: cartSum };
+    });
+  }, [cartSum]);
 
   const modalOpenHandler = () => {
     setModalOpen(true);
