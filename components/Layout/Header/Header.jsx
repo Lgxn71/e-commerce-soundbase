@@ -27,7 +27,7 @@ const Header = () => {
   const session = useSession();
 
   useEffect(() => {
-    if (cart.cartItems.length === 0) {
+    if (cart.cartItems) {
       const cartCurrent = localStorage.getItem("cart");
       setCart(JSON.parse(cartCurrent));
     }
