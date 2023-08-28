@@ -30,7 +30,7 @@ const Header = () => {
     try {
       if (cart.cartItems.length === 0) {
         const cartCurrent = localStorage.getItem("cart");
-        console.log(typeof JSON.parse(cartCurrent));
+        console.log(JSON.parse(cartCurrent));
         if (typeof cartCurrent !== null) {
           setCart(JSON.parse(cartCurrent));
         }
