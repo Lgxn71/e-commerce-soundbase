@@ -49,81 +49,13 @@
   align-items: center;
   gap: 80px;
 }
-
-.header .activeLink {
-  position: relative;
-
-  color: white;
-}
-.header .activeLink::before {
-  width: 100%;
-  height: 1px;
-
-  content: "";
-  position: absolute;
-  bottom: -134%;
-
-  border-radius: 10px;
-  border-bottom: 1px solid;
-  border-image: linear-gradient(to right, #9978ff00, #9978ff, #9978ff00) 1;
-}
-
-.header .unActiveLink {
-  position: relative;
-}
-
-.header .unActiveLink::before {
-  width: 100%;
-  height: 1px;
-
-  content: "";
-  position: absolute;
-  bottom: -134%;
-
-  border-radius: 10px;
-  border-bottom: 1px solid;
-  border-image: linear-gradient(to right, #9978ff00, #9978ff, #9978ff00) 1;
-
-  transform: scaleX(0);
-  transition: transform 0.3s ease-in-out;
-}
-
-.unActiveLink:hover::before,
-.unActiveLink:focus::before {
-  transform: scaleX(1);
-}
 .actions {
-  max-width: 202px;
+  width: 202px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+
 .actions button {
   margin-right: 30px;
-}
-
-.cartCounter {
-  margin-left: 2px;
-  color: #9978ff;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  letter-spacing: -0.56px;
-}
-
-.actions {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  align-items: center;
-}
-.skeletonText {
-  width: 55px;
-  height: 21px;
-
-  border-radius: 4px;
-}
-
-.skeletonButton {
-  width: 120px;
-  height: 43px;
-
-  border-radius: 100px;
 }

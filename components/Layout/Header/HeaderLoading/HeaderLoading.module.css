@@ -1,0 +1,13 @@
+.skeletonText {
+  width: 60px;
+  height: 21px;
+
+  border-radius: 4px;
+}
+
+.skeletonButton {
+  width: 120px;
+  height: 43px;
+
+  border-radius: 100px;
+}
