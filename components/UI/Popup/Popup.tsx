@@ -1,4 +1,6 @@
+import { ReactNode, MouseEventHandler, FC } from "react";
 import { createPortal } from "react-dom";
+
 import Backdrop from "../Backdrop/Backdrop";
 
 import CardWithHeader from "../Cards/CardHeader/CardWithHeader";
@@ -9,7 +11,14 @@ import { poppins } from "../../../src/pages/_app";
 
 import styles from "./Popup.module.css";
 
-const Popup = ({ title, onClose, body }) => {
+interface IPopupProps {
+  title: string;
+  onClose: MouseEventHandler<HTMLDivElement>;
+
+  body: ReactNode;
+}
+
+const Popup: FC<IPopupProps> = ({ title, onClose, body }) => {
   return createPortal(
     <>
       <Backdrop onClose={onClose} />

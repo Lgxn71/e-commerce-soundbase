@@ -11,7 +11,7 @@ import { inter } from "../../../src/pages/_app";
 import styles from "./SignInPopup.module.css";
 
 interface ISingInPopupProps {
-  onClose: MouseEventHandler<HTMLButtonElement>;
+  onClose: MouseEventHandler<HTMLDivElement | HTMLButtonElement>;
 }
 
 const SignInPopup: FC<ISingInPopupProps> = ({ onClose }) => {
@@ -32,7 +32,7 @@ const SignInPopup: FC<ISingInPopupProps> = ({ onClose }) => {
           </div>
         </div>
       }
-      onClose={onClose}
+      onClose={onClose as MouseEventHandler<HTMLDivElement>}
     />
   );
 };

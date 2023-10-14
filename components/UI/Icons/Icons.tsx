@@ -84,7 +84,7 @@ const Icons = {
       </g>
     </svg>
   ),
-  WhiteCross: (onClick: MouseEventHandler<HTMLDivElement>) => (
+  WhiteCross: (onClick: any) => (
     <div
       onClick={onClick}
       style={{

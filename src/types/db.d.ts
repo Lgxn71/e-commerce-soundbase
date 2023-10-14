@@ -25,7 +25,7 @@ export interface Artist {
   imagePath: string;
 }
 
-export interface User {
+export interface User extends U {
   _id: ObjectId | string;
   name: string;
   email: string;

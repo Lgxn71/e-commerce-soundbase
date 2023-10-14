@@ -37,7 +37,7 @@ export const getStaticProps = (async ({ params }) => {
   const artist = {
     ...currentArtist,
     _id: currentArtist?._id.toString()!,
-  };
+  } as IArtist;
   const albums = artistAlbums.map((album) => ({
     ...album,
     _id: album._id.toString()!,
