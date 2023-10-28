@@ -11,17 +11,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     try {
       const client = await connectToClient();
       const db = client.db("soundbase");
-
       const usersCollection = db.collection<User>("users");
-
       const user = await usersCollection.findOne({ _id: new ObjectId(userId) });
       const orders = [...(user?.orders as Order[])];
-
       await client.close();
       res.status(200).json({ orders: orders });
       return;
     } catch (error) {
-      console.log(error);
+      if (error instanceof Error) {
+        console.log(error);
+        return;
+      }
     }
   }
 };

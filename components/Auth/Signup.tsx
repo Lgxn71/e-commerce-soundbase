@@ -23,6 +23,7 @@ interface ISignupProps {
     password: string;
     confirmPassword: string;
   };
+  isLoading: boolean;
 }
 
 const Signup: FC<ISignupProps> = ({
@@ -30,6 +31,7 @@ const Signup: FC<ISignupProps> = ({
   onSubmit,
   formValidation,
   userInput,
+  isLoading,
 }) => {
   const session = useSession();
   return session.status === "authenticated" ? (
@@ -38,6 +40,7 @@ const Signup: FC<ISignupProps> = ({
     </Layout>
   ) : (
     <Form
+      isLoading={isLoading}
       hrefLink="/auth/signin"
       text="Already"
       hrefText="Sign In"

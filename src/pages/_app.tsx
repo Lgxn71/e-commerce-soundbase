@@ -1,17 +1,17 @@
 import { AppProps } from "next/app";
 
-import { SessionProvider } from "next-auth/react";
-
-import { RecoilRoot } from "recoil";
-
 import { useRouter } from "next/router";
-
 import { Poppins, Inter } from "next/font/google";
 
 import Layout from "../../components/Layout/Layout";
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 import "../styles/globals.css";
 
 import type { Session } from "next-auth";
+import Providers from "../../components/UI/Providers/Providers";
 
 export const poppins = Poppins({
   subsets: ["latin"],
@@ -37,16 +37,14 @@ export default function App({
   const isExcludedLayout = excludeLayoutPages.includes(router.asPath);
 
   return (
-    <RecoilRoot>
-      <SessionProvider session={session}>
-        {isExcludedLayout ? (
+    <Providers session={session}>
+      {isExcludedLayout ? (
+        <Component {...pageProps} />
+      ) : (
+        <Layout>
           <Component {...pageProps} />
-        ) : (
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        )}
-      </SessionProvider>
-    </RecoilRoot>
+        </Layout>
+      )}
+    </Providers>
   );
 }

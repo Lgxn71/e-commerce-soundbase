@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler } from "react";
+import { FC, MouseEventHandler, useEffect } from "react";
 
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
@@ -22,8 +22,11 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onModalOpen }) => {
   const session = useSession();
 
   const successPurchaseHandler = async () => {
-    const cartLocalStorage = [cart.cartItems.length, cart.cartTotalPrice];
-    localStorage.setItem("cartData", JSON.stringify(cartLocalStorage));
+    const cartLocalStorage = {
+      cartQuantityCounter: cart.cartItems.length,
+      cartTotalPrice: cart.cartTotalPrice,
+    };
+    localStorage.setItem("cartDataBill", JSON.stringify(cartLocalStorage));
 
     let paymentData;
     let response;
@@ -41,14 +44,14 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onModalOpen }) => {
       response = res;
     }
 
-    console.log(paymentData);
-
     if (!response?.ok) {
       console.log("Something went wrong");
       return;
     }
 
-    if (paymentData?.url) router.push(paymentData.url);
+    if (paymentData?.url) {
+      router.push(paymentData.url);
+    }
   };
 
   return (

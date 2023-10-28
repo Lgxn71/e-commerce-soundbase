@@ -30,9 +30,8 @@
   border-radius: 6px;
 
   color: white;
-  font-family: var(--font-poppins);
-  font-size: 14px;
-  font-weight: 400;
+  font: 400 14px var(--font-poppins);
+
   letter-spacing: -0.56px;
 
   cursor: pointer;

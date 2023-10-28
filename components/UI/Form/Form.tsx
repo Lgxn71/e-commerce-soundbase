@@ -7,6 +7,8 @@ import Logo from "../Logo/Logo";
 
 import { poppins } from "../../../src/pages/_app";
 
+import Icons from "../Icons/Icons";
+
 import styles from "./Form.module.css";
 
 interface IFormProps {
@@ -16,6 +18,7 @@ interface IFormProps {
   hrefText: string;
   onSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>;
   children: ReactNode;
+  isLoading: boolean;
 }
 
 const Form: FC<IFormProps> = ({
@@ -25,6 +28,7 @@ const Form: FC<IFormProps> = ({
   hrefText,
   children,
   onSubmit,
+  isLoading,
 }) => {
   return (
     <main className={`${styles.body} ${poppins.variable}`}>
@@ -46,7 +50,11 @@ const Form: FC<IFormProps> = ({
           </div>
           {children}
 
-          <button className={styles.buttonSubmit}>{title}</button>
+          <button className={styles.buttonSubmit}>
+            {isLoading && <Icons.Loader />}
+
+            {title}
+          </button>
 
           <div className={styles.logoContainer}>
             <Logo />

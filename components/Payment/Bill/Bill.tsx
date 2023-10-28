@@ -13,6 +13,7 @@ import Button from "../../UI/Buttons/Button";
 import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
 
 import styles from "./Bill.module.css";
+import { Record } from "../../../src/types/db";
 
 let shipping = 15;
 
@@ -25,19 +26,27 @@ const Bill = () => {
 
   const router = useRouter();
 
-
   useEffect(() => {
-    const cartLocalStorage: [number, number] = JSON.parse(
-      localStorage.getItem("cartData") as string
-    );
-    console.log(cartLocalStorage);
+    const cartLocalStorage: {
+      cartQuantityCounter: number;
+      cartTotalPrice: number;
+    } = JSON.parse(localStorage.getItem("cartDataBill") as string);
 
-    if (cartLocalStorage && Array.isArray(cartLocalStorage)) {
+    if (cartLocalStorage) {
       setCartLocal({
-        quantity: cartLocalStorage[0],
-        sum: cartLocalStorage[1],
+        quantity: cartLocalStorage.cartQuantityCounter,
+        sum: cartLocalStorage.cartTotalPrice,
       });
     }
+
+    localStorage.setItem(
+      "cart",
+      JSON.stringify({
+        cartItems: [],
+        cartQuantityCounter: 0,
+        cartTotalPrice: 0,
+      })
+    );
   }, [setCartLocal]);
 
   if (session.status === "loading") {

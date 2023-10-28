@@ -1,8 +1,9 @@
 import { MouseEventHandler } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Loader2 } from "lucide-react";
 
+import styles from "./Icons.module.css";
 const Icons = {
   Search: (props: any) => (
     <svg
@@ -84,17 +85,8 @@ const Icons = {
       </g>
     </svg>
   ),
-  WhiteCross: (onClick: any) => (
-    <div
-      onClick={onClick}
-      style={{
-        borderRadius: "100px",
-        padding: "5px 10px",
-        height: "100%",
-        cursor: "pointer",
-        background: "rgba(255, 255, 255, 0.1)",
-      }}
-    >
+  WhiteCross: ({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) => (
+    <div onClick={onClick} className={styles.whiteCross}>
       <svg
         width="14"
         height="14"
@@ -109,6 +101,15 @@ const Icons = {
       </svg>
     </div>
   ),
+
   ArrowLeft: () => <FontAwesomeIcon icon={faArrowRight} rotation={180} />,
+  Loader: () => (
+    <Loader2
+      width={20}
+      height={20}
+      className={styles.animateSpin}
+      absoluteStrokeWidth={true}
+    />
+  ),
 };
 export default Icons;

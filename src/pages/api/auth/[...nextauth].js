@@ -18,43 +18,36 @@ const authOption = {
       type: "credentials",
       credentials: {},
       async authorize(credentials, req) {
-        try {
-          if (credentials === undefined) return null;
+        if (credentials === undefined) return null;
 
-          const { email, password } = credentials;
+        const { email, password } = credentials;
 
-          const client = await connectToClient();
-          const db = client.db("soundbase");
+        const client = await connectToClient();
+        const db = client.db("soundbase");
 
-          const collectionUsers = db.collection("users");
+        const collectionUsers = db.collection("users");
 
-          const user = await collectionUsers.findOne({ email: email });
+        const user = await collectionUsers.findOne({ email: email });
 
-          if (!user) {
-            await client.close();
-            throw new Error("User not found");
-          }
-          const resultOfCompare = await bcrypt.compare(
-            password,
-            user.hashedPassword
-          );
-
-          if (!resultOfCompare) {
-            throw new Error("Invalid password");
-          }
-
+        if (!user) {
           await client.close();
 
-          const convertedUserId = {
-            ...user,
-            _id: user._id.toString(),
-          };
-
-          return convertedUserId;
-        } catch (error) {
-          console.error;
-          return null;
+          throw new Error("User not found");
         }
+
+        const resultOfCompare = await bcrypt.compare(
+          password,
+          user.hashedPassword
+        );
+
+        if (!resultOfCompare) {
+          await client.close();
+          throw new Error("Invalid password");
+        }
+
+        await client.close();
+
+        return { ...user, _id: user._id.toString() };
       },
     }),
   ],

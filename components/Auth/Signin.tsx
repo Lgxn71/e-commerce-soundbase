@@ -17,6 +17,7 @@ interface ISingInProps {
     };
   };
   userInput: { email: string; password: string };
+  isLoading: boolean;
 }
 
 const Signin: FC<ISingInProps> = ({
@@ -24,6 +25,7 @@ const Signin: FC<ISingInProps> = ({
   onChangeInput,
   formValidation,
   userInput,
+  isLoading,
 }) => {
   return (
     <Form
@@ -32,6 +34,7 @@ const Signin: FC<ISingInProps> = ({
       hrefText="Sign Up"
       title="Sign in"
       onSubmit={onSubmit}
+      isLoading={isLoading}
     >
       <Input
         isError={formValidation.emailError.isError}

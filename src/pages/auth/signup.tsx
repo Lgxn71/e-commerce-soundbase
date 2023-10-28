@@ -18,6 +18,8 @@ const SignUpPage = () => {
     clientValidation: errorInitial,
   });
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const { user, onChangeInput } = useFormInput({
     name: "",
     email: "",
@@ -39,72 +41,74 @@ const SignUpPage = () => {
   const formSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    setFormValidation((prev) => ({
-      emailError: errorInitial,
-      passwordError: errorInitial,
-      clientValidation: errorInitial,
-    }));
+    try {
+      setIsLoading((prev) => true);
 
-    if (
-      !email.includes("@") ||
-      email.trim() === "" ||
-      name.trim() === "" ||
-      address.trim() === "" ||
-      password.trim() === "" ||
-      confirmPassword.trim() === ""
-    ) {
       setFormValidation((prev) => ({
-        ...prev,
-        clientValidation: {
-          isError: true,
-          errorMessage: "Invalid credentianls",
-        },
+        emailError: errorInitial,
+        passwordError: errorInitial,
+        clientValidation: errorInitial,
       }));
-      return;
-    }
 
-    const [data, res] = (await sendRequest("/api/auth/signup", "POST", {
-      name: name,
-      email: email,
-      address: address,
-      password: password,
-      confirmPassword: confirmPassword,
-    })) as [{ message: string }, Response];
-
-    if (!res.ok) {
       if (
-        data.message ===
-          "Password is too short, at least 8 characters needed" ||
-        data.message === "Passwords doesnt match"
-      ) {
-        setFormValidation((prev) => ({
+        !email.includes("@") ||
+        email.trim() === "" ||
+        name.trim() === "" ||
+        address.trim() === "" ||
+        password.trim() === "" ||
+        confirmPassword.trim() === ""
+      )
+        return setFormValidation((prev) => ({
           ...prev,
-          passwordError: {
+          clientValidation: {
             isError: true,
-            errorMessage: data.message,
+            errorMessage: "Invalid credentianls",
           },
         }));
+
+      const [data, res] = (await sendRequest("/api/auth/signup", "POST", {
+        name: name,
+        email: email,
+        address: address,
+        password: password,
+        confirmPassword: confirmPassword,
+      })) as [{ message: string }, Response];
+
+      if (!res.ok) {
+        if (
+          data.message ===
+            "Password is too short, at least 8 characters needed" ||
+          data.message === "Passwords doesnt match"
+        )
+          return setFormValidation((prev) => ({
+            ...prev,
+            passwordError: {
+              isError: true,
+              errorMessage: data.message,
+            },
+          }));
+
+        if (data.message === "User Exist already")
+          return setFormValidation((prev) => ({
+            ...prev,
+            emailError: {
+              isError: true,
+              errorMessage: data.message,
+            },
+          }));
 
         return;
       }
 
-      if (data.message === "User Exist already") {
-        setFormValidation((prev) => ({
-          ...prev,
-          emailError: {
-            isError: true,
-            errorMessage: data.message,
-          },
-        }));
-      }
-      return;
+      router.push("/auth/signin");
+    } finally {
+      setIsLoading((prev) => false);
     }
-
-    router.push("/auth/signin");
   };
 
   return (
     <Signup
+      isLoading={isLoading}
       userInput={user}
       onChangeInput={onChangeInput}
       onSubmit={formSubmitHandler}

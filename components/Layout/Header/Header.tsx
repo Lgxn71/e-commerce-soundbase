@@ -29,7 +29,6 @@ const Header = () => {
 
   const session = useSession();
 
-  // !!FOR RELOADING
   useEffect(() => {
     if (cart.cartItems.length === 0) {
       const localStorageCart = localStorage.getItem("cart");

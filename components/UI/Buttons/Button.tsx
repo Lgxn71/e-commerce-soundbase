@@ -6,7 +6,7 @@ import styles from "./Button.module.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement> | (() => void);
 }
 
 const Button: FC<ButtonProps> = ({ children, onClick }) => {

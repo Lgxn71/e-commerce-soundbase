@@ -2,9 +2,8 @@
   padding: 40px;
   color: #4d5761;
 
-  font-family: var(--font-poppins);
-  font-size: 14px;
-  font-weight: 400;
+  font: 400 14px var(--font-poppins);
+
   letter-spacing: -0.42px;
 }
 .orderedDetails {
@@ -50,8 +49,9 @@
   color: #fff;
   font-size: 24px;
   font-weight: 600;
-  line-height: 28px; /* 116.667% */
+  line-height: 28px;
   letter-spacing: -0.72px;
+
   padding-left: 10px;
 }
 .actions button {

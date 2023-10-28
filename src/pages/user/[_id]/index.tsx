@@ -22,7 +22,7 @@ const UserPage = () => {
   if (session.status === "unauthenticated") {
     setTimeout(() => {
       router.push("/auth/signin");
-    }, 2500);
+    }, 1500);
 
     const pStyles = { color: "white", textAligh: "center", margin: "100px" };
     return (
