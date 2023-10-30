@@ -1,4 +1,4 @@
-import ButtonViolet from "../../../UI/Buttons/ButtonViolet";
+import Buttons from "../../../UI/Buttons/Buttons";
 import Logo from "../../../UI/Logo/Logo";
 
 import styles from "./Newsletter.module.css";
@@ -26,7 +26,7 @@ const NewsLetter = () => {
             name="email"
             placeholder="Enter your email address"
           />
-          <ButtonViolet>Sign up</ButtonViolet>
+          <Buttons.Violet>Sign up</Buttons.Violet>
         </form>
 
         <p className={styles.privacyContent}>

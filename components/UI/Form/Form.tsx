@@ -2,14 +2,14 @@ import React, { FC, FormEvent, ReactNode } from "react";
 
 import Link from "next/link";
 
-import GradientButton from "../Buttons/GradientButton";
 import Logo from "../Logo/Logo";
 
-import { poppins } from "../../../src/pages/_app";
-
+import Buttons from "../Buttons/Buttons";
 import Icons from "../Icons/Icons";
 
 import styles from "./Form.module.css";
+
+import { poppins } from "../../../src/pages/_app";
 
 interface IFormProps {
   title: string;
@@ -37,7 +37,7 @@ const Form: FC<IFormProps> = ({
       </div>
 
       <div className={styles.form}>
-        <GradientButton href="/">Get back to homepage</GradientButton>
+        <Buttons.Gradient href="/">Get back to homepage</Buttons.Gradient>
         <form onSubmit={onSubmit}>
           <div className={styles.header}>
             <h4>{title}</h4>

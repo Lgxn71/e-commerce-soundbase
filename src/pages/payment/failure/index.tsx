@@ -1,9 +1,10 @@
-import PageTitle from "../../../../components/UI/PageTitle/PageTitle";
 import Link from "next/link";
-import Container from "../../../../components/UI/Container/Container";
-import Card from "../../../../components/UI/Cards/CardEmpty/CartEmpty";
 
-import Button from "../../../../components/UI/Buttons/Button";
+import PageTitle from "../../../../components/UI/PageTitle/PageTitle";
+
+import Container from "../../../../components/UI/Container/Container";
+import Cards from "../../../../components/UI/Cards/Cards";
+import Buttons from "../../../../components/UI/Buttons/Buttons";
 
 import styles from "./FailPayment.module.css";
 
@@ -13,17 +14,17 @@ const PaymentFailedPage = () => {
       <PageTitle isCenter={true} title="Payment Failed!" />
 
       <Container isBorderThere={true}>
-        <Card>
+        <Cards.Empty>
           <div className={`${styles.body}`}>
             <h4>Something Went Wrong!</h4>
             <p>
               We aren’t able to to process your payment. Please try again later.
             </p>
             <Link href="/shop">
-              <Button>Discover</Button>
+              <Buttons.White>Discover</Buttons.White>
             </Link>
           </div>
-        </Card>
+        </Cards.Empty>
       </Container>
     </>
   );

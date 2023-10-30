@@ -3,8 +3,7 @@ import { createPortal } from "react-dom";
 
 import Backdrop from "../Backdrop/Backdrop";
 
-import CardWithHeader from "../Cards/CardHeader/CardWithHeader";
-
+import Cards from "../Cards/Cards";
 import Icons from "../Icons/Icons";
 
 import { poppins } from "../../../src/pages/_app";
@@ -23,7 +22,7 @@ const Popup: FC<IPopupProps> = ({ title, onClose, body }) => {
     <>
       <Backdrop onClose={onClose} />
       <div className={`${poppins.className} ${styles.modal}`}>
-        <CardWithHeader
+        <Cards.WithHeader
           header={
             <>
               <h2 className={styles.title}>{title}</h2>

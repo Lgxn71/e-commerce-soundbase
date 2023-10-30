@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 import Popup from "../../../../UI/Popup/Popup";
-import Button from "../../../../UI/Buttons/Button";
+import Buttons from "../../../../UI/Buttons/Buttons";
 
 import styles from "./OrderPopup.module.css";
 
@@ -85,7 +85,7 @@ const OrderPopup: FC<IOrderPopupProps> = ({
           </div>
 
           <div className={styles.actions}>
-            <Button onClick={closePopupHandler}>Close</Button>
+            <Buttons.White onClick={closePopupHandler}>Close</Buttons.White>
           </div>
         </div>
       </div>

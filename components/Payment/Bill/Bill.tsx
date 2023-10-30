@@ -7,13 +7,12 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 import Container from "../../UI/Container/Container";
-import CardEmpty from "../../UI/Cards/CardEmpty/CartEmpty";
 import PageTitle from "../../UI/PageTitle/PageTitle";
-import Button from "../../UI/Buttons/Button";
-import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
+import Cards from "../../UI/Cards/Cards";
+
+import Buttons from "../../UI/Buttons/Buttons";
 
 import styles from "./Bill.module.css";
-import { Record } from "../../../src/types/db";
 
 let shipping = 15;
 
@@ -55,7 +54,7 @@ const Bill = () => {
         <Container isBorderThere={true}>
           <PageTitle isCenter={true} title="Loading Payment Details..." />
         </Container>
-        <CardEmpty>
+        <Cards.Empty>
           <div className={styles.header}>
             <div className={`${styles.skeletonText}skeleton `} />
             <div className={`${styles.skeletonText} skeleton `} />
@@ -79,7 +78,7 @@ const Bill = () => {
               <div className={`${styles.skeletonTextLarger} skeleton `} />
             </div>
           </div>
-        </CardEmpty>
+        </Cards.Empty>
       </>
     );
   }
@@ -107,7 +106,7 @@ const Bill = () => {
           <PageTitle isCenter={true} title="Payment Success" />
         </Container>
 
-        <CardEmpty>
+        <Cards.Empty>
           <div className={styles.header}>
             <h4>Congratulations!</h4>
             <p>
@@ -143,15 +142,15 @@ const Bill = () => {
 
             <div className={styles.buttons}>
               <Link href={`/user/${session.data?.user?.id}`}>
-                <Button>Visit Purchase History</Button>
+                <Buttons.EmptyBlack>Visit Purchase History</Buttons.EmptyBlack>
               </Link>
 
               <Link href="/shop">
-                <ButtonEmptyBlack>Discover</ButtonEmptyBlack>
+                <Buttons.EmptyBlack>Discover</Buttons.EmptyBlack>
               </Link>
             </div>
           </div>
-        </CardEmpty>
+        </Cards.Empty>
       </>
     );
   }

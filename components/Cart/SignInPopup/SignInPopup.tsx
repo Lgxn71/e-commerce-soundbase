@@ -3,8 +3,7 @@ import { FC, MouseEventHandler } from "react";
 import Link from "next/link";
 
 import Popup from "../../UI/Popup/Popup";
-import ButtonEmptyBlack from "../../UI/Buttons/ButtonEmptyBlack";
-import Button from "../../UI/Buttons/Button";
+import Buttons from "../../UI/Buttons/Buttons";
 
 import { inter } from "../../../src/pages/_app";
 
@@ -24,10 +23,10 @@ const SignInPopup: FC<ISingInPopupProps> = ({ onClose }) => {
           <p>Complete your payment securely by signing in to your account.</p>
 
           <div className={`${inter.variable}  ${styles.actions}`}>
-            <ButtonEmptyBlack onClick={onClose}>Cancel</ButtonEmptyBlack>
+            <Buttons.EmptyBlack onClick={onClose}>Cancel</Buttons.EmptyBlack>
 
             <Link href="/auth/signin">
-              <Button>Sign In</Button>
+              <Buttons.White>Sign In</Buttons.White>
             </Link>
           </div>
         </div>

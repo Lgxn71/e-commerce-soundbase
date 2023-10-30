@@ -12,5 +12,10 @@
   padding: 5px 10px;
   height: 100%;
   cursor: pointer;
+}
+.whiteCross:hover {
   background: rgba(255, 255, 255, 0.1);
+}
+.whiteCross:active {
+  background: rgba(255, 255, 255, 0.15);
 }

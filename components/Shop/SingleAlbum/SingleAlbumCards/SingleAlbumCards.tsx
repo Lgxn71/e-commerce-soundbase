@@ -1,8 +1,6 @@
 import { FC, MouseEventHandler } from "react";
 
-import Link from "next/link";
-
-import CardWithHeader from "../../../UI/Cards/CardHeader/CardWithHeader";
+import Cards from "../../../UI/Cards/Cards";
 import Actions from "./Actions/Actions";
 
 import styles from "./SingleAlbumCards.module.css";
@@ -16,7 +14,7 @@ interface IAlbumCardsProps {
 const AlbumCards: FC<IAlbumCardsProps> = ({ songs, price, onAddToCart }) => {
   return (
     <div className={styles.cardContainer}>
-      <CardWithHeader
+      <Cards.WithHeader
         header={
           <>
             <p className={styles.songsTitle}>Songs</p>
@@ -33,7 +31,7 @@ const AlbumCards: FC<IAlbumCardsProps> = ({ songs, price, onAddToCart }) => {
           </ul>
         }
       />
-      <CardWithHeader
+      <Cards.WithHeader
         header={
           <>
             <h4 className={styles.priceTitle}>PRICE</h4>

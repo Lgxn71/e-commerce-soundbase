@@ -1,12 +1,12 @@
 import Link from "next/link";
 
-import ButtonViolet from "../../../UI/Buttons/ButtonViolet";
+import Buttons from "../../../UI/Buttons/Buttons";
 
 import styles from "./ActionsUnAuth.module.css";
 const ActionUnauth = () => (
   <div className={styles.unAuthActions}>
     <Link href="/auth/signin">
-      <ButtonViolet>Get Started</ButtonViolet>
+      <Buttons.Violet>Get Started</Buttons.Violet>
     </Link>
     <Link href="/auth/signup">Sign Up</Link>
   </div>

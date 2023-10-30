@@ -1,0 +1,39 @@
+.body {
+  padding: 230px 280px;
+  border-radius: 50px;
+
+  text-align: center;
+  background: radial-gradient(
+    80% 130.45% at 50.22% 10%,
+    #000000 30%,
+    #22155c 54.69%,
+    #3f259d 72.44%,
+    #704ae7 83.97%,
+    #c6b8f6 100%
+  );
+
+  color: #fff;
+}
+.title {
+  font-family: var(--font-poppins);
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 67px; /* 139.583% */
+  letter-spacing: -1.44px;
+}
+
+.paragraph {
+  margin: auto;
+  max-width: 520px;
+
+  font-family: var(--font-poppins);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px; /* 185.714% */
+  letter-spacing: -0.42px;
+
+  padding-bottom: 30px;
+}
+.body button {
+  padding: 15px 30px;
+}

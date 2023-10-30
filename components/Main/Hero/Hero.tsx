@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Button from "../../UI/Buttons/Button";
+import Buttons from "../../UI/Buttons/Buttons";
 import Container from "../../UI/Container/Container";
 
 import { poppins } from "../../../src/pages/_app";
@@ -21,7 +21,7 @@ const Hero = () => (
 
         <div className={styles.actions}>
           <Link href="/auth/signin">
-            <Button>Get Started</Button>
+            <Buttons.White>Get Started</Buttons.White>
           </Link>
 
           <Link className={styles.link} href="/shop">

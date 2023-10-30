@@ -9,6 +9,7 @@ import Partner from "../../components/Main/Partners/Partners";
 import AlbumList from "../../components/Main/AlbumList/AlbumList";
 import WhyTrustUs from "../../components/Main/WhyTrustUs/WhyTrustUs";
 import FeaturedArtist from "../../components/Main/FeaturedArtist/FeaturedArtist";
+import DiscoverVinyls from "../../components/Main/Discover/Discover";
 
 export interface ArtistAlbumCombined {
   albums: Record[];
@@ -34,7 +35,8 @@ const Home = ({
       artists={newArrivalAlbums.artists}
       title="New Arrival"
     />
-    <WhyTrustUs />;
+    <WhyTrustUs />
+    <DiscoverVinyls />
   </>
 );
 export const getStaticProps = (async () => {

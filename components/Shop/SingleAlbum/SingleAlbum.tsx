@@ -13,7 +13,7 @@ import AboutArist from "./AboutArtist/AboutArtist";
 import AlbumCards from "./SingleAlbumCards/SingleAlbumCards";
 
 import Container from "../../UI/Container/Container";
-import GradientButton from "../../UI/Buttons/GradientButton";
+import Buttons from "../../UI/Buttons/Buttons";
 
 import styles from "./SingleAlbum.module.css";
 
@@ -57,7 +57,10 @@ const SingleAlbum: FC<ISingleAlbumProps> = ({
   return (
     <Container>
       <div className={styles.singleAlbumContent}>
-        <GradientButton href={"/shop"}> Get back to Discover</GradientButton>
+        <Buttons.Gradient href={"/shop"}>
+          {" "}
+          Get back to Discover
+        </Buttons.Gradient>
 
         <div className={styles.albumBody}>
           <div className={styles.col1}>

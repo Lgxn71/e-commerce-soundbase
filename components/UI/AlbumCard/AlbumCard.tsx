@@ -47,17 +47,17 @@ const AlbumCard: FC<IAlbumCard> = ({ album, isLoading, artist }) => {
 
       localStorage.setItem("cart", JSON.stringify(cartModified));
 
-      setCart(cartModified);
+      setCart((prev) => cartModified);
     }
   };
 
-  if (isLoading) {
+  if (isLoading)
     return (
       <div className={styles.card}>
         <AlbumCardLoadingSkeleton />
       </div>
     );
-  }
+
   if (album && artist) {
     return (
       <div className={styles.card}>

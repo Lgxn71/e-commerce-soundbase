@@ -10,7 +10,7 @@ import PaymentDetails from "../../../components/Cart/PaymentDetails/PaymentDetai
 import SignInPopup from "../../../components/Cart/SignInPopup/SignInPopup";
 
 import Container from "../../../components/UI/Container/Container";
-import ButtonEmptyBlack from "../../../components/UI/Buttons/ButtonEmptyBlack";
+import Buttons from "../../../components/UI/Buttons/Buttons";
 
 import styles from "./Cart.module.css";
 
@@ -40,7 +40,7 @@ const CartPage = () => {
             </p>
 
             <Link className={styles.button} href="/shop">
-              <ButtonEmptyBlack>Discover Vinyls</ButtonEmptyBlack>
+              <Buttons.EmptyBlack>Discover Vinyls</Buttons.EmptyBlack>
             </Link>
           </div>
         ) : (

@@ -1,14 +1,14 @@
-import { FC, MouseEventHandler, useEffect } from "react";
+import { FC, MouseEventHandler } from "react";
 
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
 import { ICart } from "../CartAtom/cartAtom";
+import Buttons from "../../UI/Buttons/Buttons";
 
-import Button from "../../UI/Buttons/Button";
+import sendRequest from "../../../helper/SendRequest";
 
 import styles from "./PaymentDetails.module.css";
-import sendRequest from "../../../helper/SendRequest";
 
 interface IPaymentProps {
   cart: ICart;
@@ -49,9 +49,7 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onModalOpen }) => {
       return;
     }
 
-    if (paymentData?.url) {
-      router.push(paymentData.url);
-    }
+    if (paymentData?.url) router.push(paymentData.url);
   };
 
   return (
@@ -83,7 +81,7 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onModalOpen }) => {
           </span>
         </p>
 
-        <Button
+        <Buttons.White
           onClick={
             session.status === "unauthenticated"
               ? onModalOpen
@@ -91,7 +89,7 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onModalOpen }) => {
           }
         >
           Purchase
-        </Button>
+        </Buttons.White>
 
         {session.status === "unauthenticated" && (
           <p className={styles.authentificate}>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 
-import Button from "../../../../UI/Buttons/Button";
-import ButtonEmptyBlack from "../../../../UI/Buttons/ButtonEmptyBlack";
+import Buttons from "../../../../UI/Buttons/Buttons";
 
 import { inter } from "../../../../../src/pages/_app";
 
@@ -16,13 +15,13 @@ const Actions: FC<IActionsProps> = ({ onAddToCart }) => {
   return (
     <div className={`${inter.variable} ${styles.actions}`}>
       <Link href={`/cart`} className={styles.purchaseBtn}>
-        <Button id="Cart">Cart</Button>
+        <Buttons.White id="Cart">Cart</Buttons.White>
       </Link>
 
       <div className={styles.addToCartBtn}>
-        <ButtonEmptyBlack onClick={onAddToCart} className={styles.addToCart}>
+        <Buttons.EmptyBlack onClick={onAddToCart}>
           Add to Cart
-        </ButtonEmptyBlack>
+        </Buttons.EmptyBlack>
       </div>
     </div>
   );

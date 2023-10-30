@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import PageTitle from "../../components/UI/PageTitle/PageTitle";
 import Container from "../../components/UI/Container/Container";
-import ButtonEmptyBlack from "../../components/UI/Buttons/ButtonEmptyBlack";
+import Buttons from "../../components/UI/Buttons/Buttons";
 
 import styles from "../styles/404.module.css";
 const custom404Page = () => (
@@ -16,7 +16,7 @@ const custom404Page = () => (
           address is correct
         </p>
         <Link href="/">
-          <ButtonEmptyBlack>Back To Home</ButtonEmptyBlack>
+          <Buttons.EmptyBlack>Back To Home</Buttons.EmptyBlack>
         </Link>
       </div>
     </Container>
