@@ -4,7 +4,7 @@ import NextAuth from "next-auth/next";
 
 import CredentialsProvider from "next-auth/providers/credentials";
 
-import connectToClient from "../../../../database/ConnectClient";
+import connectToClient from "../../../database/ConnectClient";
 
 const authOption = {
   session: {

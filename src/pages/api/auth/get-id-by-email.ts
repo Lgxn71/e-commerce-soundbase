@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
-import connectToClient from "../../../../database/ConnectClient";
+import connectToClient from "../../../database/ConnectClient";
 
 import { User } from "../../../types/db";
 

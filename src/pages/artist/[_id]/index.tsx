@@ -1,10 +1,10 @@
 import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from "next";
 
 import { ObjectId } from "mongodb";
-import connectToClient from "../../../../database/ConnectClient";
+import connectToClient from "../../../database/ConnectClient";
 import { Artist as IArtist, Record } from "../../../types/db";
 
-import Artist from "../../../../components/Artist/Artist";
+import Artist from "../../../components/Artist/Artist";
 
 const AristSinglePage = ({
   artist,

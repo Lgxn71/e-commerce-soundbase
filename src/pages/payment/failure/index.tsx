@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import PageTitle from "../../../../components/UI/PageTitle/PageTitle";
+import PageTitle from "../../../components/UI/PageTitle/PageTitle";
 
-import Container from "../../../../components/UI/Container/Container";
-import Cards from "../../../../components/UI/Cards/Cards";
-import Buttons from "../../../../components/UI/Buttons/Buttons";
+import Container from "../../../components/UI/Container/Container";
+import Cards from "../../../components/UI/Cards/Cards";
+import Buttons from "../../../components/UI/Buttons/Buttons";
 
 import styles from "./FailPayment.module.css";
 

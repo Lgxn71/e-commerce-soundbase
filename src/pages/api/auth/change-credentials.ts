@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 import { ObjectId } from "mongodb";
-import connectToClient from "../../../../database/ConnectClient";
+import connectToClient from "../../../database/ConnectClient";
 import { User } from "../../../types/db";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {

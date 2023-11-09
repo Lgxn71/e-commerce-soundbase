@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import connectToClient from "../../../database/ConnectClient";
+import connectToClient from "../../database/ConnectClient";
 import { Artist, Record } from "../../types/db";
 
 const genres = [

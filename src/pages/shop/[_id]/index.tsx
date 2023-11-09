@@ -3,10 +3,10 @@ import { FC } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 
 import { ObjectId } from "mongodb";
-import connectToClient from "../../../../database/ConnectClient";
+import connectToClient from "../../../database/ConnectClient";
 import { Artist, Record } from "../../../types/db";
 
-import SingleAlbum from "../../../../components/Shop/SingleAlbum/SingleAlbum";
+import SingleAlbum from "../../../components/Shop/SingleAlbum/SingleAlbum";
 
 export interface SingeAlbumPageProps {
   singleAlbum: Record;

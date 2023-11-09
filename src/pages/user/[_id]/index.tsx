@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
-import Navigation from "../../../../components/User/Navigation/Navigation";
-import UserProfile from "../../../../components/User/UserData/General/UserProfile";
-import UserPurchaseHistory from "../../../../components/User/UserData/PurchaseHistory/UserPurchaseHistory";
+import Navigation from "../../../components/User/Navigation/Navigation";
+import UserProfile from "../../../components/User/UserData/General/UserProfile";
+import UserPurchaseHistory from "../../../components/User/UserData/PurchaseHistory/UserPurchaseHistory";
 
-import Container from "../../../../components/UI/Container/Container";
-import PageTitle from "../../../../components/UI/PageTitle/PageTitle";
+import Container from "../../../components/UI/Container/Container";
+import PageTitle from "../../../components/UI/PageTitle/PageTitle";
 
 import { poppins } from "../../_app";
 

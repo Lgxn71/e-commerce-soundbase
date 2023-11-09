@@ -1,15 +1,15 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-import connectToClient from "../../database/ConnectClient";
+import connectToClient from "../database/ConnectClient";
 
 import { Artist, Record } from "../types/db";
 
-import Hero from "../../components/Main/Hero/Hero";
-import Partner from "../../components/Main/Partners/Partners";
-import AlbumList from "../../components/Main/AlbumList/AlbumList";
-import WhyTrustUs from "../../components/Main/WhyTrustUs/WhyTrustUs";
-import FeaturedArtist from "../../components/Main/FeaturedArtist/FeaturedArtist";
-import DiscoverVinyls from "../../components/Main/Discover/Discover";
+import Hero from "../components/Main/Hero/Hero";
+import Partner from "../components/Main/Partners/Partners";
+import AlbumList from "../components/Main/AlbumList/AlbumList";
+import WhyTrustUs from "../components/Main/WhyTrustUs/WhyTrustUs";
+import FeaturedArtist from "../components/Main/FeaturedArtist/FeaturedArtist";
+import DiscoverVinyls from "../components/Main/Discover/Discover";
 
 export interface ArtistsAlbumsCombined {
   albums: Record[];

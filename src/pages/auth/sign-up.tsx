@@ -2,12 +2,12 @@ import { useState, FormEvent, ChangeEvent } from "react";
 
 import { useRouter } from "next/router";
 
-import useFormInput from "../../../hooks/useFormInput";
+import useFormInput from "../../hooks/useFormInput";
 
-import Signup from "../../../components/Auth/Signup";
-import sendRequest from "../../../helper/SendRequest";
+import Signup from "../../components/Auth/Signup";
+import sendRequest from "../../helper/SendRequest";
 
-import errorInitial from "../../../sharedContent/errorInitial/errorInitial";
+import errorInitial from "../../sharedContent/errorInitial/errorInitial";
 
 const SignUpPage = () => {
   const router = useRouter();

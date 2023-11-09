@@ -3,8 +3,8 @@ import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { Poppins, Inter } from "next/font/google";
 
-import Layout from "../../components/Layout/Layout";
-import Providers from "../../components/UI/Providers/Providers";
+import Layout from "../components/Layout/Layout";
+import Providers from "../components/UI/Providers/Providers";
 
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";

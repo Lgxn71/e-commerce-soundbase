@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-import Container from "../../../components/UI/Container/Container";
-import PageTitle from "../../../components/UI/PageTitle/PageTitle";
-import AlbumsGrid from "../../../components/UI/AlbumsGrid/AlbumsGrid";
+import Container from "../../components/UI/Container/Container";
+import PageTitle from "../../components/UI/PageTitle/PageTitle";
+import AlbumsGrid from "../../components/UI/AlbumsGrid/AlbumsGrid";
 
-import connectToClient from "../../../database/ConnectClient";
+import connectToClient from "../../database/ConnectClient";
 
 import { ArtistsAlbumsCombined } from "..";
 import { Artist, Record } from "../../types/db";

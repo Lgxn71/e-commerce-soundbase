@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import { ObjectId } from "mongodb";
 import { v4 as uuidv4 } from "uuid";
-import connectToClient from "../../../../database/ConnectClient";
+import connectToClient from "../../../database/ConnectClient";
 
 import { Order, Record, User } from "../../../types/db";
 

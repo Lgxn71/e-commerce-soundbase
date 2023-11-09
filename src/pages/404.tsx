@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import PageTitle from "../../components/UI/PageTitle/PageTitle";
-import Container from "../../components/UI/Container/Container";
-import Buttons from "../../components/UI/Buttons/Buttons";
+import PageTitle from "../components/UI/PageTitle/PageTitle";
+import Container from "../components/UI/Container/Container";
+import Buttons from "../components/UI/Buttons/Buttons";
 
 import styles from "../styles/404.module.css";
 const custom404Page = () => (

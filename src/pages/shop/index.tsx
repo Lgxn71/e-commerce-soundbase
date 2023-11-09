@@ -4,9 +4,9 @@ import { GetStaticProps } from "next";
 
 import { Artist, Record } from "../../types/db";
 
-import sendRequest from "../../../helper/SendRequest";
+import sendRequest from "../../helper/SendRequest";
 
-import Shop from "../../../components/Shop/Shop";
+import Shop from "../../components/Shop/Shop";
 
 export interface ShopPageProps {
   recordsQuantity: number;
