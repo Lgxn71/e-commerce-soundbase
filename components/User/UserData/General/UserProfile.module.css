@@ -11,3 +11,13 @@
 
   margin-bottom: 150px;
 }
+
+@media (max-width: 435px) {
+  .details {
+    padding: 20px 16px 0 16px;
+
+    margin-bottom: 60px;
+
+    gap: 30px;
+  }
+}

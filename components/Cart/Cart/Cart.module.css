@@ -1,0 +1,19 @@
+.cartContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0 150px 0;
+}
+
+.cart {
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+}
+@media (max-width: 435px) {
+  .cartContainer {
+    flex-direction: column;
+    gap: 60px;
+
+    padding: 20px 0 60px 0;
+  }
+}

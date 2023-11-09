@@ -5,17 +5,15 @@ import FooterLinks from "./Links/FooterLinks";
 
 import styles from "./Footer.module.css";
 
-const Footer = () => {
-  return (
-    <footer>
-      <Container>
-        <div className={styles.footerContent}>
-          <NewsLetter />
-          <FooterLinks />
-        </div>
-      </Container>
-    </footer>
-  );
-};
+const Footer = () => (
+  <footer>
+    <Container isBorderThere={true}>
+      <div className={styles.footerContent}>
+        <NewsLetter />
+        <FooterLinks />
+      </div>
+    </Container>
+  </footer>
+);
 
 export default Footer;

@@ -29,7 +29,7 @@ const Signin: FC<ISingInProps> = ({
 }) => {
   return (
     <Form
-      hrefLink={"/auth/signup"}
+      hrefLink={"/auth/sign-up"}
       text="Don’t"
       hrefText="Sign Up"
       title="Sign in"

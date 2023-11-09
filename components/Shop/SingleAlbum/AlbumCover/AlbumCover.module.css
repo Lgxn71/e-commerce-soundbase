@@ -13,7 +13,7 @@
   color: white;
 
   position: absolute;
-  top: 30px;
+  top: 25px;
   left: 30px;
 }
 .image {
@@ -24,9 +24,22 @@
 
 .overlay span {
   padding: 5px 10px;
-  border: 1px solid #ffffff;
   margin-right: 10px;
+
+  border: 1px solid #ffffff;
   border-radius: 100px;
 
   background: rgba(0, 0, 0, 0.5);
+}
+@media (max-width: 435px) {
+  .image {
+    width: 100%;
+    height: 100%;
+
+    padding-bottom: 0;
+  }
+  .imageContainer .overlay {
+    top: 15px;
+    left: 16px;
+  }
 }

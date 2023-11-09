@@ -13,3 +13,8 @@
   margin-top: 20px;
   padding: 20px;
 }
+@media (max-width: 435px) {
+  .actions {
+    padding: 20px 15px;
+  }
+}

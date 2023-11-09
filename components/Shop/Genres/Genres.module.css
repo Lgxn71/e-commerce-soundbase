@@ -35,3 +35,18 @@
       )
       border-box;
 }
+@media (max-width: 435px) {
+  .genres {
+    overflow-x: scroll;
+
+    padding: 15px 16px;
+    gap: 5px;
+  }
+  .genres {
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox */
+  }
+  .genres:-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -37,7 +37,7 @@
   font-weight: 500;
   letter-spacing: -0.42px;
 }
-.details .albumDescirptipn {
+.details .albumDescription {
   max-width: 540px;
   width: 100%;
 
@@ -51,7 +51,7 @@
   color: #7e7a8d;
 }
 
-.details ul {
+.numbers {
   display: flex;
   gap: 30px;
   flex-direction: row;
@@ -70,6 +70,8 @@
   font-size: 12px;
   font-weight: 400;
   letter-spacing: -0.48px;
+
+  padding-bottom: 10px;
 }
 .detailNumber {
   font-size: 36px;
@@ -92,4 +94,41 @@
 }
 .highlight {
   color: white;
+}
+
+@media (max-width: 435px) {
+  .container {
+    padding: 0 16px 80px 16px;
+  }
+  .body {
+    flex-direction: column;
+    gap: 20px;
+
+    padding: 15px;
+  }
+
+  .image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .links {
+    padding-bottom: 20px;
+  }
+  .numbers {
+    padding-bottom: 0;
+  }
+  .albumDescription {
+    line-height: 24px;
+  }
+  .detailNumber {
+    font-size: 26px;
+    line-height: 30px;
+    letter-spacing: -1.04px;
+  }
 }

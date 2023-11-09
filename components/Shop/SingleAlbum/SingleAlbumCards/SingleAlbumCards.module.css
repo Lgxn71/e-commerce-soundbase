@@ -1,24 +1,3 @@
-.priceTitle {
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-
-  color: #4d5761;
-}
-
-.price {
-  font-family: var(--font-poppins);
-  font-weight: 700;
-  font-size: 20px;
-  text-transform: uppercase;
-  line-height: 30px;
-
-  color: #9978ff;
-}
-
 .cardContainer {
   width: 490px;
 
@@ -27,11 +6,26 @@
   gap: 30px;
 
   color: #fff;
-  font-weight: 400;
-  font-size: 14px;
-  font-size: 14px;
-  font-weight: 400;
+
+  font: 400 14px var(--font-poppins);
+
   letter-spacing: -0.42px;
+}
+.priceTitle {
+  line-height: 21px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+
+  color: #4d5761;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  line-height: 30px;
+
+  color: #9978ff;
 }
 
 .songsContainerBody {
@@ -43,4 +37,15 @@
 
 .songParagraph {
   padding-bottom: 5px;
+}
+@media (max-width: 435px) {
+  .cardContainer {
+    width: initial;
+  }
+  .cardContainer div {
+    width: 100%;
+  }
+  .songsContainerBody {
+    padding: 10px 15px;
+  }
 }

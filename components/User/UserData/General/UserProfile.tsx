@@ -1,4 +1,4 @@
-import { useState, useEffect, FC, ChangeEvent, FormEvent } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useSession } from "next-auth/react";
 
 import UserDataCard from "./UserDataCard";
@@ -14,11 +14,7 @@ import {
   IformValidation,
 } from "../../../../src/types/user";
 
-interface IUserProfile {
-  isLoading?: boolean;
-}
-
-const UserProfile: FC<IUserProfile> = ({ isLoading }) => {
+const UserProfile = ({ isLoading }: { isLoading?: boolean }) => {
   const session = useSession();
 
   const [userData, setUserData] = useState<IuserDataInputs>({
@@ -83,30 +79,27 @@ const UserProfile: FC<IUserProfile> = ({ isLoading }) => {
       if (
         data?.message === "Invalid input, max length is 32 characters" ||
         data?.message === "Empty field is invalid for name"
-      ) {
-        setFormValidation((prev) => ({
-          ...formValidation,
+      )
+        return setFormValidation((prev) => ({
+          ...prev,
           nameInput: { isError: true, errorMessage: data.message },
         }));
-      }
 
       if (
         data?.message === "Empty field is invalid for email" ||
         data?.message === "Invalid email input" ||
         data?.message === "User exist already"
-      ) {
-        setFormValidation((prev) => ({
-          ...formValidation,
+      )
+        return setFormValidation((prev) => ({
+          ...prev,
           emailInput: { isError: true, errorMessage: data.message },
         }));
-      }
 
-      if (data?.message === "Empty field is invalid for address") {
-        setFormValidation((prev) => ({
-          ...formValidation,
+      if (data?.message === "Empty field is invalid for address")
+        return setFormValidation((prev) => ({
+          ...prev,
           addressInput: { isError: true, errorMessage: data.message },
         }));
-      }
     }
   };
 

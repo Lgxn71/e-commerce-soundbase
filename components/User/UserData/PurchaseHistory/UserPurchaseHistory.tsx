@@ -1,4 +1,4 @@
-import { useState, useEffect, FC } from "react";
+import { useState, useEffect,  } from "react";
 
 import SingleOrderCard from "./Orders/SingleOrderCard";
 
@@ -8,14 +8,12 @@ import styles from "./UserPurchaseHistory.module.css";
 
 import { Order } from "../../../../src/types/db";
 
-interface IUserPurchaseHistoryProps {
-  isGeneral: boolean;
-  userId: string;
-}
-
-const UserPurchaseHistory: FC<IUserPurchaseHistoryProps> = ({
+const UserPurchaseHistory = ({
   isGeneral,
   userId,
+}: {
+  isGeneral: boolean;
+  userId: string;
 }) => {
   const [userOrders, setUserOrders] = useState<Order[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,9 +38,7 @@ const UserPurchaseHistory: FC<IUserPurchaseHistoryProps> = ({
     try {
       setIsLoading((prev) => true);
 
-      if (userOrders.length === 0) {
-        getUserOrders();
-      }
+      if (userOrders.length === 0) getUserOrders();
     } finally {
       const timeoutId = setTimeout(() => {
         setIsLoading((prev) => false);

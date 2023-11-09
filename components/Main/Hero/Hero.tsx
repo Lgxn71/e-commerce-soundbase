@@ -20,7 +20,7 @@ const Hero = () => (
         </p>
 
         <div className={styles.actions}>
-          <Link href="/auth/signin">
+          <Link href="/auth/sign-in">
             <Buttons.White>Get Started</Buttons.White>
           </Link>
 

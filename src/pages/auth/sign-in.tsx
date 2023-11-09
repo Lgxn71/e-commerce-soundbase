@@ -45,13 +45,16 @@ const SignInPage = () => {
       if (email.trim() === "")
         return setFormValidation((prev) => ({
           ...prev,
-          emailError: { isError: true, errorMessage: "Password field empty" },
+          emailError: { isError: true, errorMessage: "Email field empty" },
         }));
 
       if (password.trim() === "")
         return setFormValidation((prev) => ({
           ...prev,
-          passwordError: { isError: true, errorMessage: "Email field empty" },
+          passwordError: {
+            isError: true,
+            errorMessage: " Password field empty",
+          },
         }));
 
       const res = await signIn("credentials", {
@@ -61,22 +64,28 @@ const SignInPage = () => {
       });
 
       if (!res?.ok) {
-        if (res?.error === "User not found")
-          return setFormValidation((prev) => ({
+        if (res?.error === "User not found") {
+          setFormValidation((prev) => ({
             ...prev,
             emailError: { isError: true, errorMessage: res.error! },
           }));
+          return;
+        }
 
-        if (res?.error === "Invalid password")
-          return setFormValidation((prev) => ({
+        if (res?.error === "Invalid password") {
+          setFormValidation((prev) => ({
             ...prev,
             passwordError: { isError: true, errorMessage: res.error! },
           }));
+          return;
+        }
       }
 
       const [userId] = (await sendRequest("/api/auth/get-id-by-email", "POST", {
         email: email,
       })) as [{ _id: string }];
+
+      if (userId === undefined) return;
 
       router.push(`/user/${userId._id}`);
     } finally {

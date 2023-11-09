@@ -7,7 +7,7 @@ import Buttons from "../../components/UI/Buttons/Buttons";
 import styles from "../styles/404.module.css";
 const custom404Page = () => (
   <>
-    <PageTitle isCenter={true} title="404"></PageTitle>
+    <PageTitle isCenter={true} title="404" />
     <Container isBorderThere={true}>
       <div className={styles.body}>
         <h4>Oops, page not found</h4>

@@ -3,21 +3,21 @@ import { FC, MouseEventHandler } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 
-import { ICart } from "../CartAtom/cartAtom";
-import Buttons from "../../UI/Buttons/Buttons";
+import { ICart } from "../../CartAtom/cartAtom";
+import Buttons from "../../../UI/Buttons/Buttons";
 
-import sendRequest from "../../../helper/SendRequest";
+import sendRequest from "../../../../helper/SendRequest";
 
 import styles from "./PaymentDetails.module.css";
 
 interface IPaymentProps {
   cart: ICart;
-  onModalOpen: MouseEventHandler<HTMLButtonElement>;
+  onPopupOpen: MouseEventHandler<HTMLButtonElement>;
 }
 
 const shipping = 15;
 
-const PaymentDetails: FC<IPaymentProps> = ({ cart, onModalOpen }) => {
+const PaymentDetails: FC<IPaymentProps> = ({ cart, onPopupOpen }) => {
   const router = useRouter();
   const session = useSession();
 
@@ -84,7 +84,7 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onModalOpen }) => {
         <Buttons.White
           onClick={
             session.status === "unauthenticated"
-              ? onModalOpen
+              ? onPopupOpen
               : successPurchaseHandler
           }
         >

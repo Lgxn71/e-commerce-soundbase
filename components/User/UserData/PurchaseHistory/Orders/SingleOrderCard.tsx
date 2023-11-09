@@ -17,10 +17,6 @@ const SingleOrderCard: FC<ISingleOrderCardProps> = ({ order, isLoading }) => {
   if (isLoading)
     return (
       <div className={styles.card}>
-        <div className={styles.idContainer}>
-          <div className={`${styles.skeletonText} skeleton`} />
-          <div className={`${styles.skeletonText} skeleton`} />
-        </div>
         <div className={styles.detailsContainer}>
           <div className={`${styles.skeletonText} skeleton`} />
           <div className={`${styles.skeletonText} skeleton`} />
@@ -69,21 +65,24 @@ const SingleOrderCard: FC<ISingleOrderCardProps> = ({ order, isLoading }) => {
         )}
 
         <div onClick={showPopupHandler} className={styles.card}>
-          <div className={styles.idContainer}>
+          <div className={styles.col1}>
             <p className={styles.title}>Order Id</p>
             <p>{formattedId}</p>
           </div>
-          <div className={styles.detailsContainer}>
-            <p className={styles.title}>Quantity</p>
-            <p>{order.albums.length}</p>
-          </div>
-          <div className={styles.detailsContainer}>
-            <p className={styles.title}>Date</p>
-            <p>{formattedDate}</p>
-          </div>
-          <div className={styles.detailsContainer}>
-            <p className={styles.title}>Price</p>
-            <p>$ {orderSum + shipping}</p>
+
+          <div className={styles.col2}>
+            <div className={styles.detailsContainer}>
+              <p className={styles.title}>Quantity</p>
+              <p>{order.albums.length}</p>
+            </div>
+            <div className={styles.detailsContainer}>
+              <p className={styles.title}>Date</p>
+              <p>{formattedDate}</p>
+            </div>
+            <div className={styles.detailsContainer}>
+              <p className={styles.title}>Price</p>
+              <p>$ {orderSum + shipping}</p>
+            </div>
           </div>
         </div>
       </>

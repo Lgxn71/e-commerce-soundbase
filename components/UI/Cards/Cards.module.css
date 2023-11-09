@@ -2,13 +2,10 @@
   border: 1px solid #2a2b3a;
   border-radius: 10px;
   width: 420px;
-  margin: auto;
 
-  margin-top: 100px;
-  margin-bottom: 150px;
-  padding-top: 40px;
-  padding-left: 40px;
-  padding-right: 40px;
+  margin: 100px auto 150px auto;
+
+  padding: 40px 40px 0px 40px;
 
   text-align: center;
 }
@@ -21,7 +18,7 @@
   justify-content: space-between;
   align-items: center;
 
-  padding: 15px 20px;
+  padding: 15px 30px;
 
   border-radius: 10px 10px 0 0;
   border: 1px solid #2a2b3a;
@@ -34,4 +31,19 @@
   border-top: none;
 
   background-color: #000000;
+}
+@media (max-width: 435px) {
+  .card {
+    width: 305px;
+    margin: 30px auto 60px auto;
+    padding: 20px 16px;
+  }
+
+  .cardHeader {
+    width: 88%;
+    margin: auto;
+  }
+  .header {
+    padding: 10px 15px;
+  }
 }

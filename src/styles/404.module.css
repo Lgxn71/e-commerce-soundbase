@@ -1,10 +1,12 @@
 .body {
-  text-align: center;
-  max-width: 330px;
+  width: 320px;
+
   margin: auto;
+  padding: 100px 0 150px 0;
+
+  text-align: center;
 
   font-family: var(--font-poppins);
-  padding: 100px 0 150px 0;
 }
 
 .body h4 {
@@ -27,4 +29,11 @@
 
 .body button {
   padding: 20px 70px;
+}
+
+@media (max-width: 435px) {
+  .body {
+    padding: 20px 16px 60px 16px;
+    margin: auto;
+  }
 }

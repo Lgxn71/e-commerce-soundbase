@@ -1,8 +1,7 @@
 import { FC, ChangeEvent, FormEvent } from "react";
 
-import { inter } from "../../../../src/pages/_app";
-
 import Input from "../../../UI/Form/Input";
+import Buttons from "../../../UI/Buttons/Buttons";
 
 import styles from "./UserDataCard.module.css";
 
@@ -33,7 +32,7 @@ const UserDataCard: FC<IUserDataCard> = ({
   errorMessage,
   isLoading,
 }) => {
-  if (isLoading) {
+  if (isLoading)
     return (
       <form>
         <div className={styles.detailContainer}>
@@ -48,7 +47,6 @@ const UserDataCard: FC<IUserDataCard> = ({
         </div>
       </form>
     );
-  }
 
   return (
     <form onSubmit={onSubmit}>
@@ -67,7 +65,7 @@ const UserDataCard: FC<IUserDataCard> = ({
 
       <div className={styles.detailsBottom}>
         <p>{bottomText}</p>
-        <button className={`${styles.button} ${inter.className}`}>Save</button>
+        <Buttons.Gray>Save</Buttons.Gray>
       </div>
     </form>
   );

@@ -11,7 +11,7 @@ import WhyTrustUs from "../../components/Main/WhyTrustUs/WhyTrustUs";
 import FeaturedArtist from "../../components/Main/FeaturedArtist/FeaturedArtist";
 import DiscoverVinyls from "../../components/Main/Discover/Discover";
 
-export interface ArtistAlbumCombined {
+export interface ArtistsAlbumsCombined {
   albums: Record[];
   artists: Artist[];
 }
@@ -20,25 +20,27 @@ const Home = ({
   featuredAlbums,
   newArrivalAlbums,
   featuredArtist,
-}: InferGetStaticPropsType<typeof getStaticProps>) => (
-  <>
-    <Hero />
-    <Partner />
-    <AlbumList
-      albums={featuredAlbums.albums}
-      artists={featuredAlbums.artists}
-      title="Featured Album"
-    />
-    <FeaturedArtist featuredArtist={featuredArtist} />
-    <AlbumList
-      albums={newArrivalAlbums.albums}
-      artists={newArrivalAlbums.artists}
-      title="New Arrival"
-    />
-    <WhyTrustUs />
-    <DiscoverVinyls />
-  </>
-);
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  return (
+    <>
+      <Hero />
+      <Partner />
+      <AlbumList
+        albums={featuredAlbums.albums}
+        artists={featuredAlbums.artists}
+        title="Featured Album"
+      />
+      <FeaturedArtist featuredArtist={featuredArtist!} />
+      <AlbumList
+        albums={newArrivalAlbums.albums}
+        artists={newArrivalAlbums.artists}
+        title="New Arrival"
+      />
+      <WhyTrustUs />
+      <DiscoverVinyls />
+    </>
+  );
+};
 export const getStaticProps = (async () => {
   const client = await connectToClient();
   const db = client.db("soundbase");
@@ -104,7 +106,7 @@ export const getStaticProps = (async () => {
       ...featuredAlbumOfMonth,
       _id: featuredAlbumOfMonth?._id.toString(),
     },
-  };
+  } as { artist: Artist; album: Record };
 
   await client.close();
 

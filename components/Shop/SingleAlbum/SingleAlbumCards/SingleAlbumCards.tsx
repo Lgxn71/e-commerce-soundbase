@@ -5,13 +5,17 @@ import Actions from "./Actions/Actions";
 
 import styles from "./SingleAlbumCards.module.css";
 
-interface IAlbumCardsProps {
+interface ISingleAlbumCardsProps {
   songs: string[];
   price: number;
   onAddToCart: MouseEventHandler<HTMLButtonElement>;
 }
 
-const AlbumCards: FC<IAlbumCardsProps> = ({ songs, price, onAddToCart }) => {
+const SingleAlbumCards: FC<ISingleAlbumCardsProps> = ({
+  songs,
+  price,
+  onAddToCart,
+}) => {
   return (
     <div className={styles.cardContainer}>
       <Cards.WithHeader
@@ -31,6 +35,7 @@ const AlbumCards: FC<IAlbumCardsProps> = ({ songs, price, onAddToCart }) => {
           </ul>
         }
       />
+
       <Cards.WithHeader
         header={
           <>
@@ -38,13 +43,9 @@ const AlbumCards: FC<IAlbumCardsProps> = ({ songs, price, onAddToCart }) => {
             <p className={styles.price}>$ {price}</p>
           </>
         }
-        body={
-          <>
-            <Actions onAddToCart={onAddToCart} />
-          </>
-        }
+        body={<Actions onAddToCart={onAddToCart} />}
       />
     </div>
   );
 };
-export default AlbumCards;
+export default SingleAlbumCards;

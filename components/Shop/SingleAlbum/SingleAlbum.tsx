@@ -10,7 +10,7 @@ import { Artist, Record } from "../../../src/types/db";
 
 import AlbumCover from "./AlbumCover/AlbumCover";
 import AboutArist from "./AboutArtist/AboutArtist";
-import AlbumCards from "./SingleAlbumCards/SingleAlbumCards";
+import SingleAlbumCards from "./SingleAlbumCards/SingleAlbumCards";
 
 import Container from "../../UI/Container/Container";
 import Buttons from "../../UI/Buttons/Buttons";
@@ -51,7 +51,7 @@ const SingleAlbum: FC<ISingleAlbumProps> = ({
 
     localStorage.setItem("cart", JSON.stringify(cartModified));
 
-    setCart(cartModified);
+    setCart((prev) => cartModified);
   };
 
   return (
@@ -84,7 +84,7 @@ const SingleAlbum: FC<ISingleAlbumProps> = ({
               </div>
             </div>
 
-            <AlbumCards
+            <SingleAlbumCards
               songs={albumDetails.songs}
               price={albumDetails.price}
               onAddToCart={addToCartHandler}

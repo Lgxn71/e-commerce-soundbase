@@ -19,6 +19,7 @@
 .card {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   max-width: 1000px;
   width: 100%;
@@ -36,16 +37,24 @@
 
   cursor: pointer;
 }
+
 .title {
   color: #4d5761;
 }
-.idContainer {
+.col1 {
   width: 85px;
+}
 
-  margin-right: 592px;
+.col2 {
+  display: flex;
 }
 .detailsContainer {
   width: 85px;
   text-align: right;
   margin-left: 10px;
+}
+@media (max-width: 435px) {
+  .col2 {
+    display: block;
+  }
 }

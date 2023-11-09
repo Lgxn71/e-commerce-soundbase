@@ -1,0 +1,26 @@
+.card {
+  font-family: var(--font-poppins);
+  color: white;
+  max-width: 300px;
+}
+@media (max-width: 435px) {
+  .card {
+    margin: auto;
+    max-width: initial;
+    width: 393px;
+  }
+}
+@media (max-width: 375px) {
+  .card {
+    margin: auto;
+    max-width: initial;
+    width: 340px;
+  }
+}
+@media (max-width: 320px) {
+  .card {
+    margin: auto;
+    max-width: initial;
+    width: 288px;
+  }
+}

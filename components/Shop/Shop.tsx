@@ -69,7 +69,7 @@ const Shop: FC<ShopPageProps> = ({ recordsQuantity, albums, artists }) => {
 
   const changeFilterHandler: MouseEventHandler<HTMLLIElement> = (event) => {
     const target = event.target as HTMLElement;
-    if (target) setActiveFilter(target.innerText as filterParameters);
+    if (target) setActiveFilter((prev) => target.innerText as filterParameters);
   };
 
   return (

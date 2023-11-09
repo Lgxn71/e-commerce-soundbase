@@ -1,17 +1,18 @@
+import { MouseEventHandler } from "react";
+
 import Link from "next/link";
 
 import Buttons from "../../../../UI/Buttons/Buttons";
 
+import styles from "./Actions.module.css";
+
 import { inter } from "../../../../../src/pages/_app";
 
-import styles from "./Actions.module.css";
-import { FC, MouseEventHandler } from "react";
-
-interface IActionsProps {
+const Actions = ({
+  onAddToCart,
+}: {
   onAddToCart: MouseEventHandler<HTMLButtonElement>;
-}
-
-const Actions: FC<IActionsProps> = ({ onAddToCart }) => {
+}) => {
   return (
     <div className={`${inter.variable} ${styles.actions}`}>
       <Link href={`/cart`} className={styles.purchaseBtn}>

@@ -13,19 +13,18 @@
   margin: 20px;
   border-radius: 0.5rem;
 }
-.skeletonTextNoMargin {
-  width: 200px;
-  height: 14px;
-  border-radius: 0.5rem;
-}
 .skeletonInput {
-  margin-top: 10px;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin: 10px 0 20px 20px;
 
   width: 439px;
   height: 42px;
 
+  border-radius: 0.5rem;
+}
+
+.skeletonTextNoMargin {
+  width: 200px;
+  height: 14px;
   border-radius: 0.5rem;
 }
 .skeletonButton {
@@ -51,15 +50,14 @@
   padding-bottom: 10px;
 }
 .detailContainer label {
+  display: block;
+
   font: inherit;
 
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 20px 0 20px;
 }
 .detailContainer input {
-  margin-top: 10px;
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin: 10px 0 20px 20px;
 
   max-width: 460px;
 }
@@ -75,7 +73,6 @@
   border-top: none;
   border-radius: 0px 0px 10px 10px;
 }
-
 .detailsBottom p {
   font: 24px var(--font-poppins) 21px;
 
@@ -84,16 +81,40 @@
   color: #4d5761;
 }
 
-.button {
-  padding: 10px 20px;
-  border-radius: 4px;
-  border: 1px solid #2a2b3a;
+@media (max-width: 435px) {
+  .skeletonTextTitle {
+    margin: 15px;
+  }
+  .skeletonText {
+    margin: 15px;
+  }
+  .skeletonInput {
+    width: 90%;
+    margin: 10px 0 15px 15px;
+  }
+  .skeletonTextNoMargin {
+    width: 145px;
+  }
 
-  background: #141416;
+  .detailContainer {
+    width: initial;
+  }
+  .detailContainer h3 {
+    padding: 15px 15px 10px 15px;
+  }
+  .detailContainer label {
+    padding: 0 15px 0 15px;
+  }
+  .detailContainer input {
+    width: 90%;
+    margin: 10px 15px 15px 15px;
+  }
 
-  color: white;
-  font: 500 14px;
-  letter-spacing: -0.14px;
-
-  cursor: pointer;
+  .detailsBottom {
+    padding: 15px;
+  }
+  .detailsBottom p {
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
 }

@@ -4,7 +4,31 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Loader2 } from "lucide-react";
 
 import styles from "./Icons.module.css";
-const Icons = {
+type IconsOnClick = ({
+  onClick,
+}: {
+  onClick: MouseEventHandler<HTMLDivElement>;
+}) => JSX.Element;
+
+interface IIcons {
+  Search: (props: any) => JSX.Element;
+  Visa: (props: any) => JSX.Element;
+  ArrowLeft: () => JSX.Element;
+  Loader: () => JSX.Element;
+  WhiteCross: IconsOnClick;
+  Plus: IconsOnClick;
+  Minus: IconsOnClick;
+
+  BurgerMenu: ({
+    onClick,
+    isOpen,
+  }: {
+    onClick: MouseEventHandler<HTMLDivElement>;
+    isOpen: boolean;
+  }) => JSX.Element;
+}
+
+const Icons: IIcons = {
   Search: (props: any) => (
     <svg
       {...props}
@@ -85,7 +109,7 @@ const Icons = {
       </g>
     </svg>
   ),
-  WhiteCross: ({ onClick }: { onClick: MouseEventHandler<HTMLDivElement> }) => (
+  WhiteCross: ({ onClick }) => (
     <div onClick={onClick} className={styles.whiteCross}>
       <svg
         width="14"
@@ -111,5 +135,54 @@ const Icons = {
       absoluteStrokeWidth={true}
     />
   ),
+  Plus: ({ onClick }) => (
+    <div onClick={onClick} className={styles.plus}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="21"
+        viewBox="0 0 20 21"
+        fill="none"
+      >
+        <path
+          d="M10 8V13M12.5 10.5H7.5M17.5 10.5C17.5 11.4849 17.306 12.4602 16.9291 13.3701C16.5522 14.2801 15.9997 15.1069 15.3033 15.8033C14.6069 16.4997 13.7801 17.0522 12.8701 17.4291C11.9602 17.806 10.9849 18 10 18C9.01509 18 8.03982 17.806 7.12987 17.4291C6.21993 17.0522 5.39314 16.4997 4.6967 15.8033C4.00026 15.1069 3.44781 14.2801 3.0709 13.3701C2.69399 12.4602 2.5 11.4849 2.5 10.5C2.5 8.51088 3.29018 6.60322 4.6967 5.1967C6.10322 3.79018 8.01088 3 10 3C11.9891 3 13.8968 3.79018 15.3033 5.1967C16.7098 6.60322 17.5 8.51088 17.5 10.5Z"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  ),
+  Minus: ({ onClick }) => (
+    <div onClick={onClick} className={styles.minus}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="21"
+        viewBox="0 0 20 21"
+        fill="none"
+      >
+        <path
+          d="M12.5 10.5H7.5M17.5 10.5C17.5 11.4849 17.306 12.4602 16.9291 13.3701C16.5522 14.2801 15.9997 15.1069 15.3033 15.8033C14.6069 16.4997 13.7801 17.0522 12.8701 17.4291C11.9602 17.806 10.9849 18 10 18C9.01509 18 8.03982 17.806 7.12987 17.4291C6.21993 17.0522 5.39314 16.4997 4.6967 15.8033C4.00026 15.1069 3.44781 14.2801 3.0709 13.3701C2.69399 12.4602 2.5 11.4849 2.5 10.5C2.5 8.51088 3.29018 6.60322 4.6967 5.1967C6.10322 3.79018 8.01088 3 10 3C11.9891 3 13.8968 3.79018 15.3033 5.1967C16.7098 6.60322 17.5 8.51088 17.5 10.5Z"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  ),
+  BurgerMenu: ({ onClick, isOpen }) => {
+    const arrayMap = [1, 2, 3];
+
+    return (
+      <div onClick={onClick} className={styles.burgerMobile}>
+        <span className={`${styles.burgerLine} ${isOpen && styles.active}`} />
+        <span className={`${styles.burgerLine} ${isOpen && styles.active}`} />
+        <span className={`${styles.burgerLine} ${isOpen && styles.active}`} />
+      </div>
+    );
+  },
 };
 export default Icons;

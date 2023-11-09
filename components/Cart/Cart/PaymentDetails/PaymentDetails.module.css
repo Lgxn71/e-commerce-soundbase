@@ -2,7 +2,9 @@
   border: 1px solid #2a2b3a;
   border-radius: 10px;
   width: 420px;
-  height: 380px;
+
+  font-family: var(--font-poppins);
+  letter-spacing: -0.03em;
 }
 
 .pricingContainer {
@@ -16,11 +18,9 @@
 .list li {
   display: flex;
   justify-content: space-between;
-  font-family: var(--font-poppins);
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: -0.03em;
 
   color: #4d5761;
 
@@ -36,8 +36,8 @@
 }
 
 .actions {
-  padding: 0 40px;
-  font-family: var(--font-poppins);
+  padding: 0 40px 40px 40px;
+
   color: #4d5761;
 }
 .totalPrice {
@@ -49,7 +49,6 @@
   font-weight: 600;
   font-size: 24px;
   line-height: 28px;
-  letter-spacing: -0.03em;
 
   color: #ffffff;
 
@@ -67,7 +66,29 @@
   font-size: 12px;
   line-height: 18px;
   text-align: center;
-  letter-spacing: -0.03em;
 
   color: #4d5761;
+}
+
+@media (max-width: 435px) {
+  .payment {
+    width: 340px;
+    margin: auto;
+  }
+  .pricingContainer {
+    padding: 20px 15px;
+  }
+  .list li:last-child {
+    padding-bottom: 20px;
+  }
+  .totalPriceHigh {
+    padding-bottom: 20px;
+  }
+  .actions {
+    padding: 0 15px 20px 15px;
+  }
+  .actions button {
+    width: 100%;
+    padding: 20px;
+  }
 }

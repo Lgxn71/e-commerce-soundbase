@@ -61,3 +61,13 @@
 .greyColor {
   color: #4d5761;
 }
+
+@media (max-width: 435px) {
+  .popupBody {
+    padding: 20px 15px;
+  }
+  .actions {
+    width: 90%;
+    margin: auto;
+  }
+}

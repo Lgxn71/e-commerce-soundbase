@@ -21,9 +21,9 @@ const AlbumCardCover: FC<IAlbumCardCoverProps> = ({
         className={styles.image}
         src={imagePath}
         alt={`cover of ${albumName}`}
-        width={280}
-        height={280}
-        quality={90}
+        width={400}
+        height={400}
+        quality={95}
       />
 
       <div onClick={onAddToCart} className={styles.addToCartButton}>

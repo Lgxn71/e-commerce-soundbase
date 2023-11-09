@@ -34,7 +34,7 @@ export default function App({
 }: AppProps<AppPropsExtended>) {
   const router = useRouter();
 
-  const excludeLayoutPages = ["/auth/signin", "/auth/signup"];
+  const excludeLayoutPages = ["/auth/sign-in", "/auth/sign-up"];
   const isExcludedLayout = excludeLayoutPages.includes(router.asPath);
 
   return (

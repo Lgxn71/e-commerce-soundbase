@@ -1,8 +1,9 @@
 import Container from "../UI/Container/Container";
 import Image from "next/image";
 
+import AlbumsGrid from "../UI/AlbumsGrid/AlbumsGrid";
+
 import styles from "./Artist.module.css";
-import AlbumCard from "../UI/AlbumCard/AlbumCard";
 import { Artist, Record } from "../../src/types/db";
 
 const Artist = ({ artist, albums }: { artist: Artist; albums: Record[] }) => {
@@ -42,13 +43,7 @@ const Artist = ({ artist, albums }: { artist: Artist; albums: Record[] }) => {
       </Container>
 
       <Container>
-        <div className={styles.body}>
-          {albums.map((album) => (
-            <div key={album._id.toString()}>
-              <AlbumCard album={album} artist={artist} />
-            </div>
-          ))}
-        </div>
+        <AlbumsGrid singleArtist={artist} records={albums} />
       </Container>
     </>
   );

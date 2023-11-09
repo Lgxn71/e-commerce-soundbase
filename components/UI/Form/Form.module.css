@@ -61,30 +61,6 @@
   cursor: pointer;
 }
 
-.buttonSubmit {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  align-items: center;
-
-  width: 100%;
-  margin-top: 30px;
-  margin-bottom: 92px;
-  padding: 20px;
-
-  border-radius: 4px;
-  border: none;
-  color: #000000;
-
-  font-family: var(--font-poppins);
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.03em;
-
-  cursor: pointer;
-}
-
 .logoContainer {
   text-align: center;
   padding-bottom: 52px;
@@ -110,4 +86,28 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.body .buttonContainer {
+  margin: 40px 0 90px 0;
+}
+
+@media (max-width: 435px) {
+  .gradientContainer {
+    display: none;
+  }
+  .form {
+    position: initial;
+
+    padding: 60px 16px 20px 16px;
+  }
+  .body .buttonContainer {
+    margin: 40px 0 20px 0;
+  }
+
+  .header {
+    padding: 50px 0;
+  }
+  .logoContainer {
+    padding-bottom: 0px;
+  }
 }

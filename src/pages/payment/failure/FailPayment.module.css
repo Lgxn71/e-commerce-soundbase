@@ -25,3 +25,8 @@
 
   margin-bottom: 40px;
 }
+@media (max-width: 435px) {
+  .body button {
+    margin-bottom: 0;
+  }
+}

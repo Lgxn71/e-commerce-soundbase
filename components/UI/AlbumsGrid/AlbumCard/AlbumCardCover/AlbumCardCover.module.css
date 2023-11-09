@@ -7,6 +7,8 @@
 }
 
 .image {
+  width: 280px;
+  height: 280px;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -38,4 +40,23 @@
 .addToCartButton:active {
   border: 1px solid rgba(0, 0, 0, 0.1);
   background: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 435px) {
+  .image {
+    width: 390px;
+    height: 390px;
+  }
+}
+@media (max-width: 375px) {
+  .image {
+    width: 340px;
+    height: 340px;
+  }
+}
+@media (max-width: 320px) {
+  .image {
+    width: 290px;
+    height: 290px;
+  }
 }

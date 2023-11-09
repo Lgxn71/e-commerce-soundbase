@@ -75,3 +75,8 @@
   display: flex;
   gap: 20px 30px;
 }
+@media (max-width: 435px) {
+  .aboutArtist {
+    padding: 75px 16px 0px 16px;
+  }
+}

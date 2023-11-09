@@ -3,56 +3,34 @@ import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { cartState } from "../../../components/Cart/CartAtom/cartAtom";
 
-import Link from "next/link";
-
-import CartAlbum from "../../../components/Cart/CartAlbum/CartAlbum";
-import PaymentDetails from "../../../components/Cart/PaymentDetails/PaymentDetails";
 import SignInPopup from "../../../components/Cart/SignInPopup/SignInPopup";
+import CartEmpty from "../../../components/Cart/CartEmpty/CartEmpty";
+import Cart from "../../../components/Cart/Cart/Cart";
 
 import Container from "../../../components/UI/Container/Container";
-import Buttons from "../../../components/UI/Buttons/Buttons";
-
-import styles from "./Cart.module.css";
+import PageTitle from "../../../components/UI/PageTitle/PageTitle";
 
 const CartPage = () => {
   const cart = useRecoilValue(cartState);
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
 
-  const modalOpenHandler = () => setModalOpen((prev) => true);
+  const onPopupOpen = () => setModalOpen((prev) => true);
 
-  const modalCloseHandler = () => setModalOpen((prev) => false);
+  const onPopupClose = () => setModalOpen((prev) => false);
 
   return (
     <>
-      {isModalOpen && <SignInPopup onClose={modalCloseHandler} />}
+      {isModalOpen && <SignInPopup onClose={onPopupClose} />}
 
       <Container>
-        <h2 className={styles.title}>Cart</h2>
+        <PageTitle title="Cart" />
       </Container>
 
       <Container isBorderThere={true}>
         {cart.cartItems.length === 0 ? (
-          <div className={styles.cartEmpty}>
-            <h3>You haven{"'"}t added anything...yet!</h3>
-            <p>
-              Once you do, it{"'"}ll show up here so you can complete your
-              purchases.
-            </p>
-
-            <Link className={styles.button} href="/shop">
-              <Buttons.EmptyBlack>Discover Vinyls</Buttons.EmptyBlack>
-            </Link>
-          </div>
+          <CartEmpty />
         ) : (
-          <div className={styles.cartContainer}>
-            <div className={styles.cart}>
-              {cart.cartItems.map((album) => (
-                <CartAlbum key={album._id.toString()} album={album} />
-              ))}
-            </div>
-
-            <PaymentDetails cart={cart} onModalOpen={modalOpenHandler} />
-          </div>
+          <Cart onPopupOpen={onPopupOpen} cart={cart} />
         )}
       </Container>
     </>

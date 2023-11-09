@@ -1,10 +1,10 @@
 import { FC } from "react";
 
 import { useRecoilState } from "recoil";
-import { cartState } from "../../Cart/CartAtom/cartAtom";
-import { addItemToCart } from "../../Cart/cartUitls/cartUtils";
+import { cartState } from "../../../Cart/CartAtom/cartAtom";
+import { addItemToCart } from "../../../Cart/cartUitls/cartUtils";
 
-import { Artist, Record } from "../../../src/types/db";
+import { Artist, Record } from "../../../../src/types/db";
 
 import AlbumCardLoadingSkeleton from "./AlbumCardLoadingSkeleton/AlbumCardLoadingSkeleton";
 

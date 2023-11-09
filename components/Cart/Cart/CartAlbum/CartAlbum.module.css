@@ -13,12 +13,14 @@
 .header {
   display: flex;
   justify-content: space-between;
+
+  letter-spacing: -0.03em;
 }
+
 .header a {
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: -0.03em;
 
   color: #ffffff;
 
@@ -29,7 +31,6 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  letter-spacing: -0.03em;
 
   color: #ffffff;
 
@@ -40,7 +41,6 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
-  letter-spacing: -0.03em;
 
   color: #4d5761;
 
@@ -50,28 +50,22 @@
   color: #ffffff;
 }
 
-.bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.bottom p {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-
-  color: #4d5761;
-}
-.bottom .remove {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.03em;
-
-  color: #9978ff;
-
-  cursor: pointer;
+@media (max-width: 435px) {
+  .albumContainer {
+    margin: auto;
+  }
+  .albumContainer img {
+    margin-right: 20px;
+    width: 65px;
+    height: 65px;
+  }
+  .albumData {
+    width: 100%;
+  }
+  .header a {
+    padding-bottom: 5px;
+  }
+  .artist {
+    padding-bottom: 0;
+  }
 }

@@ -1,5 +1,8 @@
 import Link from "next/link";
+
 import styles from "./HeaderLinks.module.css";
+
+import { isLinkActive } from "../../../../helper/isLinkActive";
 
 const HeaderLinks = ({
   cartQuantityCounter,
@@ -8,13 +11,13 @@ const HeaderLinks = ({
   cartQuantityCounter: number;
   asPath: string;
 }) => {
-  const isLinkActive = (href: string) => asPath === href;
-
   return (
     <>
       <Link
         className={
-          isLinkActive("/shop") ? styles.activeLink : styles.unActiveLink
+          isLinkActive("/shop", asPath)
+            ? styles.activeLink
+            : styles.unActiveLink
         }
         key="shop"
         href="/shop"
@@ -24,7 +27,9 @@ const HeaderLinks = ({
 
       <Link
         className={
-          isLinkActive("/cart") ? styles.activeLink : styles.unActiveLink
+          isLinkActive("/cart", asPath)
+            ? styles.activeLink
+            : styles.unActiveLink
         }
         key="cart"
         href="/cart"

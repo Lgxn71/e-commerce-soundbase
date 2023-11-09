@@ -1,16 +1,14 @@
-
 .col1 {
   padding: 170px 0;
+  font-family: var(--font-poppins);
 }
 .logo {
-  font-family: var(--font-poppins);
   font-weight: 700;
   font-size: 24px;
   line-height: 36px;
   letter-spacing: -0.03em;
 }
 .copyright {
-  font-family: var(--font-poppins);
   font-weight: 400;
   font-size: 12px;
   line-height: 23px;
@@ -24,7 +22,6 @@
   max-width: 480px;
 }
 .newsLetterTitle {
-  font-family: var(--font-poppins);
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
@@ -69,7 +66,6 @@
   outline: none;
 }
 .form button {
-  font-family: var(--font-poppins);
   font-weight: 500;
   font-size: 14px;
   line-height: 21px;
@@ -77,15 +73,15 @@
   color: #ffffff;
   background-color: #9978ff;
 
-  border: none;
+  width: 85px;
   padding: 14px 16px;
+  border: none;
   border-radius: 4px;
 
   cursor: pointer;
 }
 
 .privacyContent {
-  font-family: var(--font-poppins);
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -96,4 +92,32 @@
 }
 .privacyPolicy {
   color: white;
+}
+
+@media (max-width: 430px) {
+  .col1 {
+    padding: 20px 16px 0 16px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .form {
+    padding: 20px;
+  }
+  .form input {
+    padding-left: 0;
+  }
+
+  .buttonMobile {
+    display: none;
+  }
+
+  .privacyContent {
+    padding-bottom: 30px;
+  }
+  .logo {
+    padding-bottom: 10px;
+  }
+  .copyright {
+    padding-bottom: 20px;
+  }
 }

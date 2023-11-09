@@ -41,7 +41,7 @@ const Signup: FC<ISignupProps> = ({
   ) : (
     <Form
       isLoading={isLoading}
-      hrefLink="/auth/signin"
+      hrefLink="/auth/sign-in"
       text="Already"
       hrefText="Sign In"
       title="Sign up"

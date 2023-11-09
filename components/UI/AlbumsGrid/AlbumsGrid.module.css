@@ -1,0 +1,14 @@
+.albums {
+  display: grid;
+  grid-gap: 30px 20px;
+  grid-template-columns: repeat(4, 1fr);
+
+  padding: 50px 0px 200px 0;
+}
+@media (max-width: 435px) {
+  .albums {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 16px 60px 16px;
+  }
+}

@@ -1,15 +1,14 @@
-import { FC, CSSProperties } from "react";
-
 import { poppins } from "../../../src/pages/_app";
 
 import styles from "./PageTitle.module.css";
 
-interface PageTitleProps {
-  isCenter?: boolean;
+const PageTitle = ({
+  title,
+  isCenter,
+}: {
   title: string;
-}
-
-const PageTitle: FC<PageTitleProps> = ({ title, isCenter }) => {
+  isCenter?: boolean;
+}) => {
   return (
     <h2
       style={isCenter ? { textAlign: "center" } : undefined}

@@ -1,9 +1,7 @@
 .partners {
   max-width: 800px;
   margin: auto;
-  padding-top: 100px;
-
-  padding-bottom: 100px;
+  padding: 100px 0;
 
   text-align: center;
   font-family: var(--font-poppins);
@@ -31,4 +29,22 @@
 
 .partners li {
   display: inline-block;
+}
+@media (max-width: 435px) {
+  .partners {
+    padding: 100px 16px;
+  }
+  .title {
+    padding-bottom: 40px;
+  }
+  .logos {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+  .partners ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
 }

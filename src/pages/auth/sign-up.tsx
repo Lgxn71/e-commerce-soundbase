@@ -100,7 +100,7 @@ const SignUpPage = () => {
         return;
       }
 
-      router.push("/auth/signin");
+      router.push("/auth/sign-in");
     } finally {
       setIsLoading((prev) => false);
     }

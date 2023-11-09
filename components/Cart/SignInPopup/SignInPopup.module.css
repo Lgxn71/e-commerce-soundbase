@@ -1,13 +1,14 @@
 .body {
   padding: 30px;
   text-align: center;
+
+  font-family: var(--font-poppins);
 }
 .body h3 {
   max-width: 240px;
   margin: auto;
   padding-bottom: 5px;
 
-  font-family: var(--font-poppins);
   font-weight: 600;
   font-size: 14px;
   line-height: 21px;
@@ -20,7 +21,6 @@
   margin: auto;
   padding-bottom: 40px;
 
-  font-family: var(--font-poppins);
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
@@ -31,7 +31,6 @@
 }
 .actions {
   max-width: 430px;
-  margin: auto;
   display: flex;
   gap: 30px;
   justify-content: space-between;
@@ -48,4 +47,22 @@
   line-height: 17px;
 
   letter-spacing: -0.01em;
+}
+
+@media (max-width: 435px) {
+  .body {
+    padding: 20px 15px;
+  }
+  .body p {
+    padding-bottom: 30px;
+  }
+
+  .actions {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+  .actions button {
+    width: 265px;
+    margin: auto;
+  }
 }

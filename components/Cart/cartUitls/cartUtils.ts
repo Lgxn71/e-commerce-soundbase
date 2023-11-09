@@ -11,6 +11,8 @@ export const addItemToCart = (cart: ICart, album: Record) => {
     const updatedItems = cart.cartItems.map((item) =>
       item._id === album._id ? { ...item, quantity: item.quantity! + 1 } : item
     );
+
+    // Make recount Quantity and Price function
     return { ...cart, cartItems: updatedItems };
   } else {
     return {
@@ -28,6 +30,7 @@ export const decreaseCartItem = (cart: ICart, album: Record) => {
       const updatedItems = cart.cartItems.filter(
         (item) => item._id !== album._id
       );
+
       return { ...cart, cartItems: [...updatedItems] };
     } else {
       const updatedItems = cart.cartItems.map((item) =>
@@ -35,7 +38,27 @@ export const decreaseCartItem = (cart: ICart, album: Record) => {
           ? { ...item, quantity: item.quantity! - 1 }
           : item
       );
+
       return { ...cart, cartItems: [...updatedItems] };
     }
+  }
+};
+export const removeCartItem = (cart: ICart, album: Record) => {
+  const filteredCart = cart.cartItems.filter((item) => item._id !== album._id);
+
+  if (filteredCart) {
+    let cartQuantityCounter = 0;
+    for (let i = 0; i < filteredCart.length; i++) {
+      cartQuantityCounter += filteredCart[i].quantity!;
+    }
+
+    let cartTotalPrice = 0;
+    const arrayOfPrices = filteredCart.map(
+      (item) => item.price * item.quantity!
+    );
+    for (let i = 0; i < arrayOfPrices.length; i++) {
+      cartTotalPrice += arrayOfPrices[i];
+    }
+    return { cartItems: filteredCart, cartQuantityCounter, cartTotalPrice };
   }
 };

@@ -17,15 +17,15 @@ export interface Record {
 
 export interface Artist {
   _id: ObjectId | string;
-  aboutArtist: string;
-  soldVinyls: string;
-  views: string;
+  aboutArtist: number;
+  soldVinyls: number;
+  views: number;
   artist: string;
   featured: string;
   imagePath: string;
 }
 
-export interface User extends U {
+export interface User extends NextAuthUser {
   _id: ObjectId | string;
   name: string;
   email: string;

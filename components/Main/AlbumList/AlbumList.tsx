@@ -3,7 +3,7 @@ import { FC } from "react";
 import ContainerTitle from "../ContainerTitle/ContainerTitle";
 
 import Container from "../../UI/Container/Container";
-import AlbumCard from "../../UI/AlbumCard/AlbumCard";
+import AlbumCard from "../../UI/AlbumsGrid/AlbumCard/AlbumCard";
 
 import styles from "./AlbumList.module.css";
 

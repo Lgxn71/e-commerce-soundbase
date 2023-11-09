@@ -10,9 +10,10 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+
   width: 120px;
 }
-.links li a {
+.links li p {
   font-family: var(--font-poppins);
   font-size: 14px;
   font-weight: 500;
@@ -23,9 +24,56 @@
 
   cursor: pointer;
 }
-.links li a:hover {
+.links li p:hover {
   color: white;
 }
 .links li .active {
   color: white;
+}
+
+@media (max-width: 435px) {
+  .links {
+    flex-direction: row;
+    align-items: center;
+
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 15px;
+
+    width: initial;
+  }
+  .links li p {
+    color: white;
+    padding: 10px 20px;
+  }
+
+  .links .active {
+    border: 1px solid transparent;
+    border-radius: 100px;
+
+    background: linear-gradient(#000000, #000000) padding-box,
+      conic-gradient(
+          from 180deg at 48.65% 48.28%,
+          #2e00cc -44.02deg,
+          #ffffff 38.45deg,
+          #ffffff 59.07deg,
+          #4213d2 69.37deg,
+          #704ae7 167.8deg,
+          #b8a6f5 224.67deg,
+          #2700ac 245deg,
+          #b8a6f5 263.63deg,
+          #2e00cc 315.98deg,
+          #ffffff 398.45deg
+        )
+        border-box;
+  }
+}
+@media (max-width: 304px) {
+  .links {
+    justify-content: space-between;
+  }
+  .links li p {
+    text-align: center;
+    padding: 5px 10px;
+  }
 }

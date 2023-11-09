@@ -1,17 +1,16 @@
-import styles from "./AboutArtist.module.css";
+import formatArtistNumber from "../../../../helper/formatArtistNumbers";
+
 import { Artist } from "../../../../src/types/db";
-import { FC } from "react";
 
-interface IAboutArtistProps {
-  artistDetails: Artist;
-}
+import styles from "./AboutArtist.module.css";
 
-const AboutArist: FC<IAboutArtistProps> = ({ artistDetails }) => {
+const AboutArist = ({ artistDetails }: { artistDetails: Artist }) => {
   const artistData = [
-    { title: "Sold Vinyls", text: artistDetails.soldVinyls },
-    { title: "Views", text: artistDetails.views },
-    { title: "Featured", text: artistDetails.featured },
+    { title: "Sold Vinyls", number: artistDetails.soldVinyls },
+    { title: "Views", number: artistDetails.views },
+    { title: "Featured", number: artistDetails.featured },
   ];
+  const artistDataFormated = formatArtistNumber(artistData);
 
   return (
     <div className={styles.container}>
@@ -20,10 +19,10 @@ const AboutArist: FC<IAboutArtistProps> = ({ artistDetails }) => {
       <p>{artistDetails.aboutArtist}</p>
 
       <ul className={styles.artistNumbers}>
-        {artistData.map((data) => (
-          <li key={data.text}>
+        {artistDataFormated.map((data) => (
+          <li key={data.title}>
             <h5>{data.title}</h5>
-            <p className={styles.nums}>{data.text}</p>
+            <p className={styles.nums}>+ {data.number}</p>
           </li>
         ))}
       </ul>

@@ -25,6 +25,7 @@
 .header h4 {
   max-width: 330px;
   margin: auto;
+  padding-bottom: 5px;
 
   font-family: var(--font-poppins);
   font-weight: 600;
@@ -104,12 +105,6 @@
 }
 
 .buttons button {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  text-align: center;
-  letter-spacing: -0.01em;
-
   width: 340px;
   padding: 20px 0;
 }
@@ -123,4 +118,13 @@
   color: white;
   text-align: center;
   font-size: 20px;
+}
+
+@media (max-width: 435px) {
+  .buttons {
+    margin-bottom: 0;
+  }
+  .buttons button {
+    width: 100%;
+  }
 }

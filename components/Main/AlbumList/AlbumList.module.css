@@ -1,7 +1,14 @@
-
 .albums {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   padding-bottom: 110px;
+}
+
+@media (max-width: 435px) {
+  .albums {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 60px;
+  }
 }

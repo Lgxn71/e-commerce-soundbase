@@ -25,10 +25,10 @@ const Navigation: FC<INavigationProps> = ({
       <aside>
         <ul className={styles.links}>
           <li>
-            <div className={`${styles.skeletonText} skeleton`}></div>
+            <div className={`${styles.skeletonText} skeleton`} />
           </li>
           <li>
-            <div className={`${styles.skeletonText} skeleton`}></div>
+            <div className={`${styles.skeletonText} skeleton`} />
           </li>
         </ul>
       </aside>
@@ -39,10 +39,10 @@ const Navigation: FC<INavigationProps> = ({
     <aside>
       <ul className={styles.links}>
         <li onClick={changeToGeneralHandler}>
-          <a className={`${isGeneral && styles.active}`}>General</a>
+          <p className={`${isGeneral && styles.active}`}>General</p>
         </li>
         <li onClick={changeToPurchaseHandler}>
-          <a className={`${!isGeneral && styles.active}`}>Purchase History</a>
+          <p className={`${!isGeneral && styles.active}`}>Purchase History</p>
         </li>
       </ul>
     </aside>

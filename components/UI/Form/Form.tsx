@@ -50,11 +50,13 @@ const Form: FC<IFormProps> = ({
           </div>
           {children}
 
-          <button className={styles.buttonSubmit}>
-            {isLoading && <Icons.Loader />}
+          <div className={styles.buttonContainer}>
+            <Buttons.WhiteForm>
+              {isLoading && <Icons.Loader />}
 
-            {title}
-          </button>
+              {title}
+            </Buttons.WhiteForm>
+          </div>
 
           <div className={styles.logoContainer}>
             <Logo />

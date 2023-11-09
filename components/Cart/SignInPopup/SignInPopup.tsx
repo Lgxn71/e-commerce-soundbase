@@ -9,11 +9,11 @@ import { inter } from "../../../src/pages/_app";
 
 import styles from "./SignInPopup.module.css";
 
-interface ISingInPopupProps {
+const SignInPopup = ({
+  onClose,
+}: {
   onClose: MouseEventHandler<HTMLDivElement | HTMLButtonElement>;
-}
-
-const SignInPopup: FC<ISingInPopupProps> = ({ onClose }) => {
+}) => {
   return (
     <Popup
       title="Sign In"
@@ -25,7 +25,7 @@ const SignInPopup: FC<ISingInPopupProps> = ({ onClose }) => {
           <div className={`${inter.variable}  ${styles.actions}`}>
             <Buttons.EmptyBlack onClick={onClose}>Cancel</Buttons.EmptyBlack>
 
-            <Link href="/auth/signin">
+            <Link href="/auth/sign-in">
               <Buttons.White>Sign In</Buttons.White>
             </Link>
           </div>

@@ -6,8 +6,8 @@
   font-family: var(--font-poppins);
   font-weight: 700;
   font-size: 40px;
-  line-height: 60px;
   letter-spacing: -0.03em;
+
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0.3) 0%,
@@ -24,25 +24,43 @@
   gap: 50px;
   display: flex;
   justify-content: space-between;
+
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  font-size: 14px;
 }
 .description h4 {
   font-family: var(--font-poppins);
-  font-weight: 400;
   font-size: 14px;
   line-height: 21px;
-  letter-spacing: -0.03em;
 
   color: #ffffff;
 }
 .description p {
   max-width: 360px;
   font-family: var(--font-poppins);
-  font-weight: 400;
-  font-size: 14px;
   line-height: 28px;
-  letter-spacing: -0.03em;
 
   color: #4d5761;
 
   padding-bottom: 130px;
+}
+
+@media (max-width: 435px) {
+  .title {
+    padding: 80px 16px;
+    font-size: 30px;
+
+    letter-spacing: -0.9px;
+  }
+  .description {
+    flex-direction: column;
+    justify-content: initial;
+    gap: 50px;
+
+    padding: 0 16px 80px 16px;
+  }
+  .description p {
+    padding-bottom: 0;
+  }
 }

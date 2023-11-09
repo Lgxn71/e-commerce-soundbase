@@ -1,0 +1,33 @@
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+
+  color: #4d5761;
+}
+.actions {
+  display: flex;
+}
+.quantityCounter {
+  padding-left: 3px;
+  padding-right: 10px;
+  color: white;
+}
+.bottom .remove {
+  color: #9978ff;
+
+  cursor: pointer;
+}
+@media (max-width: 435px) {
+  .bottom {
+    gap: 65px;
+  }
+}

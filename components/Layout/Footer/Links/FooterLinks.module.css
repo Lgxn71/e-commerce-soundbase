@@ -1,17 +1,18 @@
 .col2 {
-  width: 310px;
-  padding: 170px 0;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
-}
+  justify-content: space-evenly;
 
-.title {
+  padding: 170px 0;
+
   font-family: var(--font-poppins);
   font-weight: 400;
   font-size: 14px;
-  line-height: 21px;
   letter-spacing: -0.03em;
+}
 
+.title {
+  line-height: 21px;
   color: #ffffff;
 
   padding-bottom: 15px;
@@ -19,13 +20,16 @@
 .link {
   padding-bottom: 15px;
 }
-
 .link a {
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  font-size: 14px;
   line-height: 23px;
-  letter-spacing: -0.03em;
-
   color: #4d5761;
+}
+@media (max-width: 435px) {
+  .col2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px 30px;
+
+    padding: 80px 16px 20px 16px;
+  }
 }

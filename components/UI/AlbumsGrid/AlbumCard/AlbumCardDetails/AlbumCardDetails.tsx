@@ -27,7 +27,7 @@ const AlbumCardDetails: FC<IAlbumCardDetailsProps> = memo(
         </Link>
 
         <Link href={`/artist/${artistId}`} className={styles.artist}>
-          album by <span>{artistName}</span>
+          Album by <span>{artistName}</span>
         </Link>
 
         <div className={styles.details}>

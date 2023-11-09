@@ -11,36 +11,18 @@
   margin-top: 70px;
 }
 
-.col1 h4 {
-  font-family: var(--font-poppins);
-  font-weight: 500;
+.col2 {
+  font-weight: 400;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: -0.03em;
 
-  color: #ffffff;
-}
-.col1 p {
-  font-weight: 400;
-  font-size: 14px;
-  font-family: var(--font-poppins);
-  line-height: 28px;
-  letter-spacing: -0.03em;
-
-  color: #4d5761;
-
-  max-width: 630px;
-}
-
-.col2 {
   margin-bottom: 150px;
 }
 .col2 h3 {
-  font-family: var(--font-poppins);
   font-weight: 700;
   font-size: 24px;
   line-height: 36px;
-  letter-spacing: -0.03em;
 
   color: #ffffff;
 
@@ -55,14 +37,6 @@
   margin-bottom: 30px;
 }
 
-.col2 {
-  font-family: var(--font-poppins);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 21px;
-  letter-spacing: -0.03em;
-}
-
 .grey {
   color: #4d5761;
 }
@@ -74,4 +48,30 @@
 }
 .artistName:active {
   color: #4716df;
+}
+
+@media (max-width: 435px) {
+  .singleAlbumContent {
+    padding: 75px 16px 60px 16px;
+  }
+  .albumBody {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+  }
+  .col1 {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .col2 {
+    line-height: normal;
+    letter-spacing: -0.42px;
+
+    margin-bottom: 0;
+  }
+  .col2 h3 {
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: -0.54px;
+  }
 }

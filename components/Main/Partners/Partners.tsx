@@ -16,7 +16,7 @@ const Partner = () => {
           records.
         </h3>
 
-        <div>
+        <div className={styles.logos}>
           <ul>
             {mapLogos1.map((logo) => (
               <li key={logo}>
@@ -24,7 +24,6 @@ const Partner = () => {
               </li>
             ))}
           </ul>
-
           <ul>
             {mapLogos2.map((logo) => (
               <li key={logo}>

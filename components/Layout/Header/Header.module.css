@@ -35,7 +35,6 @@
 }
 
 .logo {
-  font-family: var(--font-poppins);
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -55,7 +54,29 @@
   align-items: center;
   justify-content: space-between;
 }
-
 .actions button {
   margin-right: 30px;
+}
+
+@media (max-width: 435px) {
+  .header {
+    padding: 11px 16px;
+    border-radius: 0px;
+    border-bottom: 1px solid #3d3e51;
+    background: #000;
+  }
+  .logo {
+    font-size: 22px;
+    letter-spacing: -0.66px;
+  }
+
+  .navLinks {
+    display: none;
+  }
+  .links {
+    display: none;
+  }
+  .actions {
+    display: none;
+  }
 }

@@ -16,11 +16,7 @@ export interface SingeAlbumPageProps {
 const SingeAlbumPage: FC<SingeAlbumPageProps> = ({
   singleAlbum,
   artistData,
-}) => {
-  return <SingleAlbum artistDetails={artistData} albumDetails={singleAlbum} />;
-};
-
-export default SingeAlbumPage;
+}) => <SingleAlbum artistDetails={artistData} albumDetails={singleAlbum} />;
 
 export const getStaticProps = (async ({ params }) => {
   const client = await connectToClient();
@@ -32,21 +28,19 @@ export const getStaticProps = (async ({ params }) => {
   let currentAlbum;
   let artistData;
 
-  if (params) {
+  if (params)
     currentAlbum = await collectionRecords.findOne({
       _id: new ObjectId(params._id?.toString()),
     });
-  }
 
-  if (currentAlbum) {
+  if (currentAlbum)
     artistData = await collectionArtist.findOne({
       artist: currentAlbum.artist,
     });
-  }
 
   await client.close();
 
-  if (currentAlbum && artistData) {
+  if (currentAlbum && artistData)
     return {
       props: {
         singleAlbum: { ...currentAlbum, _id: currentAlbum._id.toString() },
@@ -54,7 +48,7 @@ export const getStaticProps = (async ({ params }) => {
       },
       revalidate: 50000,
     };
-  }
+
   return {
     props: {},
   };
@@ -77,3 +71,5 @@ export const getStaticPaths = (async () => {
     fallback: false,
   };
 }) satisfies GetStaticPaths;
+
+export default SingeAlbumPage;

@@ -3,8 +3,6 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.42px;
-
-  margin-bottom: 5px;
 }
 .artist {
   color: #4d5761;
@@ -23,7 +21,6 @@
 }
 
 .details {
-  max-width: 280px;
   display: flex;
   justify-content: space-between;
   align-items: center;

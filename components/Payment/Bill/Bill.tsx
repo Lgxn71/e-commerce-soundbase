@@ -142,7 +142,7 @@ const Bill = () => {
 
             <div className={styles.buttons}>
               <Link href={`/user/${session.data?.user?.id}`}>
-                <Buttons.EmptyBlack>Visit Purchase History</Buttons.EmptyBlack>
+                <Buttons.White>Visit Purchase History</Buttons.White>
               </Link>
 
               <Link href="/shop">

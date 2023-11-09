@@ -12,7 +12,6 @@ import PageTitle from "../../../../components/UI/PageTitle/PageTitle";
 import { poppins } from "../../_app";
 
 import styles from "./User.module.css";
-
 const UserPage = () => {
   const router = useRouter();
   const session = useSession();
@@ -21,7 +20,7 @@ const UserPage = () => {
 
   if (session.status === "unauthenticated") {
     setTimeout(() => {
-      router.push("/auth/signin");
+      router.push("/auth/sign-in");
     }, 1500);
 
     const pStyles = { color: "white", textAligh: "center", margin: "100px" };
@@ -36,7 +35,8 @@ const UserPage = () => {
       </Container>
     );
   }
-  if (session.status === "loading") {
+
+  if (session.status === "loading")
     return (
       <>
         <Container>
@@ -52,7 +52,6 @@ const UserPage = () => {
         </Container>
       </>
     );
-  }
 
   if (session.data)
     return (

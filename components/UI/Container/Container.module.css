@@ -10,3 +10,14 @@
   background: transparent;
   border-image: linear-gradient(90deg, #ffffff0f, #ffffff33, #ffffff0f) 1;
 }
+@media (max-width: 435px) {
+  .container {
+    max-width: 430px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    max-width: 320px;
+  }
+}

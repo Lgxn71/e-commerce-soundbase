@@ -9,3 +9,15 @@
   text-align: center;
   font: 14px var(--font-poppins);
 }
+
+@media (max-width: 435px) {
+  .body {
+    padding: 20px 16px 0 16px;
+    margin-bottom: 60px;
+  }
+  .noOrders {
+    padding-top: 50px;
+    width: 300px;
+    margin: auto;
+  }
+}
