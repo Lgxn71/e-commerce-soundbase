@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import SingleOrderCard from "./Orders/SingleOrderCard";
 
-import sendRequest from "../../../../helper/SendRequest";
+import { sendRequest } from "../../../../helper/util";
 
 import styles from "./UserPurchaseHistory.module.css";
 
@@ -42,7 +42,7 @@ const UserPurchaseHistory = ({
     } finally {
       const timeoutId = setTimeout(() => {
         setIsLoading((prev) => false);
-      }, 1500);
+      }, 2500);
 
       return () => clearTimeout(timeoutId);
     }

@@ -4,9 +4,9 @@ import Link from "next/link";
 import CartAlbumActions from "./CartAlbumActions/CartAlbumActions";
 import styles from "./CartAlbum.module.css";
 
-import { Record } from "../../../../types/db";
+import { Album } from "../../../../types/db";
 
-const CartAlbum = ({ album }: { album: Record }) => {
+const CartAlbum = ({ album }: { album: Album }) => {
   return (
     <div className={styles.albumContainer}>
       <Image

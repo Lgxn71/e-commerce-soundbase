@@ -12,19 +12,20 @@ const Input: FC<InputProps> = ({
   isError,
   errorMessage,
   onChangeInput,
+  value,
+  name,
   ...props
-}) => {
-  return (
-    <>
-      <input
-        {...props}
-        className={`${styles.input} 
+}) => (
+  <>
+    <input
+      {...props}
+      name={name}
+      value={value}
+      className={`${styles.input} 
            ${isError ? styles.isError : styles.noErrorInput}`}
-        onChange={onChangeInput}
-      />
-      {isError && <p className={styles.errorMessage}>{errorMessage}</p>}
-    </>
-  );
-};
-
+      onChange={onChangeInput}
+    />
+    {isError && <p className={styles.errorMessage}>{errorMessage}</p>}
+  </>
+);
 export default Input;

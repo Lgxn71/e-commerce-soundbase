@@ -44,6 +44,7 @@ const Signin: FC<ISingInProps> = ({
         placeholder="Enter your email address"
         type="email"
         name="email"
+        required
       />
 
       <Input
@@ -54,6 +55,7 @@ const Signin: FC<ISingInProps> = ({
         type="password"
         name="password"
         placeholder="Enter your password"
+        required
       />
     </Form>
   );

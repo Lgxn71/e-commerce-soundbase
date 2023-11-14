@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from "next";
 
 import { ObjectId } from "mongodb";
 import connectToClient from "../../../database/ConnectClient";
-import { Artist as IArtist, Record } from "../../../types/db";
+import { Album, Artist as IArtist } from "../../../types/db";
 
 import Artist from "../../../components/Artist/Artist";
 
@@ -19,7 +19,7 @@ export const getStaticProps = (async ({ params }) => {
   const client = await connectToClient();
   const db = client.db("soundbase");
 
-  const collectionRecords = db.collection<Record>("vinylRecords");
+  const collectionRecords = db.collection<Album>("vinylRecords");
   const collectionArtist = db.collection<IArtist>("artists");
 
   let currentArtist;

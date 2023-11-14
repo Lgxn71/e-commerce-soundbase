@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import styles from "./HeaderLinks.module.css";
 
-import { isLinkActive } from "../../../../helper/isLinkActive";
+import { isLinkActive } from "../../../../helper/util";
 
 const HeaderLinks = ({
   cartQuantityCounter,

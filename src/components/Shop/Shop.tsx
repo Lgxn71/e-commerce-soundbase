@@ -7,7 +7,7 @@ import ShopHeader from "./ShopHeader/ShopHeader";
 import Genres from "./Genres/Genres";
 import ShopBody from "./ShopBody/ShopBody";
 
-import sendRequest from "../../helper/SendRequest";
+import { sendRequest } from "../../helper/util";
 
 export enum filterParameters {
   All = "All",
@@ -59,9 +59,9 @@ const Shop: FC<ShopPageProps> = ({ recordsQuantity, albums, artists }) => {
         );
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading((prev) => false);
       }
-
-      setIsLoading((prev) => false);
     };
 
     activeFilterHandler();

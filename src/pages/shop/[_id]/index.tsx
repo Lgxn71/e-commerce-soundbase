@@ -4,12 +4,12 @@ import { GetStaticProps, GetStaticPaths } from "next";
 
 import { ObjectId } from "mongodb";
 import connectToClient from "../../../database/ConnectClient";
-import { Artist, Record } from "../../../types/db";
+import { Album, Artist } from "../../../types/db";
 
 import SingleAlbum from "../../../components/Shop/SingleAlbum/SingleAlbum";
 
 export interface SingeAlbumPageProps {
-  singleAlbum: Record;
+  singleAlbum: Album;
   artistData: Artist;
 }
 
@@ -22,7 +22,7 @@ export const getStaticProps = (async ({ params }) => {
   const client = await connectToClient();
   const db = client.db("soundbase");
 
-  const collectionRecords = db.collection<Record>("vinylRecords");
+  const collectionRecords = db.collection<Album>("vinylRecords");
   const collectionArtist = db.collection<Artist>("artists");
 
   let currentAlbum;
@@ -58,7 +58,7 @@ export const getStaticPaths = (async () => {
   const client = await connectToClient();
   const db = client.db("soundbase");
 
-  const collectionRecords = db.collection<Record>("vinylRecords");
+  const collectionRecords = db.collection<Album>("vinylRecords");
   const allAlbums = await collectionRecords.find().toArray();
 
   await client.close();

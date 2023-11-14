@@ -5,9 +5,12 @@ import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 
 import Signin from "../../components/Auth/Signin";
-import sendRequest from "../../helper/SendRequest";
+
+import { sendRequest } from "../../helper/util";
 
 import errorInitial from "../../sharedContent/errorInitial/errorInitial";
+
+import signInFormValidation from "../../helper/validations/signInFormValidation";
 
 const SignInPage = () => {
   const router = useRouter();
@@ -42,24 +45,15 @@ const SignInPage = () => {
         passwordError: errorInitial,
       }));
 
-      if (email.trim() === "")
-        return setFormValidation((prev) => ({
-          ...prev,
-          emailError: { isError: true, errorMessage: "Email field empty" },
-        }));
-
-      if (password.trim() === "")
-        return setFormValidation((prev) => ({
-          ...prev,
-          passwordError: {
-            isError: true,
-            errorMessage: " Password field empty",
-          },
-        }));
+      const validatedData = signInFormValidation(
+        { email: email, password: password },
+        setFormValidation
+      );
+      if (validatedData === undefined) return;
 
       const res = await signIn("credentials", {
-        email: email,
-        password: password,
+        email: validatedData?.email,
+        password: validatedData?.password,
         redirect: false,
       });
 

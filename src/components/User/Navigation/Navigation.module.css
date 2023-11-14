@@ -68,6 +68,19 @@
         border-box;
   }
 }
+@media (max-width: 435px) {
+  .skeletonText {
+    width: 80px;
+    height: 40px;
+    margin-bottom: 0;
+    border-radius: 100px;
+  }
+  .links {
+    border-bottom: 1px solid;
+    background: transparent;
+    border-image: linear-gradient(90deg, #ffffff0f, #ffffff33, #ffffff0f) 1;
+  }
+}
 @media (max-width: 304px) {
   .links {
     justify-content: space-between;

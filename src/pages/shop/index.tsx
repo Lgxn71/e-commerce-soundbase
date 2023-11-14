@@ -2,27 +2,21 @@ import { FC } from "react";
 
 import { GetStaticProps } from "next";
 
-import { Artist, Record } from "../../types/db";
+import { Album, Artist } from "../../types/db";
 
-import sendRequest from "../../helper/SendRequest";
+import { sendRequest } from "../../helper/util";
 
 import Shop from "../../components/Shop/Shop";
 
 export interface ShopPageProps {
   recordsQuantity: number;
-  albums: Record[];
+  albums: Album[];
   artists: Artist[];
 }
 
-const ShopPage: FC<ShopPageProps> = ({
-  recordsQuantity = 1,
-  albums = [],
-  artists = [],
-}) => {
-  return (
-    <Shop recordsQuantity={recordsQuantity} albums={albums} artists={artists} />
-  );
-};
+const ShopPage: FC<ShopPageProps> = ({ recordsQuantity, albums, artists }) => (
+  <Shop recordsQuantity={recordsQuantity} albums={albums} artists={artists} />
+);
 
 export default ShopPage;
 

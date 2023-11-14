@@ -1,7 +1,7 @@
 import { User as NextAuthUser } from "next-auth/core";
 import type { ObjectId } from "mongodb";
 
-export interface Record {
+export interface Album {
   _id: ObjectId | string;
   artist: string;
   albumName: string;
@@ -35,7 +35,7 @@ export interface User extends NextAuthUser {
 }
 export interface Order {
   orderId: string;
-  albums: Record[];
+  albums: Album[];
   date: Date;
   isOpen?: boolean;
 }

@@ -28,7 +28,6 @@ const Header = () => {
   const [cart, setCart] = useRecoilState(cartState);
   const [isMobileDropdownOpen, setIsMobileDropdownOpen] =
     useState<boolean>(false);
-
   const { asPath } = useRouter();
 
   const session = useSession();

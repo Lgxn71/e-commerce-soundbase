@@ -1,7 +1,7 @@
 import { FC } from "react";
 import AlbumCard from "./AlbumCard/AlbumCard";
 
-import { Artist, Record } from "../../../types/db";
+import { Artist, Album } from "../../../types/db";
 import { filterParameters } from "../../Shop/Shop";
 import { IalbumData } from "../../../types/shop";
 
@@ -10,7 +10,7 @@ import styles from "./AlbumsGrid.module.css";
 interface IAlbumGridProps {
   recordsFiltered?: IalbumData;
   filter?: filterParameters;
-  records?: Record[];
+  albums?: Album[];
   artists?: Artist[];
   singleArtist?: Artist;
   isLoading?: boolean;
@@ -20,7 +20,7 @@ interface IAlbumGridProps {
 const AlbumsGrid: FC<IAlbumGridProps> = ({
   recordsFiltered,
   filter,
-  records,
+  albums,
   artists,
   singleArtist,
   isLoading,
@@ -38,14 +38,14 @@ const AlbumsGrid: FC<IAlbumGridProps> = ({
   if (filter && recordsFiltered && artists) {
     return (
       <ul className={styles.albums}>
-        {recordsFiltered[filter].albums.map((record) => {
+        {recordsFiltered[filter].albums.map((album) => {
           for (let i = 0; i < artists.length; i++) {
-            if (artists[i].artist === record.artist) {
+            if (artists[i].artist === album.artist) {
               return (
                 <AlbumCard
-                  key={record._id.toString()}
+                  key={album._id.toString()}
                   isLoading={isLoading}
-                  album={record}
+                  album={album}
                   artist={artists[i]}
                 />
               );
@@ -55,10 +55,10 @@ const AlbumsGrid: FC<IAlbumGridProps> = ({
       </ul>
     );
   }
-  if (singleArtist && records)
+  if (singleArtist && albums)
     return (
       <ul className={styles.albums}>
-        {records.map((album) => (
+        {albums.map((album) => (
           <AlbumCard
             key={album._id.toString()}
             album={album}
@@ -68,16 +68,16 @@ const AlbumsGrid: FC<IAlbumGridProps> = ({
       </ul>
     );
 
-  if (records && artists)
+  if (albums && artists)
     return (
       <ul className={styles.albums}>
-        {records.map((record) => {
+        {albums.map((album) => {
           for (let i = 0; i < artists.length; i++) {
-            if (artists[i]!.artist === record.artist)
+            if (artists[i]!.artist === album.artist)
               return (
                 <AlbumCard
-                  key={record._id.toString()}
-                  album={record}
+                  key={album._id.toString()}
+                  album={album}
                   artist={artists[i]!}
                 />
               );

@@ -9,7 +9,7 @@ import {
 
 import Link from "next/link";
 
-import { Artist, Record } from "../../../types/db";
+import { Artist, Album } from "../../../types/db";
 
 import AlbumCover from "./AlbumCover/AlbumCover";
 import AboutArist from "./AboutArtist/AboutArtist";
@@ -21,7 +21,7 @@ import Buttons from "../../UI/Buttons/Buttons";
 import styles from "./SingleAlbum.module.css";
 
 interface ISingleAlbumProps {
-  albumDetails: Record;
+  albumDetails: Album;
   artistDetails: Artist;
 }
 

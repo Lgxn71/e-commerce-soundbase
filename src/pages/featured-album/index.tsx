@@ -6,7 +6,7 @@ import AlbumsGrid from "../../components/UI/AlbumsGrid/AlbumsGrid";
 
 import connectToClient from "../../database/ConnectClient";
 import { ArtistsAlbumsCombined } from "..";
-import { Artist, Record } from "../../types/db";
+import { Artist, Album } from "../../types/db";
 
 const FeaturedAlbumsPage: FC<ArtistsAlbumsCombined> = ({ albums, artists }) => (
   <>
@@ -15,7 +15,7 @@ const FeaturedAlbumsPage: FC<ArtistsAlbumsCombined> = ({ albums, artists }) => (
     </Container>
 
     <Container isBorderThere={true}>
-      <AlbumsGrid records={albums} artists={artists} />
+      <AlbumsGrid albums={albums} artists={artists} />
     </Container>
   </>
 );
@@ -24,7 +24,7 @@ export const getStaticProps = async () => {
   const client = await connectToClient();
   const db = client.db("soundbase");
 
-  const collectonRecords = db.collection<Record>("vinylRecords");
+  const collectonRecords = db.collection<Album>("vinylRecords");
   const collectionArtists = db.collection<Artist>("artists");
 
   const recordsDB = await collectonRecords.find({ isFeatured: true }).toArray();
@@ -49,7 +49,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      records: recordsParsed,
+      albums: recordsParsed,
       artists: artistsDB,
     },
   };

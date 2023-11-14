@@ -1,7 +1,7 @@
 import { FC, ChangeEvent, FormEvent } from "react";
 
-import Input from "../../../UI/Form/Input";
-import Buttons from "../../../UI/Buttons/Buttons";
+import Input from "../../../../UI/Form/Input";
+import Buttons from "../../../../UI/Buttons/Buttons";
 
 import styles from "./UserDataCard.module.css";
 

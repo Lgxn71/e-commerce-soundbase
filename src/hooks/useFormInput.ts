@@ -5,7 +5,6 @@ const useFormInput = (formState: {}) => {
 
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
     setUser((prev) => ({ ...user, [name]: value }));
   };
 

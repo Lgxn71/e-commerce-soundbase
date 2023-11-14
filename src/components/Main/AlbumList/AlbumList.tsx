@@ -7,11 +7,11 @@ import AlbumCard from "../../UI/AlbumsGrid/AlbumCard/AlbumCard";
 
 import styles from "./AlbumList.module.css";
 
-import { Record, Artist } from "../../../types/db";
+import { Album, Artist } from "../../../types/db";
 
 interface IAlbumListProps {
   title: string;
-  albums: Record[];
+  albums: Album[];
   artists: Artist[];
 }
 

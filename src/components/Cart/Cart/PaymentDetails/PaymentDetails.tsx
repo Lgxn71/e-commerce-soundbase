@@ -6,10 +6,10 @@ import { useSession } from "next-auth/react";
 import { ICart } from "../../CartAtom/cartAtom";
 import Buttons from "../../../UI/Buttons/Buttons";
 
-import sendRequest from "../../../../helper/SendRequest";
+import { sendRequest } from "../../../../helper/util";
 
 import styles from "./PaymentDetails.module.css";
-
+import { z } from "zod";
 interface IPaymentProps {
   cart: ICart;
   onPopupOpen: MouseEventHandler<HTMLButtonElement>;
@@ -23,15 +23,15 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onPopupOpen }) => {
 
   const successPurchaseHandler = async () => {
     const cartLocalStorage = {
-      cartQuantityCounter: cart.cartItems.length,
+      cartQuantityCounter: cart.cartQuantityCounter,
       cartTotalPrice: cart.cartTotalPrice,
     };
     localStorage.setItem("cartDataBill", JSON.stringify(cartLocalStorage));
 
-    let paymentData;
+    let stripeCheckourSessionUrl;
     let response;
     if (session.data) {
-      const [data, res] = (await sendRequest(
+      const [checkoutSessionUrl, res] = (await sendRequest(
         "/api/payment/checkout_session",
         "POST",
         {
@@ -40,7 +40,12 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onPopupOpen }) => {
           id: session.data.user.id,
         }
       )) as [{ url: string }, Response];
-      paymentData = data;
+      const urlParsed = z.string().url().safeParse(checkoutSessionUrl);
+      if (!urlParsed.success) {
+        console.log("Something went wrong");
+        return;
+      }
+      stripeCheckourSessionUrl = checkoutSessionUrl.url;
       response = res;
     }
 
@@ -48,8 +53,16 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onPopupOpen }) => {
       console.log("Something went wrong");
       return;
     }
+    localStorage.setItem(
+      "cart",
+      JSON.stringify({
+        cartItems: [],
+        cartQuantityCounter: 0,
+        cartTotalPrice: 0,
+      })
+    );
 
-    if (paymentData?.url) router.push(paymentData.url);
+    if (stripeCheckourSessionUrl) router.push(stripeCheckourSessionUrl);
   };
 
   return (

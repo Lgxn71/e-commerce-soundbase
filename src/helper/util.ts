@@ -1,4 +1,22 @@
-const formatArtistNumber = (
+export const sendRequest = async (api: string, method: string, body: {}) => {
+  try {
+    const res = await fetch(api, {
+      method: method,
+      body: JSON.stringify({
+        ...body,
+      }),
+    });
+
+    const data = await res.json();
+
+    return [data, res];
+  } catch (error) {
+    console.log(error, "ERROR");
+  }
+};
+export const isLinkActive = (href: string, asPath: string) => asPath === href;
+
+export const formatArtistNumber = (
   artistDetails: (
     | { title: string; number: number }
     | { title: string; number: string }
@@ -18,4 +36,3 @@ const formatArtistNumber = (
       return { ...detail, number: number.toString() };
     }
   });
-export default formatArtistNumber;

@@ -37,17 +37,7 @@ const Bill = () => {
         sum: cartLocalStorage.cartTotalPrice,
       });
     }
-
-    localStorage.setItem(
-      "cart",
-      JSON.stringify({
-        cartItems: [],
-        cartQuantityCounter: 0,
-        cartTotalPrice: 0,
-      })
-    );
   }, [setCartLocal]);
-
   if (session.status === "loading") {
     return (
       <>

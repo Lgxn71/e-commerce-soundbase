@@ -11,9 +11,9 @@ import Icons from "../../../../UI/Icons/Icons";
 
 import styles from "./CartAlbumActions.module.css";
 
-import { Record } from "../../../../../types/db";
+import { Album } from "../../../../../types/db";
 
-const CartAlbumActions = ({ album }: { album: Record }) => {
+const CartAlbumActions = ({ album }: { album: Album }) => {
   const [cart, setCart] = useRecoilState(cartState);
 
   const addToCartHandler = () => {

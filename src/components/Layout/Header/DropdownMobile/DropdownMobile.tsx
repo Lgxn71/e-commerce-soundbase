@@ -1,15 +1,15 @@
 import { FC } from "react";
 import { createPortal } from "react-dom";
-import { useSession } from "next-auth/react";
-
 import Link from "next/link";
+
+import { useSession } from "next-auth/react";
 
 import Backdrop from "../../../UI/Backdrop/Backdrop";
 import MobileAuth from "./MobileAuth";
 
 import styles from "./DropdownMobile.module.css";
 
-import { isLinkActive } from "../../../../helper/isLinkActive";
+import { isLinkActive } from "../../../../helper/util";
 import { LinkObject } from "../../Footer/Links/FooterLinks";
 
 export interface IDropDownProps {

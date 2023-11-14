@@ -6,23 +6,20 @@ import Layout from "../Layout/Layout";
 import Form from "../UI/Form/Form";
 import Input from "../UI/Form/Input";
 
-import styles from "./Signup.module.css";
+import { SignUpForm } from "../../helper/validations/signUpValidation";
+import { ErrorForm } from "../../sharedContent/errorInitial/errorInitial";
 
 interface ISignupProps {
   onSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>;
   onChangeInput: (e: ChangeEvent<HTMLInputElement>) => void;
   formValidation: {
-    emailError: { isError: boolean; errorMessage: string };
-    passwordError: { isError: boolean; errorMessage: string };
-    clientValidation: { isError: boolean; errorMessage: string };
+    nameError: ErrorForm;
+    addressError: ErrorForm;
+    emailError: ErrorForm;
+    passwordError: ErrorForm;
+    confirmPasswordError: ErrorForm;
   };
-  userInput: {
-    name: string;
-    email: string;
-    address: string;
-    password: string;
-    confirmPassword: string;
-  };
+  userInput: SignUpForm;
   isLoading: boolean;
 }
 
@@ -48,72 +45,57 @@ const Signup: FC<ISignupProps> = ({
       onSubmit={onSubmit}
     >
       <Input
+        isError={formValidation.nameError.isError}
+        errorMessage={formValidation.nameError.errorMessage}
         type="text"
         name="name"
         placeholder="Enter your name"
+        required
         value={userInput.name}
         onChangeInput={onChangeInput}
       />
-
       <Input
         isError={formValidation.emailError.isError}
         errorMessage={formValidation.emailError.errorMessage}
         value={userInput.email}
         onChangeInput={onChangeInput}
         type="email"
+        required
         name="email"
         placeholder="Enter your email address"
       />
-
       <Input
+        isError={formValidation.addressError.isError}
+        errorMessage={formValidation.addressError.errorMessage}
         type="text"
         name="address"
         placeholder="Enter your home address"
+        required
         value={userInput.address}
         onChangeInput={onChangeInput}
       />
-
-      <input
-        className={`${styles.input} 
-           ${
-             formValidation.passwordError.isError
-               ? styles.isError
-               : styles.noErrorInput
-           }`}
+      <Input
+        isError={formValidation.passwordError.isError}
+        errorMessage={formValidation.passwordError.errorMessage}
         type="password"
-        name="password"
         id="password"
-        placeholder="Enter your password"
-        required
+        name="password"
+        placeholder="Enter your home password"
         value={userInput.password}
-        onChange={onChangeInput}
-      />
-
-      <input
-        className={`${styles.input} ${
-          formValidation.passwordError.isError
-            ? styles.isError
-            : styles.noErrorInput
-        }`}
-        type="password"
-        name="confirmPassword"
-        id="confirmPassword"
-        placeholder="Confirm your password"
+        onChangeInput={onChangeInput}
         required
-        value={userInput.confirmPassword}
-        onChange={onChangeInput}
       />
-      {formValidation.passwordError.isError && (
-        <p className={styles.errorMessage}>
-          {formValidation.passwordError.errorMessage}
-        </p>
-      )}
-
-      {formValidation.clientValidation.isError && (
-        <p className={styles.errorMessage}>
-          {formValidation.clientValidation.errorMessage}
-        </p>
-      )}
+      <Input
+        isError={formValidation.confirmPasswordError.isError}
+        errorMessage={formValidation.confirmPasswordError.errorMessage}
+        value={userInput.confirmPassword}
+        onChangeInput={onChangeInput}
+        type="password"
+        id="confirmPassword"
+        name="confirmPassword"
+        placeholder="Enter your password address"
+        required
+      />
     </Form>
   );
 };

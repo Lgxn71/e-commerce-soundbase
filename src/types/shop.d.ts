@@ -1,4 +1,4 @@
-import { Artist, Record } from "./db";
+import { Album, Artist, Record } from "./db";
 
 export interface IalbumData {
   All: { recordsQuantity: number; albums: Record[] };
@@ -13,6 +13,6 @@ export interface IalbumData {
 
 interface IalbumDataFiltered {
   recordsQuantity: number;
-  albums: Record[];
+  albums: Album[];
   artists: Artist[];
 }

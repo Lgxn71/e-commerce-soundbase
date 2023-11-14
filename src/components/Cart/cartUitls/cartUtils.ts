@@ -1,8 +1,8 @@
 import { ICart } from "../CartAtom/cartAtom";
 
-import { Record } from "../../../types/db";
+import { Album } from "../../../types/db";
 
-export const addItemToCart = (cart: ICart, album: Record) => {
+export const addItemToCart = (cart: ICart, album: Album) => {
   const existingItem = cart.cartItems.find(
     (cartItem) => cartItem._id === album._id
   );
@@ -24,7 +24,7 @@ export const addItemToCart = (cart: ICart, album: Record) => {
   }
 };
 
-export const decreaseCartItem = (cart: ICart, album: Record) => {
+export const decreaseCartItem = (cart: ICart, album: Album) => {
   const existingItem = cart.cartItems.find((item) => item._id === album._id);
 
   if (existingItem) {
@@ -45,7 +45,7 @@ export const decreaseCartItem = (cart: ICart, album: Record) => {
     }
   }
 };
-export const removeCartItem = (cart: ICart, album: Record) => {
+export const removeCartItem = (cart: ICart, album: Album) => {
   const filteredCart = cart.cartItems.filter((item) => item._id !== album._id);
 
   if (filteredCart) {
@@ -56,7 +56,7 @@ export const removeCartItem = (cart: ICart, album: Record) => {
   }
 };
 
-export const recalculateCartPricesAndQuanity = (updatedItems: Record[]) => {
+export const recalculateCartPricesAndQuanity = (updatedItems: Album[]) => {
   let cartQuantityCounter = 0;
   for (let i = 0; i < updatedItems.length; i++) {
     cartQuantityCounter += updatedItems[i].quantity!;

@@ -1,4 +1,4 @@
-import formatArtistNumber from "../../../../helper/formatArtistNumbers";
+import { formatArtistNumber } from "../../../../helper/util";
 
 import { Artist } from "../../../../types/db";
 

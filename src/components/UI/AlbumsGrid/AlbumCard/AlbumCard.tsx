@@ -7,7 +7,7 @@ import {
   recalculateCartPricesAndQuanity,
 } from "../../../Cart/cartUitls/cartUtils";
 
-import { Artist, Record } from "../../../../types/db";
+import { Artist, Album } from "../../../../types/db";
 
 import AlbumCardLoadingSkeleton from "./AlbumCardLoadingSkeleton/AlbumCardLoadingSkeleton";
 
@@ -17,7 +17,7 @@ import AlbumCardDetails from "./AlbumCardDetails/AlbumCardDetails";
 import styles from "./AlbumCard.module.css";
 
 interface IAlbumCard {
-  album?: Record;
+  album?: Album;
   artist?: Artist;
   isLoading?: boolean;
 }

@@ -18,7 +18,7 @@
 
 .skeletonText {
   width: 120px;
-  height: 10px;
+  height: 16px;
 
   margin-bottom: 12px;
 
@@ -40,8 +40,25 @@
 }
 
 .actions {
-  max-width: 280px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+@media (max-width: 435px) {
+  .skeletonImage {
+    width: 390px;
+    height: 390px;
+  }
+}
+@media (max-width: 375px) {
+  .skeletonImage {
+    width: 340px;
+    height: 340px;
+  }
+}
+@media (max-width: 320px) {
+  .skeletonImage {
+    width: 290px;
+    height: 290px;
+  }
 }

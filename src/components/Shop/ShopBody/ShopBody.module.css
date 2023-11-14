@@ -21,4 +21,7 @@
   .counter {
     padding: 20px 16px 0 16px;
   }
+  .counterSkeleton {
+    margin: 20px 16px;
+  }
 }

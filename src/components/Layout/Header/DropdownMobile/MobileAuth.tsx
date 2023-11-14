@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { useSession, signOut } from "next-auth/react";
 
-import { isLinkActive } from "../../../../helper/isLinkActive";
+import { isLinkActive } from "../../../../helper/util";
 import { LinkObject } from "../../Footer/Links/FooterLinks";
 
 interface IDropDownMobileAuthProps {

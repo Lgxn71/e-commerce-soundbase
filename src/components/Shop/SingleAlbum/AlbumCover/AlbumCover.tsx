@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import { Record } from "../../../../types/db";
+import { Album } from "../../../../types/db";
 
 import styles from "./AlbumCover.module.css";
 import { FC } from "react";
 
 interface AlbumCoverProps {
-  albumDetails: Record;
+  albumDetails: Album;
 }
 
 const AlbumCover: FC<AlbumCoverProps> = ({ albumDetails }) => {

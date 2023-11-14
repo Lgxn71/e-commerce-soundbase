@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import connectToClient from "../../database/ConnectClient";
-import { Artist, Record } from "../../types/db";
+import { Artist, Album } from "../../types/db";
 
 const genres = [
   "Jazz",
@@ -21,11 +21,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const db = client.db("soundbase");
 
-    const collectionRecords = db.collection<Record>("vinylRecords");
+    const collectionRecords = db.collection<Album>("vinylRecords");
     const collectionArtists = db.collection<Artist>("artists");
 
     let artists: Artist[] = [];
-    let albums: Record[] = [];
+    let albums: Album[] = [];
     let recordsQuantity = 0;
 
     try {

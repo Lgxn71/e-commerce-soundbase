@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 import { v4 as uuidv4 } from "uuid";
 import connectToClient from "../../../database/ConnectClient";
 
-import { Order, Record, User } from "../../../types/db";
+import { Album, Order, User } from "../../../types/db";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -16,11 +16,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       email: userEmail,
       id: userId,
     }: {
-      cart: Record[];
+      cart: Album[];
       id: string;
       email: string;
     } = body;
 
+    
     let session;
 
     try {

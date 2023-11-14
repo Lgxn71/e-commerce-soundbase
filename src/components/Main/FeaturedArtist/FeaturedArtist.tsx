@@ -6,14 +6,14 @@ import Container from "../../UI/Container/Container";
 import ContainerTitle from "../ContainerTitle/ContainerTitle";
 
 import styles from "./FeaturedArtist.module.css";
-import { Artist, Record } from "../../../types/db";
+import { Artist, Album } from "../../../types/db";
 
-import formatArtistNumber from "../../../helper/formatArtistNumbers";
+import { formatArtistNumber } from "../../../helper/util";
 
 const FeaturedArtist = ({
   featuredArtist,
 }: {
-  featuredArtist: { artist: Artist; album: Record };
+  featuredArtist: { artist: Artist; album: Album };
 }) => {
   const artist = { ...featuredArtist.artist };
   const album = { ...featuredArtist.album };

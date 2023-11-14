@@ -2,7 +2,7 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 import connectToClient from "../database/ConnectClient";
 
-import { Artist, Record } from "../types/db";
+import { Artist, Album } from "../types/db";
 
 import Hero from "../components/Main/Hero/Hero";
 import Partner from "../components/Main/Partners/Partners";
@@ -12,7 +12,7 @@ import FeaturedArtist from "../components/Main/FeaturedArtist/FeaturedArtist";
 import DiscoverVinyls from "../components/Main/Discover/Discover";
 
 export interface ArtistsAlbumsCombined {
-  albums: Record[];
+  albums: Album[];
   artists: Artist[];
 }
 
@@ -45,7 +45,7 @@ export const getStaticProps = (async () => {
   const client = await connectToClient();
   const db = client.db("soundbase");
 
-  const collectionRecords = db.collection<Record>("vinylRecords");
+  const collectionRecords = db.collection<Album>("vinylRecords");
   const collectionArtists = db.collection<Artist>("artists");
 
   const featuredAlbumsDB = await collectionRecords
@@ -57,8 +57,8 @@ export const getStaticProps = (async () => {
     .limit(4)
     .toArray();
 
-  let featuredAlbumsParsed: Record[] = [];
-  let newArrivalAlbumsParsed: Record[] = [];
+  let featuredAlbumsParsed: Album[] = [];
+  let newArrivalAlbumsParsed: Album[] = [];
 
   if (newArrivalAlbumsDB && featuredAlbumsDB) {
     featuredAlbumsParsed = featuredAlbumsDB.map((album) => ({
@@ -106,7 +106,7 @@ export const getStaticProps = (async () => {
       ...featuredAlbumOfMonth,
       _id: featuredAlbumOfMonth?._id.toString(),
     },
-  } as { artist: Artist; album: Record };
+  } as { artist: Artist; album: Album };
 
   await client.close();
 

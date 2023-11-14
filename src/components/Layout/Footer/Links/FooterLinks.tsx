@@ -21,7 +21,7 @@ const FooterLinks = () => {
     },
   ];
   const soundBaseLinks: LinkObject[] = [
-    { title: "Featured Albums", href: "/feautured-album" },
+    { title: "Featured Albums", href: "/featured-album" },
     { title: "New Arrival", href: "/new-arrival" },
     { title: "Featured Artist", href: "/artist/647325fb6a9f96cd55246096" },
   ];

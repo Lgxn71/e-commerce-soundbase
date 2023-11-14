@@ -1,9 +1,9 @@
 import { atom } from "recoil";
 
-import { Record } from "../../../types/db";
+import { Album } from "../../../types/db";
 
 export interface ICart {
-  cartItems: Record[];
+  cartItems: Album[];
   cartTotalPrice: number;
   cartQuantityCounter: number;
 }

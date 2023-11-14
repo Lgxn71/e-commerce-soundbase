@@ -1,9 +1,10 @@
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { useSession } from "next-auth/react";
 
-import UserDataCard from "./UserDataCard";
+import UserDataCard from "./UserDataCard/UserDataCard";
 
-import sendRequest from "../../../../helper/SendRequest";
+import { sendRequest } from "../../../../helper/util";
+
 import errorInitial from "../../../../sharedContent/errorInitial/errorInitial";
 
 import styles from "./UserProfile.module.css";
@@ -86,7 +87,6 @@ const UserProfile = ({ isLoading }: { isLoading?: boolean }) => {
         }));
 
       if (
-        data?.message === "Empty field is invalid for email" ||
         data?.message === "Invalid email input" ||
         data?.message === "User exist already"
       )

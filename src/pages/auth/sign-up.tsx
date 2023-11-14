@@ -5,18 +5,15 @@ import { useRouter } from "next/router";
 import useFormInput from "../../hooks/useFormInput";
 
 import Signup from "../../components/Auth/Signup";
-import sendRequest from "../../helper/SendRequest";
+import { sendRequest } from "../../helper/util";
 
 import errorInitial from "../../sharedContent/errorInitial/errorInitial";
+import signUpFormValidation, {
+  SignUpForm,
+} from "../../helper/validations/signUpValidation";
 
 const SignUpPage = () => {
   const router = useRouter();
-
-  const [formValidation, setFormValidation] = useState({
-    emailError: errorInitial,
-    passwordError: errorInitial,
-    clientValidation: errorInitial,
-  });
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -27,15 +24,16 @@ const SignUpPage = () => {
     password: "",
     confirmPassword: "",
   }) as {
-    user: {
-      name: string;
-      email: string;
-      address: string;
-      password: string;
-      confirmPassword: string;
-    };
+    user: SignUpForm;
     onChangeInput: (e: ChangeEvent<HTMLInputElement>) => void;
   };
+  const [formValidation, setFormValidation] = useState({
+    nameError: errorInitial,
+    emailError: errorInitial,
+    addressError: errorInitial,
+    passwordError: errorInitial,
+    confirmPasswordError: errorInitial,
+  });
   const { name, email, address, password, confirmPassword } = user;
 
   const formSubmitHandler = async (event: FormEvent<HTMLFormElement>) => {
@@ -45,26 +43,15 @@ const SignUpPage = () => {
       setIsLoading((prev) => true);
 
       setFormValidation((prev) => ({
+        nameError: errorInitial,
         emailError: errorInitial,
+        addressError: errorInitial,
         passwordError: errorInitial,
-        clientValidation: errorInitial,
+        confirmPasswordError: errorInitial,
       }));
 
-      if (
-        !email.includes("@") ||
-        email.trim() === "" ||
-        name.trim() === "" ||
-        address.trim() === "" ||
-        password.trim() === "" ||
-        confirmPassword.trim() === ""
-      )
-        return setFormValidation((prev) => ({
-          ...prev,
-          clientValidation: {
-            isError: true,
-            errorMessage: "Invalid credentianls",
-          },
-        }));
+      const validatedData = signUpFormValidation(user, setFormValidation);
+      if (validatedData === undefined) return;
 
       const [data, res] = (await sendRequest("/api/auth/signup", "POST", {
         name: name,
@@ -83,6 +70,10 @@ const SignUpPage = () => {
           return setFormValidation((prev) => ({
             ...prev,
             passwordError: {
+              isError: true,
+              errorMessage: data.message,
+            },
+            confirmPasswordError: {
               isError: true,
               errorMessage: data.message,
             },

@@ -4,9 +4,9 @@ import Image from "next/image";
 import AlbumsGrid from "../UI/AlbumsGrid/AlbumsGrid";
 
 import styles from "./Artist.module.css";
-import { Artist, Record } from "../../types/db";
+import { Artist, Album } from "../../types/db";
 
-const Artist = ({ artist, albums }: { artist: Artist; albums: Record[] }) => {
+const Artist = ({ artist, albums }: { artist: Artist; albums: Album[] }) => {
   const artistDetails = [
     { title: "Albums", number: albums.length },
     { title: "Views", number: artist.views },
@@ -43,7 +43,7 @@ const Artist = ({ artist, albums }: { artist: Artist; albums: Record[] }) => {
       </Container>
 
       <Container>
-        <AlbumsGrid singleArtist={artist} records={albums} />
+        <AlbumsGrid singleArtist={artist} albums={albums} />
       </Container>
     </>
   );
