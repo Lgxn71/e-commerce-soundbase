@@ -31,3 +31,8 @@
     gap: 65px;
   }
 }
+@media (max-width: 366px) {
+  .bottom {
+    gap: 30px;
+  }
+}

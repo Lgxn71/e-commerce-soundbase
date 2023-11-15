@@ -40,7 +40,7 @@ const PaymentDetails: FC<IPaymentProps> = ({ cart, onPopupOpen }) => {
           id: session.data.user.id,
         }
       )) as [{ url: string }, Response];
-      const urlParsed = z.string().url().safeParse(checkoutSessionUrl);
+      const urlParsed = z.string().url().safeParse(checkoutSessionUrl.url);
       if (!urlParsed.success) {
         console.log("Something went wrong");
         return;

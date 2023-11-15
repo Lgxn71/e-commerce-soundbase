@@ -32,7 +32,7 @@ const MobileAuth: FC<IDropDownMobileAuthProps> = ({
               style={
                 isLinkActive(`/user/${session.data.user.id}`, asPath)
                   ? { color: "white" }
-                  : undefined
+                  : {}
               }
               onClick={(e) => onClose()}
             >
@@ -47,7 +47,7 @@ const MobileAuth: FC<IDropDownMobileAuthProps> = ({
               style={
                 isLinkActive(`/user/${session.data.user.id}`, asPath)
                   ? { color: "white" }
-                  : undefined
+                  : {}
               }
             >
               My profile

@@ -111,3 +111,10 @@
     padding-bottom: 0px;
   }
 }
+
+@media (max-width: 350px) {
+  .header {
+    flex-direction: column;
+    padding: 30px 0;
+  }
+}

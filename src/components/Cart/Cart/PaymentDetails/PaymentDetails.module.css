@@ -72,8 +72,7 @@
 
 @media (max-width: 435px) {
   .payment {
-    width: 340px;
-    margin: auto;
+    width: initial;
   }
   .pricingContainer {
     padding: 20px 15px;
@@ -92,3 +91,4 @@
     padding: 20px;
   }
 }
+

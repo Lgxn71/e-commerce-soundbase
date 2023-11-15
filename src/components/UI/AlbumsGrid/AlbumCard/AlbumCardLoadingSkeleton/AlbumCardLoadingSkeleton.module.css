@@ -50,15 +50,40 @@
     height: 390px;
   }
 }
+
+@media (max-width: 414px) {
+  .skeletonImage {
+    width: 382px;
+    height: 382px;
+  }
+}
+@media (max-width: 390px) {
+  .skeletonImage {
+    width: 358px;
+    height: 358px;
+  }
+}
 @media (max-width: 375px) {
   .skeletonImage {
     width: 340px;
     height: 340px;
   }
 }
+@media (max-width: 360px) {
+  .skeletonImage {
+    width: 328px;
+    height: 328px;
+  }
+}
 @media (max-width: 320px) {
   .skeletonImage {
     width: 290px;
     height: 290px;
+  }
+}
+@media (max-width: 280px) {
+  .skeletonImage {
+    width: 248px;
+    height: 248px;
   }
 }

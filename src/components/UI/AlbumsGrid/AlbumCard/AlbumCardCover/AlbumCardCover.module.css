@@ -48,15 +48,40 @@
     height: 390px;
   }
 }
+
+@media (max-width: 414px) {
+  .image {
+    width: 382px;
+    height: 382px;
+  }
+}
+@media (max-width: 390px) {
+  .image {
+    width: 358px;
+    height: 358px;
+  }
+}
 @media (max-width: 375px) {
   .image {
     width: 340px;
     height: 340px;
   }
 }
+@media (max-width: 360px) {
+  .image {
+    width: 328px;
+    height: 328px;
+  }
+}
 @media (max-width: 320px) {
   .image {
     width: 290px;
     height: 290px;
+  }
+}
+@media (max-width: 280px) {
+  .image {
+    width: 248px;
+    height: 248px;
   }
 }

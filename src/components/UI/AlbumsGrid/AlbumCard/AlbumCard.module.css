@@ -10,11 +10,28 @@
     width: 393px;
   }
 }
+@media (max-width: 414px) {
+  .card {
+    width: 382px;
+  }
+}
+@media (max-width: 390px) {
+  .card {
+    width: 358px;
+  }
+}
 @media (max-width: 375px) {
   .card {
     margin: auto;
     max-width: initial;
-    width: 340px;
+    width: 343px;
+  }
+}
+@media (max-width: 360px) {
+  .card {
+    width: 328px;
+    margin: auto;
+    max-width: initial;
   }
 }
 @media (max-width: 320px) {
@@ -22,5 +39,10 @@
     margin: auto;
     max-width: initial;
     width: 288px;
+  }
+}
+@media (max-width: 280px) {
+  .card {
+    width: 248px;
   }
 }
