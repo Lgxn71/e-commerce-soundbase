@@ -15,7 +15,7 @@ export enum filterParameters {
   HipHop = "HipHop",
   "R&B" = "R&B",
   Pop = "Pop",
-  Classic = "Classic",
+
   Rock = "Rock",
   Electronic = "Electronic",
 }
@@ -33,7 +33,6 @@ const Shop: FC<ShopPageProps> = ({ recordsQuantity, albums, artists }) => {
     HipHop: { recordsQuantity: 0, albums: [] },
     "R&B": { recordsQuantity: 0, albums: [] },
     Pop: { recordsQuantity: 0, albums: [] },
-    Classic: { recordsQuantity: 0, albums: [] },
     Rock: { recordsQuantity: 0, albums: [] },
     Electronic: { recordsQuantity: 0, albums: [] },
   });

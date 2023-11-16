@@ -3,15 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import connectToClient from "../../database/ConnectClient";
 import { Artist, Album } from "../../types/db";
 
-const genres = [
-  "Jazz",
-  "HipHop",
-  "R&B",
-  "Pop",
-  "Classic",
-  "Rock",
-  "Electronic",
-];
+const genres = ["Jazz", "HipHop", "R&B", "Pop", "Rock", "Electronic"];
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {

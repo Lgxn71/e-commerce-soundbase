@@ -11,16 +11,7 @@ interface IGenres {
   activeFilter: filterParameters;
 }
 const Genres: FC<IGenres> = ({ activeFilter, onChangeFilter }) => {
-  const genres = [
-    "All",
-    "Jazz",
-    "HipHop",
-    "R&B",
-    "Pop",
-    "Classic",
-    "Rock",
-    "Electronic",
-  ];
+  const genres = ["All", "Jazz", "HipHop", "R&B", "Pop", "Rock", "Electronic"];
 
   return (
     <Container isBorderThere={true}>

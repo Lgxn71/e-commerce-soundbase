@@ -6,7 +6,6 @@ export interface IalbumData {
   HipHop: { recordsQuantity: number; albums: Record[] };
   "R&B": { recordsQuantity: number; albums: Record[] };
   Pop: { recordsQuantity: number; albums: Record[] };
-  Classic: { recordsQuantity: number; albums: Record[] };
   Rock: { recordsQuantity: number; albums: Record[] };
   Electronic: { recordsQuantity: number; albums: Record[] };
 }
