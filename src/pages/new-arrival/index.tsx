@@ -9,21 +9,18 @@ import connectToClient from "../../database/ConnectClient";
 import { ArtistsAlbumsCombined } from "..";
 import { Artist, Album } from "../../types/db";
 
-const NewArrivalsPage: FC<ArtistsAlbumsCombined> = ({ albums, artists }) => {
-  return (
-    <>
-      <Container>
-        <PageTitle title="New Arrival" />
-      </Container>
+const NewArrivalsPage: FC<ArtistsAlbumsCombined> = ({ albums, artists }) => (
+  <>
+    <Container>
+      <PageTitle title="New Arrival" />
+    </Container>
 
-      <Container isBorderThere={true}>
-        <AlbumsGrid albums={albums} artists={artists} />
-      </Container>
-    </>
-  );
-};
-
-export const getStaticProps = async () => {
+    <Container isBorderThere={true}>
+      <AlbumsGrid albums={albums} artists={artists} />
+    </Container>
+  </>
+);
+export const getServerSideProps = async () => {
   const client = await connectToClient();
   const db = client.db("soundbase");
 

@@ -80,7 +80,7 @@ const Signup: FC<ISignupProps> = ({
         type="password"
         id="password"
         name="password"
-        placeholder="Enter your home password"
+        placeholder="Enter your password"
         value={userInput.password}
         onChangeInput={onChangeInput}
         required
@@ -93,7 +93,7 @@ const Signup: FC<ISignupProps> = ({
         type="password"
         id="confirmPassword"
         name="confirmPassword"
-        placeholder="Enter your password address"
+        placeholder="Confirm your password"
         required
       />
     </Form>

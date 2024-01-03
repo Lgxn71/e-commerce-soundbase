@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 
 import { Album, Artist } from "../../types/db";
 
@@ -20,7 +20,7 @@ const ShopPage: FC<ShopPageProps> = ({ recordsQuantity, albums, artists }) => (
 
 export default ShopPage;
 
-export const getStaticProps = (async () => {
+export const getServerSideProps = (async () => {
   let props = {};
   try {
     const [data] = (await sendRequest(
@@ -44,4 +44,4 @@ export const getStaticProps = (async () => {
   return {
     props,
   };
-}) satisfies GetStaticProps;
+}) 
